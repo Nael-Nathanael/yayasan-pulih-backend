@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -31,8 +31,38 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index', ["as" => "auth.page"]);
+$routes->post('/', 'Home::do_auth', ["as" => "auth.do_auth"]);
+$routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 
+$routes->group('dashboard', function ($routes) {
+    $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);
+
+    $routes->group('landing', function ($routes) {
+        $routes->get("", "Dashboard\Landing::index", ["as" => "dashboard.landing.index"]);
+    });
+    $routes->group('industries', function ($routes) {
+        $routes->get("", "Dashboard\Industries::index", ["as" => "dashboard.industries.index"]);
+    });
+    $routes->group('insights', function ($routes) {
+        $routes->get("", "Dashboard\Insights::index", ["as" => "dashboard.insights.index"]);
+    });
+    $routes->group('webinars', function ($routes) {
+        $routes->get("", "Dashboard\Webinars::index", ["as" => "dashboard.webinars.index"]);
+    });
+    $routes->group('services', function ($routes) {
+        $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);
+    });
+    $routes->group('careers', function ($routes) {
+        $routes->get("", "Dashboard\Careers::index", ["as" => "dashboard.careers.index"]);
+    });
+    $routes->group('about', function ($routes) {
+        $routes->get("", "Dashboard\About::index", ["as" => "dashboard.about.index"]);
+    });
+    $routes->group('contact', function ($routes) {
+        $routes->get("", "Dashboard\Contact::index", ["as" => "dashboard.contact.index"]);
+    });
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing
