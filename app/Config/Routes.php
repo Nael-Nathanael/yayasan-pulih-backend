@@ -63,6 +63,13 @@ $routes->group('dashboard', function ($routes) {
         $routes->get("", "Dashboard\Contact::index", ["as" => "dashboard.contact.index"]);
     });
 });
+
+$routes->group("object", function ($routes) {
+    $routes->group('carouselBanner', function ($routes) {
+        $routes->post('create', "Object\CarouselBanner::create", ["as" => "object.carouselBanner.create"]);
+        $routes->get('get', "Object\CarouselBanner::get", ["as" => "object.carouselBanner.get"]);
+    });
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

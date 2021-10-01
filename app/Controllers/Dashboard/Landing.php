@@ -6,8 +6,10 @@ use App\Controllers\BaseController;
 
 class Landing extends BaseController
 {
-    public function index()
+    public function index(): string
     {
-        echo "landing's index";
+        $carouselBanner = model("CarouselBanner");
+        $data['carouselBanners'] = $carouselBanner->findAll();
+        return view("_pages/dashboard/landing/index", $data);
     }
 }
