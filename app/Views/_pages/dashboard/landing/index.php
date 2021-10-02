@@ -3,7 +3,7 @@
 <?= $this->section("content"); ?>
     <div class="container">
         <section>
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header">
                     <div class="card-title">
                         Carousel Banner
@@ -51,6 +51,58 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section>
+            <form class="card shadow" action="<?= route_to("object.whatAndHowWeDo.update") ?>" method="post">
+                <div class="card-header">
+                    <div class="card-title">
+                        What We Do and How We Do
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mb-3">
+                                <label for="what_we_do_title">Headline for What We Do</label>
+                                <input type="text" name="what_we_do_title" value="<?= $what_we_do_title ?>"
+                                       id="what_we_do_title" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="what_we_do_description">1st Descriptions for What We Do</label>
+                                <textarea type="text" name="what_we_do_description" id="what_we_do_description"
+                                          class="form-control"><?= $what_we_do_description ?></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="what_we_do_description_2">2nd Descriptions for What We Do</label>
+                                <textarea type="text" name="what_we_do_description_2" id="what_we_do_description_2"
+                                          class="form-control"><?= $what_we_do_description_2 ?></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mb-3">
+                                <label for="how_we_do_title">Headline for How We Do</label>
+                                <input type="text" name="how_we_do_title" value="<?= $how_we_do_title ?>"
+                                       id="how_we_do_title" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="how_we_do_description">1st Descriptions for How We Do</label>
+                                <textarea type="text" name="how_we_do_description" id="how_we_do_description"
+                                          class="form-control"><?= $how_we_do_description ?></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="how_we_do_description_2">2nd Descriptions for How We Do</label>
+                                <textarea type="text" name="how_we_do_description_2" id="how_we_do_description_2"
+                                          class="form-control"><?= $how_we_do_description_2 ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-sm btn-outline-primary">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
         </section>
     </div>
 

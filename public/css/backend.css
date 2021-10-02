@@ -3,17 +3,14 @@ section {
     padding-bottom: 20px;
 }
 
-.card-header {
-    background-color: transparent;
-}
-
 .card-title {
     margin-bottom: 0;
     font-size: 16px;
 }
 
-.card-header {
+.card-header, .card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: transparent;
 }

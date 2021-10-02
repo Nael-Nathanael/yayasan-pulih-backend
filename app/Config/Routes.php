@@ -69,6 +69,11 @@ $routes->group("object", function ($routes) {
         $routes->post('create', "Object\CarouselBanner::create", ["as" => "object.carouselBanner.create"]);
         $routes->get('get', "Object\CarouselBanner::get", ["as" => "object.carouselBanner.get"]);
     });
+
+    $routes->group('whatAndHowWeDo', function ($routes) {
+        $routes->post('update', "Object\WhatAndHowWeDo::update", ["as" => "object.whatAndHowWeDo.update"]);
+        $routes->get('get', "Object\WhatAndHowWeDo::get", ["as" => "object.whatAndHowWeDo.get"]);
+    });
 });
 /*
  * --------------------------------------------------------------------
