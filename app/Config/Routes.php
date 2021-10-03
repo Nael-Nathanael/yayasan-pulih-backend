@@ -74,6 +74,12 @@ $routes->group("object", function ($routes) {
         $routes->post('update', "Object\WhatAndHowWeDo::update", ["as" => "object.whatAndHowWeDo.update"]);
         $routes->get('get', "Object\WhatAndHowWeDo::get", ["as" => "object.whatAndHowWeDo.get"]);
     });
+
+    $routes->group('services', function ($routes) {
+        $routes->post('update_thumbnail', "Object\Services::update_thumbnail", ["as" => "object.services.update_thumbnail"]);
+        $routes->post('update', "Object\Services::update", ["as" => "object.services.update"]);
+        $routes->get('get', "Object\Services::get", ["as" => "object.services.get"]);
+    });
 });
 /*
  * --------------------------------------------------------------------

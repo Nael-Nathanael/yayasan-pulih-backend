@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class Lines extends Model
 {
     protected $table = 'lines';
-    protected $primaryKey = 'id';
-    protected $useAutoIncrement = true;
+    protected $primaryKey = 'key';
+    protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = ['group_name', 'key', 'value'];
