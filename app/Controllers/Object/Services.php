@@ -17,7 +17,7 @@ class Services extends BaseController
             $path->move(UPLOAD_FOLDER_URL);
 
             // simpan ke lines
-            $linesModel = model("lines");
+            $linesModel = model("Lines");
             $linesModel->save(
                 [
                     "group_name" => "SERVICES",
@@ -50,7 +50,7 @@ class Services extends BaseController
 
     public function get()
     {
-        $lines = model("lines");
+        $lines = model("Lines");
 
         return $this->response->setJSON(
             [
