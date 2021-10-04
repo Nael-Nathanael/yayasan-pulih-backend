@@ -70,15 +70,23 @@ $routes->group("object", function ($routes) {
         $routes->get('get', "Object\CarouselBanner::get", ["as" => "object.carouselBanner.get"]);
     });
 
+    $routes->group('teams', function ($routes) {
+        $routes->post('create', "Object\Teams::create", ["as" => "object.teams.create"]);
+        $routes->post('delete/(:num)', "Object\Teams::delete/$1", ["as" => "object.teams.delete"]);
+        $routes->get('get', "Object\Teams::get", ["as" => "object.teams.get"]);
+    });
+
     $routes->group('whatAndHowWeDo', function ($routes) {
-        $routes->post('update', "Object\WhatAndHowWeDo::update", ["as" => "object.whatAndHowWeDo.update"]);
         $routes->get('get', "Object\WhatAndHowWeDo::get", ["as" => "object.whatAndHowWeDo.get"]);
     });
 
     $routes->group('services', function ($routes) {
-        $routes->post('update_thumbnail', "Object\Services::update_thumbnail", ["as" => "object.services.update_thumbnail"]);
-        $routes->post('update', "Object\Services::update", ["as" => "object.services.update"]);
         $routes->get('get', "Object\Services::get", ["as" => "object.services.get"]);
+    });
+
+    $routes->group('lines', function ($routes) {
+        $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
+        $routes->post('update', "Object\Lines::update", ["as" => "object.lines.update"]);
     });
 });
 /*

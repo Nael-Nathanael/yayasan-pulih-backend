@@ -18,4 +18,22 @@ class Lines extends Model
     protected $dateFormat = 'datetime';
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
+
+    function findOrEmptyString($key): string
+    {
+        $target = $this->find($key);
+        if (!$target) {
+            return '';
+        }
+        return $target->value;
+    }
+
+    function findOrPlaceholderImage($key): string
+    {
+        $target = $this->find($key);
+        if (!$target) {
+            return 'https://via.placeholder.com/500';
+        }
+        return $target->value;
+    }
 }

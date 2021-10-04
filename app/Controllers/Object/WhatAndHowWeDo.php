@@ -74,19 +74,19 @@ class WhatAndHowWeDo extends BaseController
         return $this->response->setJSON(
             [
                 "what_we_do" => [
-                    "title" => $lines->where("key", "WHAT_WE_DO_TITLE")->first()->value,
+                    "title" => $lines->findOrEmptyString("WHAT_WE_DO_TITLE"),
                     "descriptions" => [
-                        $lines->where("key", "WHAT_WE_DO_DESCRIPTION")->first()->value,
-                        $lines->where("key", "WHAT_WE_DO_DESCRIPTION_2")->first()->value
+                        $lines->findOrEmptyString("WHAT_WE_DO_DESCRIPTION"),
+                        $lines->findOrEmptyString("WHAT_WE_DO_DESCRIPTION_2"),
                     ]
                 ],
                 "how_we_do" => [
-                    "title" => $lines->where("key", "HOW_WE_DO_TITLE")->first()->value,
+                    "title" => $lines->findOrEmptyString("HOW_WE_DO_TITLE"),
                     "descriptions" => [
-                        $lines->where("key", "HOW_WE_DO_DESCRIPTION")->first()->value,
-                        $lines->where("key", "HOW_WE_DO_DESCRIPTION_2")->first()->value
+                        $lines->findOrEmptyString("HOW_WE_DO_DESCRIPTION"),
+                        $lines->findOrEmptyString("HOW_WE_DO_DESCRIPTION_2"),
                     ]
-                ]
+                ],
             ]
         );
     }

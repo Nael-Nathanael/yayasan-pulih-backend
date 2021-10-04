@@ -7,47 +7,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 class Services extends BaseController
 {
-    public function update_thumbnail(): RedirectResponse
-    {
-        $key = $this->request->getPost("key");
-
-        // upload #key
-        if (!empty($_FILES[$key]['name'])) {
-            $path = $this->request->getFile($key);
-            $path->move(UPLOAD_FOLDER_URL);
-
-            // simpan ke lines
-            $linesModel = model("Lines");
-            $linesModel->save(
-                [
-                    "group_name" => "SERVICES",
-                    "key" => $key,
-                    "value" => base_url("/uploads/" . $path->getName())
-                ]
-            );
-        }
-
-        return redirect()->route("dashboard.landing.index");
-    }
-
-    public function update(): RedirectResponse
-    {
-        $lines = model("Lines");
-        $submitable_array = $this->request->getPost();
-
-        foreach ($submitable_array as $key => $value) {
-            $lines->save(
-                [
-                    "group_name" => "SERVICES",
-                    "key" => $key,
-                    "value" => $value
-                ]
-            );
-        }
-
-        return redirect()->route("dashboard.landing.index");
-    }
-
     public function get()
     {
         $lines = model("Lines");

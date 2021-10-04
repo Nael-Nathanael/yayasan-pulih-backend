@@ -1,6 +1,39 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
+<?php
+/**
+ * @var Array $carouselBanners
+ *
+ * @var String $what_we_do_title
+ * @var String $what_we_do_description
+ * @var String $what_we_do_description_2
+ * @var String $how_we_do_title
+ * @var String $how_we_do_description
+ * @var String $how_we_do_description_2
+ *
+ * @var String $LANDING_SERVICE_1_IMAGE
+ * @var String $LANDING_SERVICE_1_DESCRIPTION
+ * @var String $LANDING_SERVICE_1_HEADLINE
+ * @var String $LANDING_SERVICE_1_SUBSERVICE_1
+ * @var String $LANDING_SERVICE_1_SUBSERVICE_2
+ * @var String $LANDING_SERVICE_1_SUBSERVICE_3
+ *
+ * @var String $LANDING_SERVICE_2_IMAGE
+ * @var String $LANDING_SERVICE_2_DESCRIPTION
+ * @var String $LANDING_SERVICE_2_HEADLINE
+ * @var String $LANDING_SERVICE_2_SUBSERVICE_1
+ * @var String $LANDING_SERVICE_2_SUBSERVICE_2
+ * @var String $LANDING_SERVICE_2_SUBSERVICE_3
+ *
+ * @var String $LANDING_SERVICE_3_IMAGE
+ * @var String $LANDING_SERVICE_3_DESCRIPTION
+ * @var String $LANDING_SERVICE_3_HEADLINE
+ * @var String $LANDING_SERVICE_3_SUBSERVICE_1
+ * @var String $LANDING_SERVICE_3_SUBSERVICE_2
+ * @var String $LANDING_SERVICE_3_SUBSERVICE_3
+ */
+?>
     <div class="container">
         <section>
             <div class="card shadow">
@@ -53,56 +86,81 @@
             </div>
         </section>
         <section>
-            <form class="card shadow" action="<?= route_to("object.whatAndHowWeDo.update") ?>" method="post">
-                <div class="card-header">
-                    <div class="card-title">
-                        What We Do and How We Do
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group mb-3">
-                                <label for="what_we_do_title">Headline for What We Do</label>
-                                <input type="text" name="what_we_do_title" value="<?= $what_we_do_title ?>"
-                                       id="what_we_do_title" class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="what_we_do_description">1st Descriptions for What We Do</label>
-                                <textarea type="text" name="what_we_do_description" id="what_we_do_description"
-                                          class="form-control" rows="4"><?= $what_we_do_description ?></textarea>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="what_we_do_description_2">2nd Descriptions for What We Do</label>
-                                <textarea type="text" name="what_we_do_description_2" id="what_we_do_description_2"
-                                          class="form-control" rows="4"><?= $what_we_do_description_2 ?></textarea>
+            <div class="row">
+                <div class="col-6">
+                    <form action="<?= route_to("object.lines.update") ?>" class="card shadow" method="post">
+                        <div class="card-header">
+                            <div class="card-title">
+                                What We Do
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group mb-3">
-                                <label for="how_we_do_title">Headline for How We Do</label>
-                                <input type="text" name="how_we_do_title" value="<?= $how_we_do_title ?>"
-                                       id="how_we_do_title" class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="how_we_do_description">1st Descriptions for How We Do</label>
-                                <textarea type="text" name="how_we_do_description" id="how_we_do_description"
-                                          class="form-control" rows="4"><?= $how_we_do_description ?></textarea>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="how_we_do_description_2">2nd Descriptions for How We Do</label>
-                                <textarea type="text" name="how_we_do_description_2" id="how_we_do_description_2"
-                                          class="form-control" rows="4"><?= $how_we_do_description_2 ?></textarea>
+                        <div class="card-body">
+                            <?= view("_components/LinesField",
+                                [
+                                    "field_label" => "Headline for What We Do",
+                                    "field_id" => "WHAT_WE_DO_TITLE",
+                                ]
+                            ) ?>
+
+                            <?= view("_components/LinesTextArea",
+                                [
+                                    "field_label" => "1st Descriptions for What We Do",
+                                    "field_id" => "WHAT_WE_DO_DESCRIPTION",
+                                ]
+                            ) ?>
+
+                            <?= view("_components/LinesTextArea",
+                                [
+                                    "field_label" => "2nd Descriptions for What We Do",
+                                    "field_id" => "WHAT_WE_DO_DESCRIPTION_2",
+                                ]
+                            ) ?>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <form class="card shadow" action="<?= route_to("object.lines.update") ?>" method="post">
+                        <div class="card-header">
+                            <div class="card-title">
+                                How We Do
                             </div>
                         </div>
-                    </div>
+                        <div class="card-body">
+                            <?= view("_components/LinesField",
+                                [
+                                    "field_label" => "Headline for How We Do",
+                                    "field_id" => "HOW_WE_DO_TITLE",
+                                ]
+                            ) ?>
+
+                            <?= view("_components/LinesTextArea",
+                                [
+                                    "field_label" => "1st Descriptions for How We Do",
+                                    "field_id" => "HOW_WE_DO_DESCRIPTION",
+                                ]
+                            ) ?>
+
+                            <?= view("_components/LinesTextArea",
+                                [
+                                    "field_label" => "2nd Descriptions for How We Do",
+                                    "field_id" => "HOW_WE_DO_DESCRIPTION_2",
+                                ]
+                            ) ?>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="card-footer justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </div>
-            </form>
+            </div>
         </section>
         <section>
             <div class="card shadow">
@@ -114,54 +172,47 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 d-flex justify-content-center align-items-center">
-                            <img src="<?= $LANDING_SERVICE_1_IMAGE ?>" class="w-100" alt=""
-                                 style="max-height: 300px; object-fit: cover; cursor: pointer"
-                                 onclick="document.getElementById('LANDING_SERVICE_1_IMAGE').click()">
-                            <form action="<?= route_to('object.services.update_thumbnail') ?>" method="post"
-                                  id="landing_service_1_image_form" enctype="multipart/form-data">
-                                <input type="hidden" name="key" value="LANDING_SERVICE_1_IMAGE">
-                                <input class="d-none" id="LANDING_SERVICE_1_IMAGE"
-                                       name="LANDING_SERVICE_1_IMAGE"
-                                       onchange="document.getElementById('landing_service_1_image_form').submit()"
-                                       type="file">
-                            </form>
+
+                            <?= view("_components/LinesImageClickToChangeField",
+                                [
+                                    "field_group_name" => "SERVICES",
+                                    "field_id" => "LANDING_SERVICE_1_IMAGE",
+                                ]
+                            ) ?>
+
                         </div>
-                        <form method="post" action="<?= route_to('object.services.update') ?>" class="col-6">
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_1_HEADLINE">Headline</label>
-                                <input type="text" name="LANDING_SERVICE_1_HEADLINE" id="LANDING_SERVICE_1_HEADLINE"
-                                       value="<?= $LANDING_SERVICE_1_HEADLINE ?>"
-                                       class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_1_DESCRIPTION">Description</label>
-                                <textarea type="text" name="LANDING_SERVICE_1_DESCRIPTION"
-                                          id="LANDING_SERVICE_1_DESCRIPTION"
-                                          class="form-control"><?= $LANDING_SERVICE_1_DESCRIPTION ?></textarea>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_1_SUBSERVICE_1">Subservice 1</label>
-                                <input type="text" name="LANDING_SERVICE_1_SUBSERVICE_1"
-                                       value="<?= $LANDING_SERVICE_1_SUBSERVICE_1 ?>"
-                                       id="LANDING_SERVICE_1_SUBSERVICE_1"
-                                       class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_1_SUBSERVICE_2">Subservice 2</label>
-                                <input type="text" name="LANDING_SERVICE_1_SUBSERVICE_2"
-                                       value="<?= $LANDING_SERVICE_1_SUBSERVICE_2 ?>"
-                                       id="LANDING_SERVICE_1_SUBSERVICE_2"
-                                       class="form-control">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_1_SUBSERVICE_3">Subservice 3</label>
-                                <input type="text" name="LANDING_SERVICE_1_SUBSERVICE_3"
-                                       value="<?= $LANDING_SERVICE_1_SUBSERVICE_3 ?>"
-                                       id="LANDING_SERVICE_1_SUBSERVICE_3"
-                                       class="form-control">
-                            </div>
-
+                        <form method="post" action="<?= route_to('object.lines.update') ?>" class="col-6">
+                            <?= view("_components/LinesFieldGroup",
+                                [
+                                    "fields" => [
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Headline",
+                                            "id" => "LANDING_SERVICE_1_HEADLINE",
+                                        ],
+                                        [
+                                            "type" => "LinesTextArea",
+                                            "label" => "Description",
+                                            "id" => "LANDING_SERVICE_1_DESCRIPTION",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 1",
+                                            "id" => "LANDING_SERVICE_1_SUBSERVICE_1",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 2",
+                                            "id" => "LANDING_SERVICE_1_SUBSERVICE_2",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 3",
+                                            "id" => "LANDING_SERVICE_1_SUBSERVICE_3",
+                                        ],
+                                    ]
+                                ]
+                            ) ?>
                             <button type="submit" class="btn btn-sm btn-outline-primary">
                                 Save Changes
                             </button>
@@ -180,53 +231,48 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 d-flex justify-content-center align-items-center order-1">
-                            <img src="<?= $LANDING_SERVICE_2_IMAGE ?>" class="w-100" alt=""
-                                 style="max-height: 300px; object-fit: cover; cursor: pointer"
-                                 onclick="document.getElementById('LANDING_SERVICE_2_IMAGE').click()">
-                            <form action="<?= route_to('object.services.update_thumbnail') ?>" method="post"
-                                  id="landing_service_2_image_form" enctype="multipart/form-data">
-                                <input type="hidden" name="key" value="LANDING_SERVICE_2_IMAGE">
-                                <input class="d-none" id="LANDING_SERVICE_2_IMAGE"
-                                       name="LANDING_SERVICE_2_IMAGE"
-                                       onchange="document.getElementById('landing_service_2_image_form').submit()"
-                                       type="file">
-                            </form>
-                        </div>
-                        <form method="post" action="<?= route_to('object.services.update') ?>" class="col-6">
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_1_HEADLINE">Headline</label>
-                                <input type="text" name="LANDING_SERVICE_2_HEADLINE" id="LANDING_SERVICE_2_HEADLINE"
-                                       value="<?= $LANDING_SERVICE_2_HEADLINE ?>"
-                                       class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_2_DESCRIPTION">Description</label>
-                                <textarea type="text" name="LANDING_SERVICE_2_DESCRIPTION"
-                                          id="LANDING_SERVICE_2_DESCRIPTION"
-                                          class="form-control"><?= $LANDING_SERVICE_2_DESCRIPTION ?></textarea>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_2_SUBSERVICE_1">Subservice 1</label>
-                                <input type="text" name="LANDING_SERVICE_2_SUBSERVICE_1"
-                                       value="<?= $LANDING_SERVICE_2_SUBSERVICE_1 ?>"
-                                       id="LANDING_SERVICE_2_SUBSERVICE_1"
-                                       class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_2_SUBSERVICE_2">Subservice 2</label>
-                                <input type="text" name="LANDING_SERVICE_2_SUBSERVICE_2"
-                                       value="<?= $LANDING_SERVICE_2_SUBSERVICE_2 ?>"
-                                       id="LANDING_SERVICE_2_SUBSERVICE_2"
-                                       class="form-control">
-                            </div>
 
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_2_SUBSERVICE_3">Subservice 3</label>
-                                <input type="text" name="LANDING_SERVICE_2_SUBSERVICE_3"
-                                       value="<?= $LANDING_SERVICE_2_SUBSERVICE_3 ?>"
-                                       id="LANDING_SERVICE_2_SUBSERVICE_3"
-                                       class="form-control">
-                            </div>
+                            <?= view("_components/LinesImageClickToChangeField",
+                                [
+                                    "field_group_name" => "SERVICES",
+                                    "field_id" => "LANDING_SERVICE_2_IMAGE",
+                                ]
+                            ) ?>
+
+                        </div>
+                        <form method="post" action="<?= route_to('object.lines.update') ?>" class="col-6">
+
+                            <?= view("_components/LinesFieldGroup",
+                                [
+                                    "fields" => [
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Headline",
+                                            "id" => "LANDING_SERVICE_2_HEADLINE",
+                                        ],
+                                        [
+                                            "type" => "LinesTextArea",
+                                            "label" => "Description",
+                                            "id" => "LANDING_SERVICE_2_DESCRIPTION",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 1",
+                                            "id" => "LANDING_SERVICE_2_SUBSERVICE_1",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 2",
+                                            "id" => "LANDING_SERVICE_2_SUBSERVICE_2",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 3",
+                                            "id" => "LANDING_SERVICE_2_SUBSERVICE_3",
+                                        ],
+                                    ]
+                                ]
+                            ) ?>
 
                             <button type="submit" class="btn btn-sm btn-outline-primary">
                                 Save Changes
@@ -246,58 +292,175 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 d-flex justify-content-center align-items-center">
-                            <img src="<?= $LANDING_SERVICE_3_IMAGE ?>" class="w-100" alt=""
-                                 style="max-height: 300px; object-fit: cover; cursor: pointer"
-                                 onclick="document.getElementById('LANDING_SERVICE_3_IMAGE').click()">
-                            <form action="<?= route_to('object.services.update_thumbnail') ?>" method="post"
-                                  id="landing_service_3_image_form" enctype="multipart/form-data">
-                                <input type="hidden" name="key" value="LANDING_SERVICE_3_IMAGE">
-                                <input class="d-none" id="LANDING_SERVICE_3_IMAGE"
-                                       name="LANDING_SERVICE_3_IMAGE"
-                                       onchange="document.getElementById('landing_service_3_image_form').submit()"
-                                       type="file">
-                            </form>
+                            <?= view("_components/LinesImageClickToChangeField",
+                                [
+                                    "field_group_name" => "SERVICES",
+                                    "field_id" => "LANDING_SERVICE_3_IMAGE",
+                                ]
+                            ) ?>
                         </div>
-                        <form method="post" action="<?= route_to('object.services.update') ?>" class="col-6">
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_3_HEADLINE">Headline</label>
-                                <input type="text" name="LANDING_SERVICE_3_HEADLINE" id="LANDING_SERVICE_3_HEADLINE"
-                                       value="<?= $LANDING_SERVICE_3_HEADLINE ?>"
-                                       class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_3_DESCRIPTION">Description</label>
-                                <textarea type="text" name="LANDING_SERVICE_3_DESCRIPTION"
-                                          id="LANDING_SERVICE_3_DESCRIPTION"
-                                          class="form-control"><?= $LANDING_SERVICE_3_DESCRIPTION ?></textarea>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_3_SUBSERVICE_1">Subservice 1</label>
-                                <input type="text" name="LANDING_SERVICE_3_SUBSERVICE_1"
-                                       value="<?= $LANDING_SERVICE_3_SUBSERVICE_1 ?>"
-                                       id="LANDING_SERVICE_3_SUBSERVICE_1"
-                                       class="form-control">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_3_SUBSERVICE_2">Subservice 2</label>
-                                <input type="text" name="LANDING_SERVICE_3_SUBSERVICE_2"
-                                       value="<?= $LANDING_SERVICE_3_SUBSERVICE_2 ?>"
-                                       id="LANDING_SERVICE_3_SUBSERVICE_2"
-                                       class="form-control">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="LANDING_SERVICE_3_SUBSERVICE_3">Subservice 3</label>
-                                <input type="text" name="LANDING_SERVICE_3_SUBSERVICE_3"
-                                       value="<?= $LANDING_SERVICE_3_SUBSERVICE_3 ?>"
-                                       id="LANDING_SERVICE_3_SUBSERVICE_3"
-                                       class="form-control">
-                            </div>
+                        <form method="post" action="<?= route_to('object.lines.update') ?>" class="col-6">
+                            <?= view("_components/LinesFieldGroup",
+                                [
+                                    "fields" => [
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Headline",
+                                            "id" => "LANDING_SERVICE_3_HEADLINE",
+                                        ],
+                                        [
+                                            "type" => "LinesTextArea",
+                                            "label" => "Description",
+                                            "id" => "LANDING_SERVICE_3_DESCRIPTION",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 1",
+                                            "id" => "LANDING_SERVICE_3_SUBSERVICE_1",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 2",
+                                            "id" => "LANDING_SERVICE_3_SUBSERVICE_2",
+                                        ],
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Sub Service 3",
+                                            "id" => "LANDING_SERVICE_3_SUBSERVICE_3",
+                                        ],
+                                    ]
+                                ]
+                            ) ?>
 
                             <button type="submit" class="btn btn-sm btn-outline-primary">
                                 Save Changes
                             </button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        Career Banner
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-center align-items-center">
+                            <?= view("_components/LinesImageClickToChangeField",
+                                [
+                                    "field_group_name" => "CAREER",
+                                    "field_id" => "LANDING_CAREER_THUMBNAIL_IMAGE",
+                                ]
+                            ) ?>
+                        </div>
+                        <form method="post" action="<?= route_to('object.lines.update') ?>"
+                              class="col-6">
+                            <?= view("_components/LinesFieldGroup",
+                                [
+                                    "fields" => [
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Headline",
+                                            "id" => "LANDING_CAREER_HEADLINE",
+                                        ],
+                                    ]
+                                ]
+                            ) ?>
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <form action="<?= route_to("object.lines.update") ?>" class="card shadow" method="post">
+                <div class="card-header">
+                    <div class="card-title">
+                        Our Team Section
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?= view("_components/LinesFieldGroup",
+                        [
+                            "fields" => [
+                                [
+                                    "type" => "LinesField",
+                                    "label" => "Headline",
+                                    "id" => "LANDING_OUR_TEAM_HEADLINE",
+                                ],
+                                [
+                                    "type" => "LinesField",
+                                    "label" => "Description",
+                                    "id" => "LANDING_OUR_TEAM_DESCRIPTION",
+                                ],
+                            ]
+                        ]
+                    ) ?>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-sm btn-outline-primary">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </section>
+        <section>
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        Our Team
+                    </div>
+                    <div class="card-toolkit">
+                        <button class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="modal"
+                                data-bs-target="#team_create_modal">
+                            Create New
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th style="width: 1px">No</th>
+                                <th style="width: 1px">Avatar</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($teams as $index => $team): ?>
+                                <tr>
+                                    <td class="align-middle"><?= $index + 1 ?></td>
+                                    <td class="align-middle">
+                                        <img src="<?= $team->imgUrl ?>"
+                                             style="width: 75px; height: 75px; object-fit: cover" class="rounded-circle"
+                                             alt="<?= $team->name ?>">
+                                    </td>
+                                    <td class="align-middle">
+                                        <?= $team->name ?>
+                                    </td>
+                                    <td class="align-middle">
+                                        <?= $team->position ?>
+                                    </td>
+                                    <td class="align-middle">
+                                        <form method="post" action="<?= route_to("object.teams.delete", $team->id) ?>">
+                                            <button class="btn btn-outline-danger btn-sm" type="submit">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -333,6 +496,39 @@
                         <input type="url" class="form-control" id="link" name="link" placeholder="Link to"
                                required>
                         <label for="link">Link to</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="team_create_modal" tabindex="-1"
+         aria-labelledby="team_create_modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <form action="<?= route_to("object.teams.create") ?>" enctype="multipart/form-data" method="post"
+                  class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="team_create_modalLabel">Register New Team Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label for="img">Upload Avatar Image</label>
+                        <input class="form-control" type="file" name="img" id="img" required>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                               required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Position" id="position" name="position"
+                                  style="min-height: 100px"></textarea>
+                        <label for="position">Position</label>
                     </div>
                 </div>
                 <div class="modal-footer">
