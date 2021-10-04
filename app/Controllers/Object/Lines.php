@@ -32,15 +32,14 @@ class Lines extends BaseController
     }
 
 
-    public function update(): RedirectResponse
+    public function update($group_name): RedirectResponse
     {
         $lines = model("Lines");
         $post = $this->request->getPost();
-
         foreach ($post as $key => $value) {
             $lines->save(
                 [
-                    "group_name" => "SERVICES",
+                    "group_name" => $group_name,
                     "key" => $key,
                     "value" => $value
                 ]

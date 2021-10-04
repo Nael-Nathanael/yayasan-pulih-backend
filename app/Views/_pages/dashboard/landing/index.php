@@ -4,34 +4,7 @@
 <?php
 /**
  * @var Array $carouselBanners
- *
- * @var String $what_we_do_title
- * @var String $what_we_do_description
- * @var String $what_we_do_description_2
- * @var String $how_we_do_title
- * @var String $how_we_do_description
- * @var String $how_we_do_description_2
- *
- * @var String $LANDING_SERVICE_1_IMAGE
- * @var String $LANDING_SERVICE_1_DESCRIPTION
- * @var String $LANDING_SERVICE_1_HEADLINE
- * @var String $LANDING_SERVICE_1_SUBSERVICE_1
- * @var String $LANDING_SERVICE_1_SUBSERVICE_2
- * @var String $LANDING_SERVICE_1_SUBSERVICE_3
- *
- * @var String $LANDING_SERVICE_2_IMAGE
- * @var String $LANDING_SERVICE_2_DESCRIPTION
- * @var String $LANDING_SERVICE_2_HEADLINE
- * @var String $LANDING_SERVICE_2_SUBSERVICE_1
- * @var String $LANDING_SERVICE_2_SUBSERVICE_2
- * @var String $LANDING_SERVICE_2_SUBSERVICE_3
- *
- * @var String $LANDING_SERVICE_3_IMAGE
- * @var String $LANDING_SERVICE_3_DESCRIPTION
- * @var String $LANDING_SERVICE_3_HEADLINE
- * @var String $LANDING_SERVICE_3_SUBSERVICE_1
- * @var String $LANDING_SERVICE_3_SUBSERVICE_2
- * @var String $LANDING_SERVICE_3_SUBSERVICE_3
+ * @var Array $teams
  */
 ?>
     <div class="container">
@@ -88,7 +61,8 @@
         <section>
             <div class="row">
                 <div class="col-6">
-                    <form action="<?= route_to("object.lines.update") ?>" class="card shadow" method="post">
+                    <form action="<?= route_to("object.lines.update", "WHAT_WE_DO") ?>" class="card shadow"
+                          method="post">
                         <div class="card-header">
                             <div class="card-title">
                                 What We Do
@@ -124,7 +98,8 @@
                     </form>
                 </div>
                 <div class="col-6">
-                    <form class="card shadow" action="<?= route_to("object.lines.update") ?>" method="post">
+                    <form class="card shadow" action="<?= route_to("object.lines.update", "HOW_WE_DO") ?>"
+                          method="post">
                         <div class="card-header">
                             <div class="card-title">
                                 How We Do
@@ -181,7 +156,7 @@
                             ) ?>
 
                         </div>
-                        <form method="post" action="<?= route_to('object.lines.update') ?>" class="col-6">
+                        <form method="post" action="<?= route_to('object.lines.update', "SERVICES") ?>" class="col-6">
                             <?= view("_components/LinesFieldGroup",
                                 [
                                     "fields" => [
@@ -240,7 +215,7 @@
                             ) ?>
 
                         </div>
-                        <form method="post" action="<?= route_to('object.lines.update') ?>" class="col-6">
+                        <form method="post" action="<?= route_to('object.lines.update', "SERVICES") ?>" class="col-6">
 
                             <?= view("_components/LinesFieldGroup",
                                 [
@@ -299,7 +274,7 @@
                                 ]
                             ) ?>
                         </div>
-                        <form method="post" action="<?= route_to('object.lines.update') ?>" class="col-6">
+                        <form method="post" action="<?= route_to('object.lines.update', "SERVICES") ?>" class="col-6">
                             <?= view("_components/LinesFieldGroup",
                                 [
                                     "fields" => [
@@ -357,7 +332,7 @@
                                 ]
                             ) ?>
                         </div>
-                        <form method="post" action="<?= route_to('object.lines.update') ?>"
+                        <form method="post" action="<?= route_to('object.lines.update', "CAREER") ?>"
                               class="col-6">
                             <?= view("_components/LinesFieldGroup",
                                 [
@@ -379,7 +354,7 @@
             </div>
         </section>
         <section>
-            <form action="<?= route_to("object.lines.update") ?>" class="card shadow" method="post">
+            <form action="<?= route_to("object.lines.update", "TEAMS") ?>" class="card shadow" method="post">
                 <div class="card-header">
                     <div class="card-title">
                         Our Team Section

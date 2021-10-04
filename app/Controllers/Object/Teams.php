@@ -31,7 +31,12 @@ class Teams extends BaseController
     public function get(): ResponseInterface
     {
         $team = model("Teams");
-        return $this->response->setJSON($team->findAll());
+        $lines = model("Lines");
+        return $this->response->setJSON([
+            "members" => $team->findAll(),
+            "headline" => $lines->findOrEmptyString("LANDING_OUR_TEAM_HEADLINE"),
+            "description" => $lines->findOrEmptyString("LANDING_OUR_TEAM_DESCRIPTION")
+        ]);
     }
 
     public function delete($id): RedirectResponse

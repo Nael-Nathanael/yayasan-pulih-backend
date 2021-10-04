@@ -84,9 +84,13 @@ $routes->group("object", function ($routes) {
         $routes->get('get', "Object\Services::get", ["as" => "object.services.get"]);
     });
 
+    $routes->group('careers', function ($routes) {
+        $routes->get('get', "Object\Careers::get", ["as" => "object.careers.get"]);
+    });
+
     $routes->group('lines', function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
-        $routes->post('update', "Object\Lines::update", ["as" => "object.lines.update"]);
+        $routes->post('update/(:segment)', "Object\Lines::update/$1", ["as" => "object.lines.update"]);
     });
 });
 /*

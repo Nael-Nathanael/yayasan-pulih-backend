@@ -3,11 +3,11 @@
 namespace App\Controllers\Object;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class Services extends BaseController
 {
-    public function get()
+    public function get(): ResponseInterface
     {
         $lines = model("Lines");
 
