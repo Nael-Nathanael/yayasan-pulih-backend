@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var String $field_id
+ * @var String $field_label
+ */
+?>
 <?php $lines = model("Lines"); ?>
 
 <div class="form-group mb-3">

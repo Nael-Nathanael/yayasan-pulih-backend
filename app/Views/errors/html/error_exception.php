@@ -1,12 +1,12 @@
 <?php $error_id = uniqid('error', true); ?>
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="robots" content="noindex">
 
 	<title><?= esc($title) ?></title>
-	<style type="text/css">
+	<style>
 		<?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?>
 	</style>
 
@@ -80,7 +80,7 @@
 									<?php $args_id = $error_id . 'args' . $index ?>
 									( <a href="#" onclick="return toggle('<?= esc($args_id, 'attr') ?>');">arguments</a> )
 									<div class="args" id="<?= esc($args_id, 'attr') ?>">
-										<table cellspacing="0">
+										<table>
 
 										<?php
                                         $params = null;

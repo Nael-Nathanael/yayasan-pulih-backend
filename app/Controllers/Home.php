@@ -18,6 +18,7 @@ class Home extends BaseController
             session()->set("logged_in", true);
             return redirect()->route("dashboard.landing");
         }
+        return redirect()->to(base_url());
     }
 
     public function do_logout()

@@ -3,10 +3,11 @@
 namespace App\Controllers\Object;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class Careers extends BaseController
 {
-    function get()
+    function get(): ResponseInterface
     {
         $lines = model("Lines");
         return $this->response->setJSON(
