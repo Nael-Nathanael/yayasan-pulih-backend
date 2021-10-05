@@ -86,6 +86,7 @@ $routes->group("object", function ($routes) {
 
     $routes->group('careers', function ($routes) {
         $routes->get('get', "Object\Careers::get", ["as" => "object.careers.get"]);
+        $routes->get('getPageData', "Object\Careers::getPageData", ["as" => "object.careers.getPageData"]);
     });
 
     $routes->group('lines', function ($routes) {

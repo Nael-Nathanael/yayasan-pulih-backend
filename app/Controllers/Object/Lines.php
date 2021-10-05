@@ -28,7 +28,7 @@ class Lines extends BaseController
             );
         }
 
-        return redirect()->route("dashboard.landing.index");
+        return redirect()->to(previous_url());
     }
 
 
@@ -46,6 +46,6 @@ class Lines extends BaseController
             );
         }
 
-        return redirect()->route("dashboard.landing.index");
+        return redirect()->to(previous_url());
     }
 }

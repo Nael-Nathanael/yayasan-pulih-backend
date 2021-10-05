@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class Careers extends BaseController
 {
-    public function index()
+    public function index(): string
     {
-        //
+        return view("_pages/dashboard/careers/index");
     }
 }

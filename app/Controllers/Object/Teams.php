@@ -8,7 +8,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Teams extends BaseController
 {
-    public function create()
+    public function create(): RedirectResponse
     {
         // upload #img
         $path = $this->request->getFile('img');
