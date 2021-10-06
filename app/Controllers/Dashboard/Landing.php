@@ -11,9 +11,6 @@ class Landing extends BaseController
         $carouselBanner = model("CarouselBanner");
         $data['carouselBanners'] = $carouselBanner->findAll();
 
-        $team = model("Teams");
-        $data['teams'] = $team->findAll();
-
         return view("_pages/dashboard/landing/index", $data);
     }
 }

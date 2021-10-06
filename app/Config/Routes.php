@@ -46,6 +46,7 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('insights', function ($routes) {
         $routes->get("", "Dashboard\Insights::index", ["as" => "dashboard.insights.index"]);
+        $routes->get("create", "Dashboard\Insights::create", ["as" => "dashboard.insights.create"]);
     });
     $routes->group('webinars', function ($routes) {
         $routes->get("", "Dashboard\Webinars::index", ["as" => "dashboard.webinars.index"]);
@@ -68,12 +69,6 @@ $routes->group("object", function ($routes) {
     $routes->group('carouselBanner', function ($routes) {
         $routes->post('create', "Object\CarouselBanner::create", ["as" => "object.carouselBanner.create"]);
         $routes->get('get', "Object\CarouselBanner::get", ["as" => "object.carouselBanner.get"]);
-    });
-
-    $routes->group('teams', function ($routes) {
-        $routes->post('create', "Object\Teams::create", ["as" => "object.teams.create"]);
-        $routes->post('delete/(:num)', "Object\Teams::delete/$1", ["as" => "object.teams.delete"]);
-        $routes->get('get', "Object\Teams::get", ["as" => "object.teams.get"]);
     });
 
     $routes->group('whatAndHowWeDo', function ($routes) {

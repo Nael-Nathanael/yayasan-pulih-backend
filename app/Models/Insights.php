@@ -4,14 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Teams extends Model
+class Insights extends Model
 {
-    protected $table = 'team';
-    protected $primaryKey = 'id';
-    protected $useAutoIncrement = true;
+    protected $table = 'insights';
+    protected $primaryKey = 'slug';
+    protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['name', 'position', 'imgUrl'];
+    protected $allowedFields = ['slug', 'imgUrl', 'title', 'subtitle', 'content'];
 
     // Dates
     protected $useTimestamps = true;

@@ -170,21 +170,6 @@
                                             "label" => "Description",
                                             "id" => "LANDING_SERVICE_1_DESCRIPTION",
                                         ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 1",
-                                            "id" => "LANDING_SERVICE_1_SUBSERVICE_1",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 2",
-                                            "id" => "LANDING_SERVICE_1_SUBSERVICE_2",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 3",
-                                            "id" => "LANDING_SERVICE_1_SUBSERVICE_3",
-                                        ],
                                     ]
                                 ]
                             ) ?>
@@ -230,21 +215,6 @@
                                             "label" => "Description",
                                             "id" => "LANDING_SERVICE_2_DESCRIPTION",
                                         ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 1",
-                                            "id" => "LANDING_SERVICE_2_SUBSERVICE_1",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 2",
-                                            "id" => "LANDING_SERVICE_2_SUBSERVICE_2",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 3",
-                                            "id" => "LANDING_SERVICE_2_SUBSERVICE_3",
-                                        ],
                                     ]
                                 ]
                             ) ?>
@@ -287,21 +257,6 @@
                                             "type" => "LinesTextArea",
                                             "label" => "Description",
                                             "id" => "LANDING_SERVICE_3_DESCRIPTION",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 1",
-                                            "id" => "LANDING_SERVICE_3_SUBSERVICE_1",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 2",
-                                            "id" => "LANDING_SERVICE_3_SUBSERVICE_2",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Sub Service 3",
-                                            "id" => "LANDING_SERVICE_3_SUBSERVICE_3",
                                         ],
                                     ]
                                 ]
@@ -353,93 +308,6 @@
                 </div>
             </div>
         </section>
-        <section>
-            <form action="<?= route_to("object.lines.update", "TEAMS") ?>" class="card shadow" method="post">
-                <div class="card-header">
-                    <div class="card-title">
-                        Our Team Section
-                    </div>
-                </div>
-                <div class="card-body">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Headline",
-                                    "id" => "LANDING_OUR_TEAM_HEADLINE",
-                                ],
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Description",
-                                    "id" => "LANDING_OUR_TEAM_DESCRIPTION",
-                                ],
-                            ]
-                        ]
-                    ) ?>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </div>
-            </form>
-        </section>
-        <section>
-            <div class="card shadow">
-                <div class="card-header">
-                    <div class="card-title">
-                        Our Team
-                    </div>
-                    <div class="card-toolkit">
-                        <button class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="modal"
-                                data-bs-target="#team_create_modal">
-                            Create New
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th style="width: 1px">No</th>
-                                <th style="width: 1px">Avatar</th>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($teams as $index => $team): ?>
-                                <tr>
-                                    <td class="align-middle"><?= $index + 1 ?></td>
-                                    <td class="align-middle">
-                                        <img src="<?= $team->imgUrl ?>"
-                                             style="width: 75px; height: 75px; object-fit: cover" class="rounded-circle"
-                                             alt="<?= $team->name ?>">
-                                    </td>
-                                    <td class="align-middle">
-                                        <?= $team->name ?>
-                                    </td>
-                                    <td class="align-middle">
-                                        <?= $team->position ?>
-                                    </td>
-                                    <td class="align-middle">
-                                        <form method="post" action="<?= route_to("object.teams.delete", $team->id) ?>">
-                                            <button class="btn btn-outline-danger btn-sm" type="submit">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- Modal -->
@@ -471,39 +339,6 @@
                         <input type="url" class="form-control" id="link" name="link" placeholder="Link to"
                                required>
                         <label for="link">Link to</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal fade" id="team_create_modal" tabindex="-1"
-         aria-labelledby="team_create_modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <form action="<?= route_to("object.teams.create") ?>" enctype="multipart/form-data" method="post"
-                  class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="team_create_modalLabel">Register New Team Member</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group mb-3">
-                        <label for="img">Upload Avatar Image</label>
-                        <input class="form-control" type="file" name="img" id="img" required>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name"
-                               required>
-                        <label for="name">Name</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Position" id="position" name="position"
-                                  style="min-height: 100px"></textarea>
-                        <label for="position">Position</label>
                     </div>
                 </div>
                 <div class="modal-footer">
