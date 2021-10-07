@@ -4,6 +4,7 @@ namespace App\Controllers\Object;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class Lines extends BaseController
 {
@@ -29,6 +30,18 @@ class Lines extends BaseController
         }
 
         return redirect()->to(previous_url());
+    }
+
+    public function dumpUpload(): ResponseInterface
+    {
+        $path = $this->request->getFile("upload");
+        $path->move(UPLOAD_FOLDER_URL);
+
+        return $this->response->setJSON(
+            [
+                "url" => base_url("/uploads/" . $path->getName())
+            ]
+        );
     }
 
 

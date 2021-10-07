@@ -71,6 +71,12 @@ $routes->group("object", function ($routes) {
         $routes->get('get', "Object\CarouselBanner::get", ["as" => "object.carouselBanner.get"]);
     });
 
+    $routes->group('insights', function ($routes) {
+        $routes->post('create', "Object\Insights::create", ["as" => "object.insights.create"]);
+        $routes->post('delete/(:segment)', "Object\Insights::delete/$1", ["as" => "object.insights.delete"]);
+        $routes->get('get', "Object\Insights::get", ["as" => "object.insights.get"]);
+    });
+
     $routes->group('whatAndHowWeDo', function ($routes) {
         $routes->get('get', "Object\WhatAndHowWeDo::get", ["as" => "object.whatAndHowWeDo.get"]);
     });
@@ -86,6 +92,7 @@ $routes->group("object", function ($routes) {
 
     $routes->group('lines', function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
+        $routes->post('dumpUpload', "Object\Lines::dumpUpload", ["as" => "object.lines.dumpUpload"]);
         $routes->post('update/(:segment)', "Object\Lines::update/$1", ["as" => "object.lines.update"]);
     });
 });
