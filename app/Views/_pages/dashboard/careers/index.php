@@ -50,6 +50,24 @@
         </section>
 
         <section>
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        Separator Image
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?= view("_components/LinesImageClickToChangeField",
+                        [
+                            "field_group_name" => "CAREERS",
+                            "field_id" => "CAREERS_SEPARATOR_IMAGE",
+                        ]
+                    ) ?>
+                </div>
+            </div>
+        </section>
+
+        <section>
             <form action="<?= route_to("object.lines.update", "CAREERS") ?>" class="card shadow"
                   method="post">
                 <div class="card-header">

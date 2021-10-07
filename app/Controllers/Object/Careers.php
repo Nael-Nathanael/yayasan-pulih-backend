@@ -39,6 +39,7 @@ class Careers extends BaseController
                     "description" => $lines->findOrEmptyString("CAREERS_LIFE_AT_ALTHA_DESCRIPTION"),
                     "imgUrl" => $lines->findOrPlaceholderImage("CAREERS_LIFE_AT_ALTHA_IMAGE"),
                 ],
+                "separatorImg" => $lines->findOrPlaceholderImage("CAREERS_SEPARATOR_IMAGE"),
                 "tailor_path" => [
                     [
                         "tag" => $lines->findOrEmptyString("CAREERS_TAILOR_PATH_1_TAG"),
