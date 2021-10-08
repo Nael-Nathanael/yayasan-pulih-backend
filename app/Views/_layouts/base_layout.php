@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="/css/backend.css">
     <title>Hello, world!</title>
+    <?= $this->renderSection("head") ?>
 </head>
 <body>
 

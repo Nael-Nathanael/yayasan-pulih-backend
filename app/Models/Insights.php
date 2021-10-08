@@ -11,7 +11,19 @@ class Insights extends Model
     protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['slug', 'title', 'topic', 'tag', 'short_description', 'content', 'imgUrl'];
+    protected $allowedFields = [
+        'slug',
+        'title',
+        'topic',
+        'tag',
+        'short_description',
+        'content',
+        'imgUrl',
+        "service",
+        "keywords",
+        "meta_title",
+        "meta_description"
+    ];
 
     // Dates
     protected $useTimestamps = true;

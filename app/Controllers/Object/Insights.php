@@ -20,23 +20,61 @@ class Insights extends BaseController
         }
 
         // upload image
-        $path = $this->request->getFile("coverImage");
-        $path->move(UPLOAD_FOLDER_URL);
+        $imgUrl = '/img/BannerBG_LandingPage.jpg';
+        if ($_FILES["coverImage"]["name"]) {
+            $path = $this->request->getFile("coverImage");
+            $path->move(UPLOAD_FOLDER_URL);
+            $imgUrl = base_url("/uploads/" . $path->getName());
+        }
 
         $insights->insert(
             [
-                "imgUrl" => base_url("/uploads/" . $path->getName()),
+                "imgUrl" => $imgUrl,
                 "slug" => $finalSlug,
                 "title" => $this->request->getPost("title"),
                 "topic" => $this->request->getPost("topic"),
                 "tag" => $this->request->getPost("tag"),
                 "short_description" => $this->request->getPost("short_description"),
                 "content" => $this->request->getPost("content"),
+                "service" => $this->request->getPost("service"),
+                "keywords" => $this->request->getPost("keywords"),
+                "meta_title" => $this->request->getPost("meta_title"),
+                "meta_description" => $this->request->getPost("meta_description"),
             ]
         );
 
         return redirect()->to(previous_url());
     }
+
+    public function update($slug): RedirectResponse
+    {
+        $insights = model("Insights");
+
+        $data = [
+            "slug" => $slug,
+            "title" => $this->request->getPost("title"),
+            "topic" => $this->request->getPost("topic"),
+            "tag" => $this->request->getPost("tag"),
+            "short_description" => $this->request->getPost("short_description"),
+            "content" => $this->request->getPost("content"),
+            "service" => $this->request->getPost("service"),
+            "keywords" => $this->request->getPost("keywords"),
+            "meta_title" => $this->request->getPost("meta_title"),
+            "meta_description" => $this->request->getPost("meta_description"),
+        ];
+
+        // upload image
+        if ($_FILES["coverImage"]["name"]) {
+            $path = $this->request->getFile("coverImage");
+            $path->move(UPLOAD_FOLDER_URL);
+            $data['imgUrl'] = base_url("/uploads/" . $path->getName());
+        }
+
+        $insights->save($data);
+
+        return redirect()->to(previous_url());
+    }
+
 
     public function delete($slug): RedirectResponse
     {
@@ -47,22 +85,27 @@ class Insights extends BaseController
         return redirect()->to(previous_url());
     }
 
-    public function get(): ResponseInterface
+    public function get($slug = false): ResponseInterface
     {
         $insights = model("Insights");
-        $lines = model("Lines");
-        return $this->response->setJSON([
-            "articles" => $insights->orderBy("created_at DESC")->findAll(),
-            "headline" => $insights->find(
-                $lines->findOrEmptyString("HEADLINE_SLUG")
-            ),
-            "recommendation" => [
-                $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_1_SLUG")),
-                $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_2_SLUG")),
-                $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_3_SLUG")),
-                $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_4_SLUG")),
-                $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_5_SLUG")),
-            ]
-        ]);
+        if (!$slug) {
+            $lines = model("Lines");
+            $recommendation = [];
+
+            for ($i = 1; $i <= 5; $i++) {
+                $lookupRecom = $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_$i" . "_SLUG"));
+                if ($lookupRecom) {
+                    $recommendation[] = $lookupRecom;
+                }
+            }
+            return $this->response->setJSON([
+                "articles" => $insights->orderBy("created_at DESC")->findAll(),
+                "headline" => $insights->find(
+                    $lines->findOrEmptyString("HEADLINE_SLUG")
+                ),
+                "recommendation" => $recommendation
+            ]);
+        }
+        return $this->response->setJSON($insights->find($slug));
     }
 }

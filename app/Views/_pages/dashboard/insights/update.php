@@ -33,15 +33,15 @@
 <?= $this->section("content"); ?>
 <div class="container-fluid">
     <section>
-        <form action="<?= route_to("object.insights.create") ?>" method="post" id="articleForm"
+        <form action="<?= route_to("object.insights.update", $article->slug) ?>" method="post" id="articleForm"
               enctype="multipart/form-data">
-            <input type="hidden" name="content" id="content">
+            <input type="hidden" name="content" id="content" value="<?= $article->content ?>">
 
             <div class="row" style="min-height: 600px">
                 <div class="col-lg-9 border-end">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control material-form-control" id="title" name="title" placeholder="title"
-                               required>
+                        <input type="text" class="form-control material-form-control" id="title" name="title"
+                               placeholder="title" value="<?= $article->title ?>" required>
                         <label for="title">Title</label>
                     </div>
                     <div class="row mb-3">
@@ -49,7 +49,7 @@
                     </div>
                     <div class="container bg-light py-4">
                         <div class="editor border shadow-none bg-white" style="min-height: 700px">
-
+                            <?= $article->content ?>
                         </div>
                     </div>
                 </div>
@@ -69,17 +69,17 @@
                                 <div class="form-group mb-3">
                                     <label for="topic">Topic</label>
                                     <input type="text" name="topic" id="topic" class="form-control"
-                                           placeholder="Article Topic" required>
+                                           placeholder="Article Topic" value="<?= $article->topic ?>" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="tag">Industry</label>
-                                    <input type="text" name="tag" id="tag" class="form-control" required>
+                                    <input type="text" name="tag" id="tag" class="form-control" value="<?= $article->tag ?>" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="service">Service</label>
-                                    <input type="text" name="service" id="service" class="form-control" required>
+                                    <input type="text" name="service" id="service" class="form-control" value="<?= $article->service ?>" required>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -90,7 +90,7 @@
                                 <div class="form-group mb-3">
                                     <label for="short_description">Short Description</label>
                                     <textarea required id="short_description" name="short_description"
-                                              class="form-control"></textarea>
+                                              class="form-control" rows="5"><?= $article->short_description ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -103,20 +103,20 @@
                                 <div class="form-group mb-3">
                                     <label for="keywords">Keywords</label>
                                     <input type="text" name="keywords" id="keywords" class="form-control"
-                                           placeholder="Keywords" required>
+                                           placeholder="Keywords" value="<?= $article->keywords ?>" required>
                                 </div>
 
 
                                 <div class="form-group mb-3">
                                     <label for="meta_title">Meta Title</label>
                                     <input type="text" name="meta_title" id="meta_title" class="form-control"
-                                           placeholder="Meta Title" required>
+                                           placeholder="Meta Title" value="<?= $article->meta_title ?>" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="meta_description">Meta Description</label>
                                     <textarea required id="meta_description" name="meta_description"
-                                              class="form-control"></textarea>
+                                              class="form-control" rows="5"><?= $article->meta_description ?></textarea>
                                 </div>
                             </div>
                         </div>

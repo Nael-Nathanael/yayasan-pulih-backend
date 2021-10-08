@@ -27,11 +27,9 @@
                             <tr>
                                 <th style="width: 1px">No</th>
                                 <th>Title</th>
-                                <th>Topic</th>
-                                <th>Tag</th>
-                                <th>Short Description</th>
                                 <th class="text-center">Headline</th>
                                 <th class="text-center">Recommend</th>
+                                <th class="text-center">Edit</th>
                                 <th class="text-center">Delete</th>
                             </tr>
                             </thead>
@@ -41,15 +39,6 @@
                                     <td><?= $index + 1 ?></td>
                                     <td>
                                         <?= $insight->title ?>
-                                    </td>
-                                    <td>
-                                        <?= $insight->topic ?>
-                                    </td>
-                                    <td>
-                                        <?= $insight->tag ?>
-                                    </td>
-                                    <td>
-                                        <?= $insight->short_description ?>
                                     </td>
                                     <td class="text-center">
                                         <?php if (!$headline || $insight->slug != $headline->slug): ?>
@@ -145,10 +134,15 @@
                                         </div>
                                     </td>
                                     <td class="text-center">
+                                        <a class="btn btn-outline-warning btn-sm" href="<?= route_to("dashboard.insights.update", $insight->slug) ?>">
+                                            Edit
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
                                         <form action="<?= route_to("object.insights.delete", $insight->slug) ?>"
                                               method="post">
                                             <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                Delete?
+                                                Delete
                                             </button>
                                         </form>
                                     </td>

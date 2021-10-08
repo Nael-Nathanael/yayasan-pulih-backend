@@ -36,4 +36,11 @@ class Insights extends BaseController
     {
         return view("_pages/dashboard/insights/create");
     }
+
+    public function update($slug): string
+    {
+        $insights = model("Insights");
+        $data['article'] = $insights->find($slug);
+        return view("_pages/dashboard/insights/update", $data);
+    }
 }

@@ -47,6 +47,7 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('insights', function ($routes) {
         $routes->get("", "Dashboard\Insights::index", ["as" => "dashboard.insights.index"]);
         $routes->get("create", "Dashboard\Insights::create", ["as" => "dashboard.insights.create"]);
+        $routes->get("update/(:segment)", "Dashboard\Insights::update/$1", ["as" => "dashboard.insights.update"]);
     });
     $routes->group('webinars', function ($routes) {
         $routes->get("", "Dashboard\Webinars::index", ["as" => "dashboard.webinars.index"]);
@@ -74,7 +75,9 @@ $routes->group("object", function ($routes) {
     $routes->group('insights', function ($routes) {
         $routes->post('create', "Object\Insights::create", ["as" => "object.insights.create"]);
         $routes->post('delete/(:segment)', "Object\Insights::delete/$1", ["as" => "object.insights.delete"]);
+        $routes->post('update/(:segment)', "Object\Insights::update/$1", ["as" => "object.insights.update"]);
         $routes->get('get', "Object\Insights::get", ["as" => "object.insights.get"]);
+        $routes->get('get/(:segment)', "Object\Insights::get/$1", ["as" => "object.insights.getSpecific"]);
     });
 
     $routes->group('whatAndHowWeDo', function ($routes) {
