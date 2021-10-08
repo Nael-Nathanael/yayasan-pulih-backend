@@ -51,6 +51,7 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('webinars', function ($routes) {
         $routes->get("", "Dashboard\Webinars::index", ["as" => "dashboard.webinars.index"]);
+        $routes->get("presenters/(:segment)", "Dashboard\Webinars::presenter/$1", ["as" => "dashboard.webinars.presenters"]);
     });
     $routes->group('services', function ($routes) {
         $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);
@@ -97,6 +98,16 @@ $routes->group("object", function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
         $routes->post('dumpUpload', "Object\Lines::dumpUpload", ["as" => "object.lines.dumpUpload"]);
         $routes->post('update/(:segment)', "Object\Lines::update/$1", ["as" => "object.lines.update"]);
+    });
+
+    $routes->group('webinars', function ($routes) {
+        $routes->post('create', "Object\Webinars::create", ["as" => "object.webinars.create"]);
+        $routes->get('get', "Object\Webinars::get", ["as" => "object.webinars.get"]);
+    });
+
+    $routes->group('presenters', function ($routes) {
+        $routes->post('create/(:segment)', "Object\Presenters::create/$1", ["as" => "object.presenters.create"]);
+        $routes->post('delete/(:segment)', "Object\Presenters::delete/$1", ["as" => "object.presenters.delete"]);
     });
 });
 /*
