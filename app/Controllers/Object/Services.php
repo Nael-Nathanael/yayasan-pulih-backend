@@ -19,13 +19,13 @@ class Services extends BaseController
                         "and Risk Advisory"
                     ],
                     "url" => "/services/business-and-risk-advisory",
-                    "title" => $lines->find("LANDING_SERVICE_1_HEADLINE")->value,
-                    "imgUrl" => $lines->find("LANDING_SERVICE_1_IMAGE")->value,
-                    "descriptions" => $lines->find("LANDING_SERVICE_1_DESCRIPTION")->value,
+                    "title" => $lines->findOrEmptyString("LANDING_SERVICE_1_HEADLINE"),
+                    "imgUrl" => $lines->findOrPlaceholderImage("LANDING_SERVICE_1_IMAGE"),
+                    "descriptions" => $lines->findOrEmptyString("LANDING_SERVICE_1_DESCRIPTION"),
                     "subservices" => [
-                        $lines->find("LANDING_SERVICE_1_SUBSERVICE_1")->value,
-                        $lines->find("LANDING_SERVICE_1_SUBSERVICE_2")->value,
-                        $lines->find("LANDING_SERVICE_1_SUBSERVICE_3")->value,
+                        $lines->findOrEmptyString("LANDING_SERVICE_1_SUBSERVICE_1"),
+                        $lines->findOrEmptyString("LANDING_SERVICE_1_SUBSERVICE_2"),
+                        $lines->findOrEmptyString("LANDING_SERVICE_1_SUBSERVICE_3"),
                     ]
                 ],
                 [
@@ -34,13 +34,13 @@ class Services extends BaseController
                         "Advisory"
                     ],
                     "url" => "/services/it-advisory",
-                    "title" => $lines->find("LANDING_SERVICE_2_HEADLINE")->value,
-                    "imgUrl" => $lines->find("LANDING_SERVICE_2_IMAGE")->value,
-                    "descriptions" => $lines->find("LANDING_SERVICE_2_DESCRIPTION")->value,
+                    "title" => $lines->findOrEmptyString("LANDING_SERVICE_2_HEADLINE"),
+                    "imgUrl" => $lines->findOrPlaceholderImage("LANDING_SERVICE_2_IMAGE"),
+                    "descriptions" => $lines->findOrEmptyString("LANDING_SERVICE_2_DESCRIPTION"),
                     "subservices" => [
-                        $lines->find("LANDING_SERVICE_2_SUBSERVICE_1")->value,
-                        $lines->find("LANDING_SERVICE_2_SUBSERVICE_2")->value,
-                        $lines->find("LANDING_SERVICE_2_SUBSERVICE_3")->value,
+                        $lines->findOrEmptyString("LANDING_SERVICE_2_SUBSERVICE_1"),
+                        $lines->findOrEmptyString("LANDING_SERVICE_2_SUBSERVICE_2"),
+                        $lines->findOrEmptyString("LANDING_SERVICE_2_SUBSERVICE_3"),
                     ]
                 ],
                 [
@@ -49,13 +49,13 @@ class Services extends BaseController
                         "Advisory"
                     ],
                     "url" => "/services/people-advisory",
-                    "title" => $lines->find("LANDING_SERVICE_3_HEADLINE")->value,
-                    "imgUrl" => $lines->find("LANDING_SERVICE_3_IMAGE")->value,
-                    "descriptions" => $lines->find("LANDING_SERVICE_3_DESCRIPTION")->value,
+                    "title" => $lines->findOrEmptyString("LANDING_SERVICE_3_HEADLINE"),
+                    "imgUrl" => $lines->findOrPlaceholderImage("LANDING_SERVICE_3_IMAGE"),
+                    "descriptions" => $lines->findOrEmptyString("LANDING_SERVICE_3_DESCRIPTION"),
                     "subservices" => [
-                        $lines->find("LANDING_SERVICE_3_SUBSERVICE_1")->value,
-                        $lines->find("LANDING_SERVICE_3_SUBSERVICE_2")->value,
-                        $lines->find("LANDING_SERVICE_3_SUBSERVICE_3")->value,
+                        $lines->findOrEmptyString("LANDING_SERVICE_3_SUBSERVICE_1"),
+                        $lines->findOrEmptyString("LANDING_SERVICE_3_SUBSERVICE_2"),
+                        $lines->findOrEmptyString("LANDING_SERVICE_3_SUBSERVICE_3"),
                     ]
                 ],
             ]
