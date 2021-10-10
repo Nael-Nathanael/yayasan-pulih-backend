@@ -103,7 +103,11 @@ class Insights extends BaseController
                 "headline" => $insights->find(
                     $lines->findOrEmptyString("HEADLINE_SLUG")
                 ),
-                "recommendation" => $recommendation
+                "recommendation" => $recommendation,
+                "banner" => [
+                    "headline" => $lines->findOrEmptyString("WEBINARS_BANNER_HEADLINE"),
+                    "description" => $lines->findOrEmptyString("WEBINARS_BANNER_DESCRIPTION"),
+                ]
             ]);
         }
         return $this->response->setJSON($insights->find($slug));

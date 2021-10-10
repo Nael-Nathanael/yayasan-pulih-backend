@@ -16,7 +16,7 @@ class Home extends BaseController
     {
         if ($this->request->getPost("password") == "admin") {
             session()->set("logged_in", true);
-            return redirect()->route("dashboard.landing");
+            return redirect()->route("dashboard.landing.index");
         }
         return redirect()->to(base_url());
     }

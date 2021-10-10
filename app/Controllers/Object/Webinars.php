@@ -26,12 +26,18 @@ class Webinars extends BaseController
     {
         $webinars = model("Webinars");
         $presenters = model("Presenters");
+        $lines = model("Lines");
 
         $allWebinar = $webinars->orderBy("datetime DESC")->limit(10)->findAll();
         foreach ($allWebinar as $webinar) {
             $webinar->presenters = $presenters->where("webinar_id", $webinar->id)->findAll();
         }
 
-        return $this->response->setJSON($allWebinar);
+        $data['webinars'] = $allWebinar;
+        $data['banner'] = [
+            "headline" => $lines->findOrEmptyString("INSIGHTS_BANNER_HEADLINE"),
+            "description" => $lines->findOrEmptyString("INSIGHTS_BANNER_DESCRIPTION"),
+        ];
+        return $this->response->setJSON($data);
     }
 }

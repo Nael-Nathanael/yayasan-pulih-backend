@@ -9,6 +9,31 @@
 ?>
     <div class="container">
         <section>
+            <div class="card card-body shadow">
+                <form method="post" action="<?= route_to('object.lines.update', "CAREERS") ?>">
+                    <?= view("_components/LinesFieldGroup",
+                        [
+                            "fields" => [
+                                [
+                                    "type" => "LinesField",
+                                    "label" => "Headline",
+                                    "id" => "WEBINARS_BANNER_HEADLINE",
+                                ],
+                                [
+                                    "type" => "LinesTextArea",
+                                    "label" => "Description",
+                                    "id" => "WEBINARS_BANNER_DESCRIPTION",
+                                ],
+                            ]
+                        ]
+                    ) ?>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </section>
+        <section>
             <div class="card shadow">
                 <div class="card-header">
                     <div class="card-title">

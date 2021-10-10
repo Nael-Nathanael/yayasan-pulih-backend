@@ -41,9 +41,6 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('landing', function ($routes) {
         $routes->get("", "Dashboard\Landing::index", ["as" => "dashboard.landing.index"]);
     });
-    $routes->group('industries', function ($routes) {
-        $routes->get("", "Dashboard\Industries::index", ["as" => "dashboard.industries.index"]);
-    });
     $routes->group('insights', function ($routes) {
         $routes->get("", "Dashboard\Insights::index", ["as" => "dashboard.insights.index"]);
         $routes->get("create", "Dashboard\Insights::create", ["as" => "dashboard.insights.create"]);

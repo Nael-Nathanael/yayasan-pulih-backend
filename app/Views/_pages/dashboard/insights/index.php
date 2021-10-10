@@ -1,13 +1,32 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
-<?php
-/**
- * @var Array $carouselBanners
- * @var Array $teams
- */
-?>
     <div class="container">
+        <section>
+            <div class="card card-body shadow">
+                <form method="post" action="<?= route_to('object.lines.update', "CAREERS") ?>">
+                    <?= view("_components/LinesFieldGroup",
+                        [
+                            "fields" => [
+                                [
+                                    "type" => "LinesField",
+                                    "label" => "Headline",
+                                    "id" => "INSIGHTS_BANNER_HEADLINE",
+                                ],
+                                [
+                                    "type" => "LinesTextArea",
+                                    "label" => "Description",
+                                    "id" => "INSIGHTS_BANNER_DESCRIPTION",
+                                ],
+                            ]
+                        ]
+                    ) ?>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </section>
         <section>
             <div class="card shadow">
                 <div class="card-header">
@@ -134,7 +153,8 @@
                                         </div>
                                     </td>
                                     <td class="text-center">
-                                        <a class="btn btn-outline-warning btn-sm" href="<?= route_to("dashboard.insights.update", $insight->slug) ?>">
+                                        <a class="btn btn-outline-warning btn-sm"
+                                           href="<?= route_to("dashboard.insights.update", $insight->slug) ?>">
                                             Edit
                                         </a>
                                     </td>

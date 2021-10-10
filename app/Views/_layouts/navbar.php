@@ -11,26 +11,23 @@
                     <a class="nav-link" href="<?= route_to("dashboard.landing.index") ?>">Landing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.industries.index") ?>">Industries</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.insights.index") ?>">Insights</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.webinars.index") ?>">Webinars</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.services.index") ?>">Services</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="--><?//= route_to("dashboard.services.index") ?><!--">Services</a>-->
+<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.careers.index") ?>">Careers</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.about.index") ?>">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.contact.index") ?>">Contact Us</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="--><?//= route_to("dashboard.about.index") ?><!--">About</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="--><?//= route_to("dashboard.contact.index") ?><!--">Contact Us</a>-->
+<!--                </li>-->
             </ul>
             <a href="<?= route_to("auth.logout") ?>" class="btn btn-outline-danger btn-sm">
                 Log Out
