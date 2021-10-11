@@ -105,8 +105,8 @@ class Insights extends BaseController
                 ),
                 "recommendation" => $recommendation,
                 "banner" => [
-                    "headline" => $lines->findOrEmptyString("WEBINARS_BANNER_HEADLINE"),
-                    "description" => $lines->findOrEmptyString("WEBINARS_BANNER_DESCRIPTION"),
+                    "headline" => $lines->findOrEmptyString("INSIGHTS_BANNER_HEADLINE"),
+                    "description" => $lines->findOrEmptyString("INSIGHTS_BANNER_HEADLINE"),
                 ]
             ]);
         }
