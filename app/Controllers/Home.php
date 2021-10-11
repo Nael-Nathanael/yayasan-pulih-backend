@@ -53,21 +53,13 @@ class Home extends BaseController
 
         $email = Services::email();
 
-//        $email->setTo('info@altha.co.id');
-        $email->setTo('nathanael@altha.co.id');
+        $email->setTo('info@altha.co.id');
 
         $email->setSubject("[Contact Request] $firstname $lastname - $jobtitle at $company");
         $email->setMessage($mailBody);
-
-        return $this->response->setJSON(
-            [
-                "result" => $email->send(false),
-                "fetchedPost" => $_POST,
-                "debugger" => $email->printDebugger()
-            ]
-        );
+        $email->send();
 
         // do send mail
-//        return redirect()->to("https://www.altha.co.id/contact-complete");
+        return redirect()->to("https://www.altha.co.id/contact-complete");
     }
 }
