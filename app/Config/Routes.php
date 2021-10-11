@@ -35,6 +35,8 @@ $routes->get('/', 'Home::index', ["as" => "auth.page"]);
 $routes->post('/', 'Home::do_auth', ["as" => "auth.do_auth"]);
 $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 
+$routes->post('/sendmail', 'Home::sendmail', ["as" => "sendmail"]);
+
 $routes->group('dashboard', function ($routes) {
     $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);
 

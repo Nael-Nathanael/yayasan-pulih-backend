@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Config\Services;
+
 class Home extends BaseController
 {
     public function index()
@@ -25,5 +27,47 @@ class Home extends BaseController
     {
         session()->destroy();
         return redirect()->to(base_url());
+    }
+
+    public function sendMail()
+    {
+        $firstname = $this->request->getPost("firstname");
+        $lastname = $this->request->getPost("lastname");
+        $jobtitle = $this->request->getPost("jobtitle");
+        $company = $this->request->getPost("company");
+        $email = $this->request->getPost("email");
+        $phone = $this->request->getPost("phone");
+        $message = $this->request->getPost("message");
+
+        $mailBody = "
+            Name: $firstname $lastname <br />
+            Job Title: $jobtitle <br />
+            Company: $company <br />
+            Email: $email <br />
+            Phone: $phone <br />
+            <hr />
+            $message
+            <br />
+            (email sent by do-not-reply@automail.altha.co.id)
+        ";
+
+        $email = Services::email();
+
+//        $email->setTo('info@altha.co.id');
+        $email->setTo('nathanael@altha.co.id');
+
+        $email->setSubject("[Contact Request] $firstname $lastname - $jobtitle at $company");
+        $email->setMessage($mailBody);
+
+        return $this->response->setJSON(
+            [
+                "result" => $email->send(false),
+                "fetchedPost" => $_POST,
+                "debugger" => $email->printDebugger()
+            ]
+        );
+
+        // do send mail
+//        return redirect()->to("https://www.altha.co.id/contact-complete");
     }
 }
