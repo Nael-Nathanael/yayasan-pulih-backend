@@ -112,4 +112,19 @@ class Insights extends BaseController
         }
         return $this->response->setJSON($insights->find($slug));
     }
+
+    public function getFeatured(): ResponseInterface
+    {
+        $insights = model("Insights");
+        $lines = model("Lines");
+        $recommendation = [];
+
+        for ($i = 1; $i <= 5; $i++) {
+            $lookupRecom = $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_$i" . "_SLUG"));
+            if ($lookupRecom) {
+                $recommendation[] = $lookupRecom;
+            }
+        }
+        return $this->response->setJSON($recommendation);
+    }
 }

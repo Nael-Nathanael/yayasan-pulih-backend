@@ -85,6 +85,7 @@ $routes->group("object", function ($routes) {
         $routes->post('delete/(:segment)', "Object\Insights::delete/$1", ["as" => "object.insights.delete"]);
         $routes->post('update/(:segment)', "Object\Insights::update/$1", ["as" => "object.insights.update"]);
         $routes->get('get', "Object\Insights::get", ["as" => "object.insights.get"]);
+        $routes->get('getFeatured', "Object\Insights::getFeatured", ["as" => "object.insights.getFeatured"]);
         $routes->get('get/(:segment)', "Object\Insights::get/$1", ["as" => "object.insights.getSpecific"]);
     });
 
