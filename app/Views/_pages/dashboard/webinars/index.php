@@ -77,12 +77,6 @@
                                         </a>
                                     </td>
                                     <td class="text-center">
-                                        <form action="<?= route_to("object.webinars.delete", $webinar->id) ?>"
-                                              method="post">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                Delete
-                                            </button>
-                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
