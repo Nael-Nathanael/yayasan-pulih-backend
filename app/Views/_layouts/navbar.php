@@ -16,9 +16,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.webinars.index") ?>">Webinars</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="--><?//= route_to("dashboard.services.index") ?><!--">Services</a>-->
-<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.services.index") ?>">Services</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.careers.index") ?>">Careers</a>
                 </li>

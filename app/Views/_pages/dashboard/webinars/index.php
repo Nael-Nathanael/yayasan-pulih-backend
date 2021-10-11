@@ -1,16 +1,10 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
-<?php
-/**
- * @var Array $carouselBanners
- * @var Array $teams
- */
-?>
     <div class="container">
         <section>
             <div class="card card-body shadow">
-                <form method="post" action="<?= route_to('object.lines.update', "CAREERS") ?>">
+                <form method="post" action="<?= route_to('object.lines.update', "WEBINARS") ?>">
                     <?= view("_components/LinesFieldGroup",
                         [
                             "fields" => [

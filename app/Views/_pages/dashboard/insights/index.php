@@ -4,7 +4,7 @@
     <div class="container">
         <section>
             <div class="card card-body shadow">
-                <form method="post" action="<?= route_to('object.lines.update', "CAREERS") ?>">
+                <form method="post" action="<?= route_to('object.lines.update', "INSIGHTS") ?>">
                     <?= view("_components/LinesFieldGroup",
                         [
                             "fields" => [

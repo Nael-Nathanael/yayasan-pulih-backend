@@ -52,6 +52,16 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('services', function ($routes) {
         $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);
+
+        $routes->group("business_and_risk", function ($routes) {
+            $routes->get("", "Dashboard\Services\BusinessAndRiskAdvisory::index", ["as" => "dashboard.service.business_and_risk.index"]);
+        });
+        $routes->group("it", function ($routes) {
+            $routes->get("", "Dashboard\Services\ITAdvisory::index", ["as" => "dashboard.service.it.index"]);
+        });
+        $routes->group("people", function ($routes) {
+            $routes->get("", "Dashboard\Services\PeopleAdvisory::index", ["as" => "dashboard.service.people.index"]);
+        });
     });
     $routes->group('careers', function ($routes) {
         $routes->get("", "Dashboard\Careers::index", ["as" => "dashboard.careers.index"]);
@@ -84,6 +94,9 @@ $routes->group("object", function ($routes) {
 
     $routes->group('services', function ($routes) {
         $routes->get('get', "Object\Services::get", ["as" => "object.services.get"]);
+        $routes->get('getBusinessAndRiskPage', "Object\Services::getBusinessAndRiskPage", ["as" => "object.services.getBusinessAndRiskPage"]);
+        $routes->get('getITPage', "Object\Services::getITPage", ["as" => "object.services.getITPage"]);
+        $routes->get('getPeoplePage', "Object\Services::getPeoplePage", ["as" => "object.services.getPeoplePage"]);
     });
 
     $routes->group('careers', function ($routes) {
@@ -105,6 +118,14 @@ $routes->group("object", function ($routes) {
     $routes->group('presenters', function ($routes) {
         $routes->post('create/(:segment)', "Object\Presenters::create/$1", ["as" => "object.presenters.create"]);
         $routes->post('delete/(:segment)', "Object\Presenters::delete/$1", ["as" => "object.presenters.delete"]);
+    });
+
+    $routes->group('keypoints', function ($routes) {
+        $routes->post("create/(:segment)", "Object\Keypoints::create/$1", ['as' => 'object.keypoints.create']);
+    });
+
+    $routes->group('service_lines', function ($routes) {
+        $routes->post("create/(:segment)", "Object\ServiceLines::create/$1", ['as' => 'object.service_lines.create']);
     });
 });
 /*
