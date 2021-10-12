@@ -42,6 +42,7 @@ $routes->group('dashboard', function ($routes) {
 
     $routes->group('landing', function ($routes) {
         $routes->get("", "Dashboard\Landing::index", ["as" => "dashboard.landing.index"]);
+        $routes->get("get", "Dashboard\Landing::get", ["as" => "dashboard.landing.get"]);
     });
     $routes->group('insights', function ($routes) {
         $routes->get("", "Dashboard\Insights::index", ["as" => "dashboard.insights.index"]);
