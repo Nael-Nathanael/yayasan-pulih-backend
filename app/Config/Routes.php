@@ -80,6 +80,7 @@ $routes->group("object", function ($routes) {
     $routes->group('carouselBanner', function ($routes) {
         $routes->post('create', "Object\CarouselBanner::create", ["as" => "object.carouselBanner.create"]);
         $routes->get('get', "Object\CarouselBanner::get", ["as" => "object.carouselBanner.get"]);
+        $routes->post('delete/(:segment)', "Object\CarouselBanner::delete/$1", ["as" => "object.carouselBanner.delete"]);
     });
 
     $routes->group('insights', function ($routes) {

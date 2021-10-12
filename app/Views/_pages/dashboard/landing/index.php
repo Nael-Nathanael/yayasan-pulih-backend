@@ -31,6 +31,7 @@
                                 <th>Headline</th>
                                 <th>Description</th>
                                 <th>Link to</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,6 +50,14 @@
                                     </td>
                                     <td>
                                         <?= $carouselBanner->link ?>
+                                    </td>
+                                    <td>
+                                        <form action="<?= route_to("object.carouselBanner.delete", $carouselBanner->id) ?>"
+                                              method="post">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -33,4 +33,11 @@ class CarouselBanner extends BaseController
         $carouselBanner = model("CarouselBanner");
         return $this->response->setJSON($carouselBanner->findAll());
     }
+
+    public function delete($key): \CodeIgniter\HTTP\RedirectResponse
+    {
+        $carouselBanner = model("CarouselBanner");
+        $carouselBanner->delete($key);
+        return redirect()->route("dashboard.landing.index");
+    }
 }
