@@ -47,21 +47,21 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost = "srv73.niagahoster.com";
+    public $SMTPHost = "smtp.gmail.com";
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser = "do-not-reply@automail.altha.co.id";
+    public $SMTPUser = "contact@altha.co.id";
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = "do-not-reply";
+    public $SMTPPass = "AlthaC2021";
 
     /**
      * SMTP Port
@@ -89,7 +89,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPCrypto = '';
+    public $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
