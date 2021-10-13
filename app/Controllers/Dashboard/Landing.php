@@ -3,6 +3,7 @@
 namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class Landing extends BaseController
 {
@@ -14,10 +15,19 @@ class Landing extends BaseController
         return view("_pages/dashboard/landing/index", $data);
     }
 
-    public function get()
+    public function get(): ResponseInterface
     {
         $carouselBanner = model("CarouselBanner");
         $lines = model("Lines");
+        $insights = model("Insights");
+        $recommendation = [];
+
+        for ($i = 1; $i <= 5 && count($recommendation) <= 2; $i++) {
+            $lookupRecom = $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_$i" . "_SLUG"));
+            if ($lookupRecom) {
+                $recommendation[] = $lookupRecom;
+            }
+        }
         return $this->response->setJSON(
             [
                 "fetchedBannerData" => $carouselBanner->findAll(),
@@ -88,6 +98,7 @@ class Landing extends BaseController
                     "headline" => $lines->findOrEmptyString("LANDING_CAREER_HEADLINE"),
                     "imgUrl" => $lines->findOrPlaceholderImage("LANDING_CAREER_THUMBNAIL_IMAGE")
                 ],
+                "fetchedInsights" => $recommendation,
             ]
         );
     }
