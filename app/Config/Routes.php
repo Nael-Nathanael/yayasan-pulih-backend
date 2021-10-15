@@ -125,10 +125,6 @@ $routes->group("object", function ($routes) {
         $routes->post('delete/(:segment)', "Object\Presenters::delete/$1", ["as" => "object.presenters.delete"]);
     });
 
-    $routes->group('keypoints', function ($routes) {
-        $routes->post("create/(:segment)", "Object\Keypoints::create/$1", ['as' => 'object.keypoints.create']);
-    });
-
     $routes->group('service_lines', function ($routes) {
         $routes->post("create/(:segment)", "Object\ServiceLines::create/$1", ['as' => 'object.service_lines.create']);
     });

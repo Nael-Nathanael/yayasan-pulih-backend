@@ -66,7 +66,6 @@ class Services extends BaseController
     {
         {
             $lines = model("Lines");
-            $keypoints = model("Keypoints");
             $service_lines = model("ServiceLines");
             return $this->response->setJSON(
                 [
@@ -74,9 +73,7 @@ class Services extends BaseController
                     "banner_description" => $lines->findOrEmptyString("SERVICE_1_BANNER_DESCRIPTION"),
                     "paragraph_title" => $lines->findOrEmptyString("SERVICE_1_PARAGRAPH_TITLE"),
                     "paragraph_1" => $lines->findOrEmptyString("SERVICE_1_PARAGRAPH_1"),
-                    "paragraph_2" => $lines->findOrEmptyString("SERVICE_1_PARAGRAPH_2"),
                     "paragraph_3" => $lines->findOrEmptyString("SERVICE_1_PARAGRAPH_3"),
-                    "keypoints" => $keypoints->where("subservice_key", "BUSINESS_AND_RISK")->findAll(),
                     "service_lines" => $service_lines->where("subservice_key", "BUSINESS_AND_RISK")->findAll(),
                 ]
             );
@@ -87,7 +84,6 @@ class Services extends BaseController
     {
         {
             $lines = model("Lines");
-            $keypoints = model("Keypoints");
             $service_lines = model("ServiceLines");
             return $this->response->setJSON(
                 [
@@ -95,9 +91,7 @@ class Services extends BaseController
                     "banner_description" => $lines->findOrEmptyString("SERVICE_2_BANNER_DESCRIPTION"),
                     "paragraph_title" => $lines->findOrEmptyString("SERVICE_2_PARAGRAPH_TITLE"),
                     "paragraph_1" => $lines->findOrEmptyString("SERVICE_2_PARAGRAPH_1"),
-                    "paragraph_2" => $lines->findOrEmptyString("SERVICE_2_PARAGRAPH_2"),
                     "paragraph_3" => $lines->findOrEmptyString("SERVICE_2_PARAGRAPH_3"),
-                    "keypoints" => $keypoints->where("subservice_key", "IT")->findAll(),
                     "service_lines" => $service_lines->where("subservice_key", "IT")->findAll(),
                 ]
             );
@@ -108,7 +102,6 @@ class Services extends BaseController
     {
         {
             $lines = model("Lines");
-            $keypoints = model("Keypoints");
             $service_lines = model("ServiceLines");
             return $this->response->setJSON(
                 [
@@ -116,9 +109,7 @@ class Services extends BaseController
                     "banner_description" => $lines->findOrEmptyString("SERVICE_3_BANNER_DESCRIPTION"),
                     "paragraph_title" => $lines->findOrEmptyString("SERVICE_3_PARAGRAPH_TITLE"),
                     "paragraph_1" => $lines->findOrEmptyString("SERVICE_3_PARAGRAPH_1"),
-                    "paragraph_2" => $lines->findOrEmptyString("SERVICE_3_PARAGRAPH_2"),
                     "paragraph_3" => $lines->findOrEmptyString("SERVICE_3_PARAGRAPH_3"),
-                    "keypoints" => $keypoints->where("subservice_key", "PEOPLE")->findAll(),
                     "service_lines" => $service_lines->where("subservice_key", "PEOPLE")->findAll(),
                 ]
             );
