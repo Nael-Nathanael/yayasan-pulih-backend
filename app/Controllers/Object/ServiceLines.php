@@ -14,7 +14,6 @@ class ServiceLines extends BaseController
             [
                 "subservice_key" => $subservice_key,
                 "title" => $this->request->getPost("title"),
-                "short_description" => $this->request->getPost("short_description"),
                 "description" => $this->request->getPost("description"),
             ]
         );

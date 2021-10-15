@@ -99,6 +99,7 @@ $routes->group("object", function ($routes) {
 
     $routes->group('services', function ($routes) {
         $routes->get('get', "Object\Services::get", ["as" => "object.services.get"]);
+        $routes->get('getPage', "Object\Services::getPage", ["as" => "object.services.getPage"]);
         $routes->get('getBusinessAndRiskPage', "Object\Services::getBusinessAndRiskPage", ["as" => "object.services.getBusinessAndRiskPage"]);
         $routes->get('getITPage', "Object\Services::getITPage", ["as" => "object.services.getITPage"]);
         $routes->get('getPeoplePage', "Object\Services::getPeoplePage", ["as" => "object.services.getPeoplePage"]);

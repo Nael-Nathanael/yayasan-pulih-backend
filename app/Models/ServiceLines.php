@@ -14,7 +14,6 @@ class ServiceLines extends Model
     protected $allowedFields = [
         'title',
         'description',
-        'short_description',
         'subservice_key',
     ];
 

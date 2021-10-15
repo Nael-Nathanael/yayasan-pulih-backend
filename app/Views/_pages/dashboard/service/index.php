@@ -3,6 +3,18 @@
 <?= $this->section("content"); ?>
     <section>
         <div class="container-fluid">
+            <div class="card card-body">
+                <?= view("_components/LinesImageClickToChangeField",
+                    [
+                        "field_group_name" => "SERVICES",
+                        "field_id" => "SERVICES_BANNER_IMAGE",
+                    ]
+                ) ?>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <a href="<?= route_to("dashboard.service.business_and_risk.index") ?>" class="text-decoration-none">
