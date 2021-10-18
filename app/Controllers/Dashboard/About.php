@@ -11,7 +11,7 @@ class About extends BaseController
         return view("_pages/dashboard/about/index");
     }
 
-    public function getPage()
+    public function get()
     {
         $lines = model("Lines");
         $service_lines = model("ServiceLines");
