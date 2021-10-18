@@ -22,9 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.careers.index") ?>">Careers</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="--><?//= route_to("dashboard.about.index") ?><!--">About</a>-->
-<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.about.index") ?>">About</a>
+                </li>
 <!--                <li class="nav-item">-->
 <!--                    <a class="nav-link" href="--><?//= route_to("dashboard.contact.index") ?><!--">Contact Us</a>-->
 <!--                </li>-->

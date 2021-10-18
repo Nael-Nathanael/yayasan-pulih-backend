@@ -8,6 +8,6 @@ class About extends BaseController
 {
     public function index()
     {
-        //
+        return view("_pages/dashboard/about/index");
     }
 }
