@@ -8,14 +8,15 @@ class About extends BaseController
 {
     public function index()
     {
-        return view("_pages/dashboard/about/index");
+        $peoples = model("Peoples");
+        $data['peoples'] = $peoples->findAll();
+        return view("_pages/dashboard/about/index", $data);
     }
 
     public function get()
     {
         $lines = model("Lines");
-        $service_lines = model("ServiceLines");
-        $keypoints = model("Keypoints");
+        $peoples = model("Peoples");
         return $this->response->setJSON(
             [
                 "banner" => [
@@ -45,7 +46,8 @@ class About extends BaseController
                     $lines->findOrPlaceholderImage("ABOUT_VALUES_1_ICON"),
                     $lines->findOrPlaceholderImage("ABOUT_VALUES_2_ICON"),
                     $lines->findOrPlaceholderImage("ABOUT_VALUES_3_ICON"),
-                ]
+                ],
+                "peoples" => $peoples->findAll()
             ]
         );
     }

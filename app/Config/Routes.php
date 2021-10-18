@@ -76,6 +76,7 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('contact', function ($routes) {
         $routes->get("", "Dashboard\Contact::index", ["as" => "dashboard.contact.index"]);
     });
+
 });
 
 $routes->group("object", function ($routes) {
@@ -133,6 +134,10 @@ $routes->group("object", function ($routes) {
 
     $routes->group('service_lines', function ($routes) {
         $routes->post("create/(:segment)", "Object\ServiceLines::create/$1", ['as' => 'object.service_lines.create']);
+    });
+
+    $routes->group('peoples', function ($routes) {
+        $routes->post("create", "Object\Peoples::create", ['as' => 'object.peoples.create']);
     });
 });
 /*

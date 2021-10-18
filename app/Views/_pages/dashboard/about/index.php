@@ -100,6 +100,7 @@
                         <p>
                             We bring high quality services with industry-leading standards
                         </p>
+
                         <?= view("_components/LinesImageClickToChangeField",
                             [
                                 "field_group_name" => "ABOUT",
@@ -112,6 +113,7 @@
                         <p>
                             We bring solutions tailored to your business focus
                         </p>
+
                         <?= view("_components/LinesImageClickToChangeField",
                             [
                                 "field_group_name" => "ABOUT",
@@ -172,7 +174,95 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div class="card shadow">
+            <div class="card-header">
+                <div class="card-title">
+                    Our People
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#people_create_modal">
+                        Register People
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 1px">No</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($peoples as $index => $people): ?>
+                            <tr>
+                                <td><?= $index + 1 ?></td>
+                                <td><?= $people->name ?></td>
+                                <td><?= $people->position ?></td>
+                                <td></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="people_create_modal" tabindex="-1"
+     aria-labelledby="people_create_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <form action="<?= route_to("object.peoples.create") ?>" method="post" enctype="multipart/form-data"
+              class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="people_create_modalLabel">Add People</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="img">Avatar</label>
+                    <input type="file" class="form-control" id="img" name="img" placeholder="Avatar"
+                           required>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                           required>
+                    <label for="name">Name</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="position" name="position" placeholder="Headline"
+                           required>
+                    <label for="position">Position</label>
+                </div>
+
+                <input type="hidden" name="description" id="description" value="">
+                <div class="mb-3">
+                    Description
+                    <div class="row">
+                        <div class="document-editor__toolbar border-0"></div>
+                    </div>
+                    <div class="editordescription shadow-none bg-white border" style="min-height: 200px"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section("javascript"); ?>
@@ -180,6 +270,6 @@
     initCkeditor("ABOUT_VALUES_1")
     initCkeditor("ABOUT_VALUES_2")
     initCkeditor("ABOUT_VALUES_3")
-    initCkeditor("ABOUT_PARAGRAPH")
+    initCkeditor("description")
 </script>
 <?= $this->endSection() ?>

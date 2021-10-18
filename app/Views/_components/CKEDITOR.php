@@ -5,7 +5,7 @@
  */
 ?>
 <?php $lines = model("Lines"); ?>
-<input type="hidden" name="<?= $field_id ?>" id="<?= $field_id ?>" value="<?= $lines->findOrEmptyString($field_id) ?>">
+<input type="hidden" name="<?= $field_id ?>" id="<?= $field_id ?>" value=`<?= $lines->findOrEmptyString($field_id) ?>`>
 <div class="mb-3">
     <?= $field_label ?>
     <div class="row mb-3">
