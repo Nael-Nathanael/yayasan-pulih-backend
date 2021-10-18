@@ -8,6 +8,9 @@ class Services extends BaseController
 {
     public function index(): string
     {
-        return view("_pages/dashboard/service/index");
+        $keypoints = model("Keypoints");
+        $data['keypoints'] = $keypoints->findAll();
+
+        return view("_pages/dashboard/service/index", $data);
     }
 }

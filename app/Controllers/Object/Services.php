@@ -118,6 +118,7 @@ class Services extends BaseController
     {
         $lines = model("Lines");
         $service_lines = model("ServiceLines");
+        $keypoints = model("Keypoints");
         return $this->response->setJSON(
             [
                 "banner" => [
@@ -134,6 +135,7 @@ class Services extends BaseController
                     "At Altha, we help our clients bridge the gap between strategic initiatives and implementation with our high quality Risk, IT, and People advisory services",
                     "We believe that our services should be both accessible and applicable to our clients. We aim to reach growing businesses in Indonesia with our presence in East Indonesia, home to several of the country’s most rapidly growing economy.<br /><br />Our brand-agnostic approach allows us to deliver bespoke service offering tailored to suit your industry and your needs with the right balance of scope and investment. With the right mix of people that pair technical exposure with a business mindset, we strive to deliver solutions that are both applicable technically and aligned with strategic initiatives."
                 ],
+                "keypoints" => $keypoints->findAll(),
                 "content" => [
                     [
                         "imgUrl" => $lines->findOrPlaceholderImage("SERVICE_1_BANNER_IMAGE"),

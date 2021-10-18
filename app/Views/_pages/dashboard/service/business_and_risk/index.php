@@ -3,6 +3,17 @@
 <?= $this->section("content"); ?>
 <div class="container">
     <section>
+        <div class="card card-body">
+            <?= view("_components/LinesImageClickToChangeField",
+                [
+                    "field_group_name" => "SERVICES",
+                    "field_id" => "SERVICE_1_BANNER_IMAGE",
+                ]
+            ) ?>
+        </div>
+    </section>
+
+    <section>
         <div class="card card-body shadow">
             <form method="post" action="<?= route_to('object.lines.update', "SERVICES") ?>">
                 <?= view("_components/LinesFieldGroup",

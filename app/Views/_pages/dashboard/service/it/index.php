@@ -2,6 +2,18 @@
 
 <?= $this->section("content"); ?>
 <div class="container">
+
+    <section>
+        <div class="card card-body">
+            <?= view("_components/LinesImageClickToChangeField",
+                [
+                    "field_group_name" => "SERVICES",
+                    "field_id" => "SERVICE_2_BANNER_IMAGE",
+                ]
+            ) ?>
+        </div>
+    </section>
+
     <section>
         <div class="card card-body shadow">
             <form method="post" action="<?= route_to('object.lines.update', "SERVICES") ?>">
@@ -120,8 +132,7 @@
 
 <?= $this->section("javascript"); ?>
 <script>
-    initCkeditor("SERVICE_2_PARAGRAPH_1")``
+    initCkeditor("SERVICE_2_PARAGRAPH_1")
     initCkeditor("SERVICE_2_PARAGRAPH_3")
-
 </script>
 <?= $this->endSection(); ?>
