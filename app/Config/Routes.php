@@ -71,6 +71,7 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('about', function ($routes) {
         $routes->get("", "Dashboard\About::index", ["as" => "dashboard.about.index"]);
+        $routes->get("getPage", "Dashboard\About::get", ["as" => "dashboard.about.get"]);
     });
     $routes->group('contact', function ($routes) {
         $routes->get("", "Dashboard\Contact::index", ["as" => "dashboard.contact.index"]);

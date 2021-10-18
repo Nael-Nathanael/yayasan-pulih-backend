@@ -51,7 +51,7 @@
         <div class="card shadow">
             <div class="card-header">
                 <div class="card-title">
-                    Separator Image
+                    Our Purpose (Image)
                 </div>
             </div>
             <div class="card-body">
@@ -63,6 +63,28 @@
                 ) ?>
             </div>
         </div>
+    </section>
+
+    <section>
+
+        <form action="<?= route_to("object.lines.update", "ABOUT") ?>"
+              method="post" class="card shadow">
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        Our Purpose (Paragraph)
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?= view("_components/CKEDITOR",
+                        [
+                            "field_label" => "About Our Purpose",
+                            "field_id" => "ABOUT_PARAGRAPH",
+                        ]
+                    ) ?>
+                </div>
+            </div>
+        </form>
     </section>
 
     <section>
@@ -158,5 +180,6 @@
     initCkeditor("ABOUT_VALUES_1")
     initCkeditor("ABOUT_VALUES_2")
     initCkeditor("ABOUT_VALUES_3")
+    initCkeditor("ABOUT_PARAGRAPH")
 </script>
 <?= $this->endSection() ?>
