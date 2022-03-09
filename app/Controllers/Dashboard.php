@@ -8,6 +8,9 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        return view("_pages/dashboard/landing/index.php");
+        $carouselBanner = model("CarouselBanner");
+        $data['carouselBanners'] = $carouselBanner->findAll();
+
+        return view("_pages/dashboard/landing/index", $data);
     }
 }
