@@ -3,6 +3,7 @@
 namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RedirectResponse;
 
 class Webinars extends BaseController
 {
@@ -20,5 +21,12 @@ class Webinars extends BaseController
         $data['webinar'] = $webinars->find($webinar_id);
         $data['presenters'] = $presenters->where("webinar_id", $webinar_id)->findAll();
         return view("_pages/dashboard/webinars/presenters", $data);
+    }
+
+    public function delete($pk): RedirectResponse
+    {
+        $webinarModel = model("Webinars");
+        $webinarModel->delete($pk);
+        return redirect()->route("dashboard.webinars.index");
     }
 }

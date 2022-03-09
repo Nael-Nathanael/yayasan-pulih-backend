@@ -77,6 +77,10 @@
                                         </a>
                                     </td>
                                     <td class="text-center">
+                                        <a class="btn btn-outline-danger btn-sm"
+                                           href="<?= route_to("dashboard.webinars.delete", $webinar->id) ?>">
+                                            Delete
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

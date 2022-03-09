@@ -52,6 +52,7 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('webinars', function ($routes) {
         $routes->get("", "Dashboard\Webinars::index", ["as" => "dashboard.webinars.index"]);
         $routes->get("presenters/(:segment)", "Dashboard\Webinars::presenter/$1", ["as" => "dashboard.webinars.presenters"]);
+        $routes->get("delete/(:segment)", "Dashboard\Webinars::delete/$1", ["as" => "dashboard.webinars.delete"]);
     });
     $routes->group('services', function ($routes) {
         $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);
