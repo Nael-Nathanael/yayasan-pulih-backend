@@ -53,7 +53,7 @@ class Landing extends BaseController
                             "Business",
                             "and Risk Advisory"
                         ],
-                        "url" => "/services/business-and-risk-advisory",
+                        "url" => "/services",
                         "title" => $lines->findOrEmptyString("LANDING_SERVICE_1_HEADLINE"),
                         "imgUrl" => $lines->findOrPlaceholderImage("LANDING_SERVICE_1_IMAGE"),
                         "descriptions" => $lines->findOrEmptyString("LANDING_SERVICE_1_DESCRIPTION"),
@@ -68,7 +68,7 @@ class Landing extends BaseController
                             "IT",
                             "Advisory"
                         ],
-                        "url" => "/services/it-advisory",
+                        "url" => "/services",
                         "title" => $lines->findOrEmptyString("LANDING_SERVICE_2_HEADLINE"),
                         "imgUrl" => $lines->findOrPlaceholderImage("LANDING_SERVICE_2_IMAGE"),
                         "descriptions" => $lines->findOrEmptyString("LANDING_SERVICE_2_DESCRIPTION"),
@@ -83,7 +83,7 @@ class Landing extends BaseController
                             "People",
                             "Advisory"
                         ],
-                        "url" => "/services/people-advisory",
+                        "url" => "/services",
                         "title" => $lines->findOrEmptyString("LANDING_SERVICE_3_HEADLINE"),
                         "imgUrl" => $lines->findOrPlaceholderImage("LANDING_SERVICE_3_IMAGE"),
                         "descriptions" => $lines->findOrEmptyString("LANDING_SERVICE_3_DESCRIPTION"),
