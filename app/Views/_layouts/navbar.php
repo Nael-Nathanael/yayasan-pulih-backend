@@ -25,9 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.about.index") ?>">About</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="--><?//= route_to("dashboard.contact.index") ?><!--">Contact Us</a>-->
-<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.trainings.index") ?>">Trainings</a>
+                </li>
             </ul>
             <a href="<?= route_to("auth.logout") ?>" class="btn btn-outline-danger btn-sm">
                 Log Out
