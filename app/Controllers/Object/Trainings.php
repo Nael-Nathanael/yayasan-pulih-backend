@@ -27,7 +27,7 @@ class Trainings extends BaseController
         $trainings = model("Trainings");
         $lines = model("Lines");
 
-        $allTrainings = $trainings->orderBy("datetime DESC")->limit(10)->findAll();
+        $allTrainings = $trainings->where("datetime >= NOW()", "", false)->orderBy("datetime ASC")->limit(10)->findAll();
 
         $data['trainings'] = $allTrainings;
         $data['banner'] = [
