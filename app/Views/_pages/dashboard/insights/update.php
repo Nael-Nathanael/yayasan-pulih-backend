@@ -35,7 +35,8 @@
     <section>
         <form action="<?= route_to("object.insights.update", $article->slug) ?>" method="post" id="articleForm"
               enctype="multipart/form-data">
-            <input type="hidden" name="content" id="content" value="<?= str_replace("{backend_url}", base_url(), $article->content) ?>">
+            <input type="hidden" name="content" id="content"
+                   value="<?= str_replace("{backend_url}", base_url(), $article->content) ?>">
 
             <div class="row" style="min-height: 600px">
                 <div class="col-lg-9 border-end">
@@ -49,7 +50,7 @@
                     </div>
                     <div class="container bg-light py-4">
                         <div class="editor border shadow-none bg-white" style="min-height: 700px">
-                            <?= $article->content ?>
+                            <?= str_replace("{backend_url}", base_url(), $article->content) ?>
                         </div>
                     </div>
                 </div>
@@ -74,12 +75,14 @@
 
                                 <div class="form-group mb-3">
                                     <label for="tag">Industry</label>
-                                    <input type="text" name="tag" id="tag" class="form-control" value="<?= $article->tag ?>" required>
+                                    <input type="text" name="tag" id="tag" class="form-control"
+                                           value="<?= $article->tag ?>" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="service">Service</label>
-                                    <input type="text" name="service" id="service" class="form-control" value="<?= $article->service ?>" required>
+                                    <input type="text" name="service" id="service" class="form-control"
+                                           value="<?= $article->service ?>" required>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -90,7 +93,8 @@
                                 <div class="form-group mb-3">
                                     <label for="short_description">Short Description</label>
                                     <textarea required id="short_description" name="short_description"
-                                              class="form-control" rows="5"><?= $article->short_description ?></textarea>
+                                              class="form-control"
+                                              rows="5"><?= $article->short_description ?></textarea>
                                 </div>
                             </div>
                         </div>
