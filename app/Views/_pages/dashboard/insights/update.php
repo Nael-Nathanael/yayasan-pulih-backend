@@ -35,8 +35,7 @@
     <section>
         <form action="<?= route_to("object.insights.update", $article->slug) ?>" method="post" id="articleForm"
               enctype="multipart/form-data">
-            <input type="hidden" name="content" id="content"
-                   value=`<?= str_replace("{backend_url}", base_url(), esc($article->content)) ?>`>
+            <input type="hidden" name="content" id="content">
 
             <div class="row" style="min-height: 600px">
                 <div class="col-lg-9 border-end">
@@ -204,5 +203,7 @@
             document.querySelector('.document-editor__toolbar').appendChild(editor.ui.view.toolbar.element);
             document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
         })
+
+    document.getElementById("content").value = `<?= str_replace("{backend_url}", base_url(), $article->content) ?>`
 </script>
 <?= $this->endSection(); ?>
