@@ -8,6 +8,15 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Trainings extends BaseController
 {
+    function GUID()
+    {
+        if (function_exists('com_create_guid') === true) {
+            return trim(com_create_guid(), '{}');
+        }
+
+        return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+    }
+
     public function create(): RedirectResponse
     {
         // upload #img
@@ -37,6 +46,7 @@ class Trainings extends BaseController
         $trainings = model("Trainings");
         $trainings->save(
             [
+                "id" => $this->GUID(),
                 "imgurl" => $imgUrl,
                 "imgurl_promo" => $imgUrl_promo,
                 "imgurl_small" => $imgUrl_small,

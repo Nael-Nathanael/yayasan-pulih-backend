@@ -8,10 +8,11 @@ class Trainings extends Model
 {
     protected $table = 'trainings';
     protected $primaryKey = 'id';
-    protected $useAutoIncrement = true;
+    protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
+        'id',
         'imgurl',
         'imgurl_promo',
         'imgurl_small',
