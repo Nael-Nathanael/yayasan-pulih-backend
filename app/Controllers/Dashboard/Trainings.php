@@ -10,7 +10,7 @@ class Trainings extends BaseController
     public function index(): string
     {
         $trainings = model("Trainings");
-        $data['trainings'] = $trainings->orderBy("datetime DESC")->findAll();
+        $data['trainings'] = $trainings->findAll();
         return view("_pages/dashboard/trainings/index", $data);
     }
 

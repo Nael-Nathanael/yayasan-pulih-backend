@@ -46,10 +46,10 @@
                             <thead>
                             <tr>
                                 <th style="width: 1px">No</th>
-                                <th>Title</th>
-                                <th class="text-center">Datetime</th>
-                                <th class="text-center">Description</th>
-                                <th class="text-center">Registration URL</th>
+                                <th>Normal Web</th>
+                                <th>Promo Web</th>
+                                <th>Normal Mobile</th>
+                                <th>Promo Mobile</th>
                                 <th class="text-center">Delete</th>
                             </tr>
                             </thead>
@@ -58,16 +58,17 @@
                                 <tr>
                                     <td><?= $index + 1 ?></td>
                                     <td>
-                                        <?= $training->title ?>
+                                        <img src="<?= $training->imgurl ?>" alt="" style="max-height: 100px">
                                     </td>
-                                    <td class="text-center">
-                                        <?= $training->datetime ?>
+                                    <td>
+                                        <img src="<?= $training->imgurl_promo ?>" alt="" style="max-height: 100px">
                                     </td>
-                                    <td class="text-center">
-                                        <?= $training->description ?>
+                                    <td>
+                                        <img src="<?= $training->imgurl_small ?>" alt="" style="max-height: 100px">
                                     </td>
-                                    <td class="text-center">
-                                        <?= $training->url ?>
+                                    <td>
+                                        <img src="<?= $training->imgurl_small_promo ?>" alt=""
+                                             style="max-height: 100px">
                                     </td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-danger btn-sm"
@@ -90,34 +91,27 @@
          aria-labelledby="webinar_create_modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <form action="<?= route_to("object.trainings.create") ?>" method="post"
-                  class="modal-content">
+                  class="modal-content" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title" id="webinar_create_modalLabel">Create New Webinar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Headline"
-                               required>
-                        <label for="title">Title</label>
+                    <div class="form-group mb-3">
+                        <label for="img">Normal Web</label>
+                        <input class="form-control" type="file" name="img" id="img" required>
                     </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="datetime-local" class="form-control" id="datetime" name="datetime"
-                               placeholder="Date and Time"
-                               required>
-                        <label for="datetime">Date and Time</label>
+                    <div class="form-group mb-3">
+                        <label for="img_promo">Promo Web</label>
+                        <input class="form-control" type="file" name="img_promo" id="img_promo" required>
                     </div>
-
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Description" id="description" name="description"
-                                  style="min-height: 100px"></textarea>
-                        <label for="description">Description</label>
+                    <div class="form-group mb-3">
+                        <label for="img_small">Normal Mobile</label>
+                        <input class="form-control" type="file" name="img_small" id="img_small" required>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="url" class="form-control" id="url" name="url" placeholder="Registration Link"
-                               required>
-                        <label for="url">Registration Link</label>
+                    <div class="form-group mb-3">
+                        <label for="img_small_promo">Promo Mobile</label>
+                        <input class="form-control" type="file" name="img_small_promo" id="img_small_promo" required>
                     </div>
                 </div>
                 <div class="modal-footer">

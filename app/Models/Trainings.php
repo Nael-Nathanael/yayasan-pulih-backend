@@ -12,10 +12,10 @@ class Trainings extends Model
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
-        'datetime',
-        'title',
-        'description',
-        'url',
+        'imgurl',
+        'imgurl_promo',
+        'imgurl_small',
+        'imgurl_small_promo',
     ];
 
     // Dates

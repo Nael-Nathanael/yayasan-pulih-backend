@@ -10,13 +10,37 @@ class Trainings extends BaseController
 {
     public function create(): RedirectResponse
     {
+        // upload #img
+        $path = $this->request->getFile('img');
+        $path->move(UPLOAD_FOLDER_URL);
+
+        $imgUrl = base_url("/uploads/" . $path->getName());
+
+        // upload #img_small
+        $path = $this->request->getFile('img_small');
+        $path->move(UPLOAD_FOLDER_URL);
+
+        $imgUrl_small = base_url("/uploads/" . $path->getName());
+
+        // upload #img_promo
+        $path = $this->request->getFile('img_promo');
+        $path->move(UPLOAD_FOLDER_URL);
+
+        $imgUrl_promo = base_url("/uploads/" . $path->getName());
+
+        // upload #img_small_promo
+        $path = $this->request->getFile('img_small_promo');
+        $path->move(UPLOAD_FOLDER_URL);
+
+        $imgUrl_small_promo = base_url("/uploads/" . $path->getName());
+
         $trainings = model("Trainings");
         $trainings->save(
             [
-                "title" => $this->request->getPost("title"),
-                "datetime" => $this->request->getPost("datetime"),
-                "description" => $this->request->getPost("description"),
-                "url" => $this->request->getPost("url"),
+                "imgurl" => $imgUrl,
+                "imgurl_promo" => $imgUrl_promo,
+                "imgurl_small" => $imgUrl_small,
+                "imgurl_small_promo" => $imgUrl_small_promo,
             ]
         );
         return redirect()->to(previous_url());
@@ -27,9 +51,7 @@ class Trainings extends BaseController
         $trainings = model("Trainings");
         $lines = model("Lines");
 
-        $allTrainings = $trainings
-            ->where("datetime >=", date("Y-m-d H:i:s"))
-            ->orderBy("datetime ASC")->limit(10)->findAll();
+        $allTrainings = $trainings->findAll();
 
         $data['trainings'] = $allTrainings;
         $data['banner'] = [
