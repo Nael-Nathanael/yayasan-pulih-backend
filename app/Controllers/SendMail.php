@@ -16,6 +16,6 @@ class SendMail extends BaseController
         $email->send();
 
         // do send mail
-        return redirect()->to($this->request->getPost("redirect"));
+        return $this->response->setJSON(["message" => "success"]);
     }
 }
