@@ -150,6 +150,8 @@ $routes->group("object", function ($routes) {
         $routes->post("create", "Object\Peoples::create", ['as' => 'object.peoples.create']);
     });
 });
+
+$routes->post('sendmail', "SendMail::do_send", ["as" => "sendmail"]);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
