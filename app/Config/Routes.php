@@ -36,6 +36,7 @@ $routes->post('/', 'Home::do_auth', ["as" => "auth.do_auth"]);
 $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 
 $routes->post('/sendmail', 'Home::sendmail', ["as" => "sendmail"]);
+$routes->post('/sendmail_manual', "SendMail::do_send", ["as" => "sendmail_manual"]);
 
 $routes->group('dashboard', function ($routes) {
     $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);
@@ -151,7 +152,6 @@ $routes->group("object", function ($routes) {
     });
 });
 
-$routes->post('sendmail', "SendMail::do_send", ["as" => "sendmail"]);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
