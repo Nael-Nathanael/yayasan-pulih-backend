@@ -23,14 +23,14 @@ class Trainings extends BaseController
         $path = $this->request->getFile('img');
         $path->move(UPLOAD_FOLDER_URL);
 
-        $_POST['imgurl'] = base_url("/uploads/" . $path->getName());
+        $_POST['imgurl'] = "{backend_url}/uploads/" . $path->getName();
 
         // loop 3 time, upload hal_yang_dipelajari_img_$i
         for ($i = 1; $i <= 3; $i++) {
             $path = $this->request->getFile("hal_yang_dipelajari_img_$i");
             $path->move(UPLOAD_FOLDER_URL);
 
-            $_POST["hal_yang_dipelajari_img_$i"] = base_url("/uploads/" . $path->getName());
+            $_POST["hal_yang_dipelajari_img_$i"] = "{backend_url}/uploads/" . $path->getName();
         }
 
         $_POST['id'] = $this->GUID();
