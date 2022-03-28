@@ -60,7 +60,7 @@
                                 <tr>
                                     <td><?= $index + 1 ?></td>
                                     <td>
-                                        <img src="<?= $training->imgurl ?>" alt="" style="max-height: 100px">
+                                        <img src="<?= str_replace("{backend_url}", base_url(), $training->imgurl) ?>" alt="" style="max-height: 100px">
                                     </td>
                                     <td><?= $training->category ?></td>
                                     <td><?= $training->header ?></td>
@@ -109,7 +109,7 @@
             <form action="<?= route_to("object.trainings.create") ?>" method="post"
                   class="modal-content" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="webinar_create_modalLabel">Create New Webinar</h5>
+                    <h5 class="modal-title" id="webinar_create_modalLabel">Create New Training</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
