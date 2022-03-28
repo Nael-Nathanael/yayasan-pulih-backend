@@ -46,10 +46,12 @@
                             <thead>
                             <tr>
                                 <th style="width: 1px">No</th>
-                                <th>Normal Web</th>
-                                <th>Promo Web</th>
-                                <th>Normal Mobile</th>
-                                <th>Promo Mobile</th>
+                                <th>Background</th>
+                                <th>Category</th>
+                                <th>Header</th>
+                                <th>Description</th>
+                                <th>Tantangan yang Dihadapi</th>
+                                <th>Hal yang Dipelajari</th>
                                 <th class="text-center">Delete</th>
                             </tr>
                             </thead>
@@ -60,15 +62,29 @@
                                     <td>
                                         <img src="<?= $training->imgurl ?>" alt="" style="max-height: 100px">
                                     </td>
+                                    <td><?= $training->category ?></td>
+                                    <td><?= $training->header ?></td>
+                                    <td><?= $training->description ?></td>
                                     <td>
-                                        <img src="<?= $training->imgurl_promo ?>" alt="" style="max-height: 100px">
+                                        <ul>
+                                            <?php $template = "tantangan_yang_dihadapi_" ?>
+                                            <?php for ($i = 1; $i <= 3; $i++): ?>
+                                                <?php $param = $template . $i; ?>
+                                                <li><?= $training->$param ?></li>
+                                            <?php endfor; ?>
+                                        </ul>
                                     </td>
                                     <td>
-                                        <img src="<?= $training->imgurl_small ?>" alt="" style="max-height: 100px">
-                                    </td>
-                                    <td>
-                                        <img src="<?= $training->imgurl_small_promo ?>" alt=""
-                                             style="max-height: 100px">
+                                        <ul>
+                                            <?php $template = "hal_yang_dipelajari_" ?>
+                                            <?php for ($i = 1; $i <= 3; $i++): ?>
+                                                <?php $param = $template . $i; ?>
+                                                <?php $param_img = $template . "img_" . $i; ?>
+                                                <li>
+                                                    <img style="width: 50px; height: 50px" class="p-2" src="<?= $training->$param_img ?>" alt="">
+                                                    <?= $training->$param ?></li>
+                                            <?php endfor; ?>
+                                        </ul>
                                     </td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-danger btn-sm"
@@ -98,21 +114,47 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label for="img">Normal Web</label>
+                        <label for="img">Background</label>
                         <input class="form-control" type="file" name="img" id="img" required>
                     </div>
+
                     <div class="form-group mb-3">
-                        <label for="img_promo">Promo Web</label>
-                        <input class="form-control" type="file" name="img_promo" id="img_promo" required>
+                        <label for="category">Category</label>
+                        <input class="form-control" type="text" name="category" id="category" required>
                     </div>
+
                     <div class="form-group mb-3">
-                        <label for="img_small">Normal Mobile</label>
-                        <input class="form-control" type="file" name="img_small" id="img_small" required>
+                        <label for="header">Header</label>
+                        <input class="form-control" type="text" name="header" id="header" required>
                     </div>
+
                     <div class="form-group mb-3">
-                        <label for="img_small_promo">Promo Mobile</label>
-                        <input class="form-control" type="file" name="img_small_promo" id="img_small_promo" required>
+                        <label for="description">Description</label>
+                        <textarea name="description" rows="4" class="form-control" id="description" required></textarea>
                     </div>
+
+                    <?php for ($i = 1; $i <= 3; $i++): ?>
+                        <div class="form-group mb-3">
+                            <label for="tantangan_yang_dihadapi_<?= $i ?>">Tantangan yang Dihadapi (<?= $i ?>)</label>
+                            <input class="form-control" type="text" name="tantangan_yang_dihadapi_<?= $i ?>"
+                                   id="tantangan_yang_dihadapi_<?= $i ?>" required>
+                        </div>
+                    <?php endfor; ?>
+
+                    <?php for ($i = 1; $i <= 3; $i++): ?>
+                        <div class="form-group mb-3">
+                            <label for="hal_yang_dipelajari_<?= $i ?>">Hal yang Dipelajari (<?= $i ?>)</label>
+                            <input class="form-control" type="text" name="hal_yang_dipelajari_<?= $i ?>"
+                                   id="hal_yang_dipelajari_<?= $i ?>" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="hal_yang_dipelajari_img_<?= $i ?>">Hal yang Dipelajari Logo (<?= $i ?>)</label>
+                            <input class="form-control" type="file" name="hal_yang_dipelajari_img_<?= $i ?>"
+                                   id="hal_yang_dipelajari_img_<?= $i ?>" required>
+                        </div>
+                    <?php endfor; ?>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

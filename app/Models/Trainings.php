@@ -14,9 +14,18 @@ class Trainings extends Model
     protected $allowedFields = [
         'id',
         'imgurl',
-        'imgurl_promo',
-        'imgurl_small',
-        'imgurl_small_promo',
+        "category",
+        "header",
+        "description",
+        "tantangan_yang_dihadapi_1",
+        "tantangan_yang_dihadapi_2",
+        "tantangan_yang_dihadapi_3",
+        "hal_yang_dipelajari_1",
+        "hal_yang_dipelajari_2",
+        "hal_yang_dipelajari_3",
+        "hal_yang_dipelajari_img_1",
+        "hal_yang_dipelajari_img_2",
+        "hal_yang_dipelajari_img_3",
     ];
 
     // Dates

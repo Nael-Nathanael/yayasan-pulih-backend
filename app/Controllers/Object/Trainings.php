@@ -23,36 +23,20 @@ class Trainings extends BaseController
         $path = $this->request->getFile('img');
         $path->move(UPLOAD_FOLDER_URL);
 
-        $imgUrl = base_url("/uploads/" . $path->getName());
+        $_POST['imgurl'] = base_url("/uploads/" . $path->getName());
 
-        // upload #img_small
-        $path = $this->request->getFile('img_small');
-        $path->move(UPLOAD_FOLDER_URL);
+        // loop 3 time, upload hal_yang_dipelajari_img_$i
+        for ($i = 1; $i <= 3; $i++) {
+            $path = $this->request->getFile("hal_yang_dipelajari_img_$i");
+            $path->move(UPLOAD_FOLDER_URL);
 
-        $imgUrl_small = base_url("/uploads/" . $path->getName());
+            $_POST["hal_yang_dipelajari_img_$i"] = base_url("/uploads/" . $path->getName());
+        }
 
-        // upload #img_promo
-        $path = $this->request->getFile('img_promo');
-        $path->move(UPLOAD_FOLDER_URL);
-
-        $imgUrl_promo = base_url("/uploads/" . $path->getName());
-
-        // upload #img_small_promo
-        $path = $this->request->getFile('img_small_promo');
-        $path->move(UPLOAD_FOLDER_URL);
-
-        $imgUrl_small_promo = base_url("/uploads/" . $path->getName());
+        $_POST['id'] = $this->GUID();
 
         $trainings = model("Trainings");
-        $trainings->save(
-            [
-                "id" => $this->GUID(),
-                "imgurl" => $imgUrl,
-                "imgurl_promo" => $imgUrl_promo,
-                "imgurl_small" => $imgUrl_small,
-                "imgurl_small_promo" => $imgUrl_small_promo,
-            ]
-        );
+        $trainings->save($_POST);
         return redirect()->to(previous_url());
     }
 
