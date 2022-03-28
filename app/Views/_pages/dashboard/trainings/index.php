@@ -60,7 +60,8 @@
                                 <tr>
                                     <td><?= $index + 1 ?></td>
                                     <td>
-                                        <img src="<?= str_replace("{backend_url}", base_url(), $training->imgurl) ?>" alt="" style="max-height: 100px">
+                                        <img src="<?= str_replace("{backend_url}", base_url(), $training->imgurl) ?>"
+                                             alt="" style="max-height: 100px">
                                     </td>
                                     <td><?= $training->category ?></td>
                                     <td><?= $training->header ?></td>
@@ -81,7 +82,9 @@
                                                 <?php $param = $template . $i; ?>
                                                 <?php $param_img = $template . "img_" . $i; ?>
                                                 <li>
-                                                    <img style="width: 50px; height: 50px" class="p-2" src="<?= $training->$param_img ?>" alt="">
+                                                    <img style="width: 50px; height: 50px" class="p-2"
+                                                         src="<?= str_replace("{backend_url}", base_url(), $training->$param_img) ?>"
+                                                         alt="">
                                                     <?= $training->$param ?></li>
                                             <?php endfor; ?>
                                         </ul>
