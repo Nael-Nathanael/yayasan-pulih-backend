@@ -1,124 +1,149 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
-<div class="container">
-    <section>
-        <div class="card shadow">
-            <div class="card-header">
-                <div class="card-title">
-                    Training Menu
-                </div>
-                <div class="card-toolkit">
-                    <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#webinar_create_modal">
-                        Create New
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th style="width: 1px">No</th>
-                            <th>Kategori, Subkategori</th>
-                            <th>Nama Training</th>
-                            <th>Durasi</th>
-                            <th>Outline</th>
-                            <th>Tantangan</th>
-                            <th>Target Market</th>
-                            <th>Hal yang Dipelajari</th>
-                            <th class="text-center">Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($trainings as $index => $training): ?>
-                            <tr>
-                                <td><?= $index + 1 ?></td>
-                                <td>
-                                    <b><?= $training->kategori ?></b> <br>
-                                    <?= $training->subkategori ?>
-                                </td>
+<div class="container-fluid">
+
+    <div class="w-100 text-end my-3">
+        <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                data-bs-target="#webinar_create_modal">
+            Create New
+        </button>
+    </div>
+
+    <div class="row">
+        <?php foreach ($trainings as $index => $training): ?>
+
+            <div class="col-md-4 col-sm-6 col-12 h-100">
+                <div class="card shadow-sm position-relative mb-5 h-100">
+                    <div class="position-absolute top-0 start-0 translate-middle m-0 bg-white border fw-bold d-flex justify-content-center align-items-center"
+                         style="width: 30px; height: 30px">
+                        <?= $index + 1 ?>
+                    </div>
+
+                    <a class="btn btn-outline-danger btn-sm position-absolute top-0 end-0"
+                       style="width: 30px; height: 30px;"
+                       href="<?= route_to("dashboard.trainingmenu.delete", $training->guid) ?>">
+                        X
+                    </a>
+
+                    <div class="card-body" style="line-height: 1.2">
+                        <table>
+                            <tr style="vertical-align: top !important">
+                                <th>Kategori</th>
+                                <td class="ps-3 pe-1">:</td>
+                                <td><?= $training->kategori ?></td>
+                            </tr>
+                            <tr style="vertical-align: top !important">
+                                <th>Subkategori</th>
+                                <td class="ps-3 pe-1">:</td>
+                                <td><?= $training->subkategori ?></td>
+                            </tr>
+                            <tr style="vertical-align: top !important">
+                                <th>Training</th>
+                                <td class="ps-3 pe-1">:</td>
                                 <td><?= $training->name ?></td>
+                            </tr>
+                            <tr style="vertical-align: top !important">
+                                <th>Durasi</th>
+                                <td class="ps-3 pe-1">:</td>
                                 <td><?= $training->durasi_hour ?> Jam</td>
+                            </tr>
+                            <tr style="vertical-align: middle !important">
+                                <th class="text-warning fw-bold">Prakerja</th>
+                                <td class="ps-3 pe-1">:</td>
                                 <td>
-                                    <ul>
-                                        <?php foreach ($training->outline as $outline): ?>
-                                            <li><?= $outline->value ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-
-                                    <p
-                                            style="cursor: pointer; text-wrap: avoid"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#training_outline_modal"
-                                            onclick="document.getElementById('trainingmenu_guid_outline').value = '<?= $training->guid ?>'"
-                                    >
-                                        +Add
-                                    </p>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <?php foreach ($training->tantangan as $tantangan): ?>
-                                            <li><?= $tantangan->value ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-
-                                    <p
-                                            style="cursor: pointer; text-wrap: avoid"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#training_tantangan_modal"
-                                            onclick="document.getElementById('trainingmenu_guid_tantangan').value = '<?= $training->guid ?>'"
-                                    >
-                                        +Add
-                                    </p>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <?php foreach ($training->market as $market): ?>
-                                            <li><?= $market->value ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-
-                                    <p
-                                            style="cursor: pointer; text-wrap: avoid"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#training_market_modal"
-                                            onclick="document.getElementById('trainingmenu_guid_market').value = '<?= $training->guid ?>'"
-                                    >
-                                        +Add
-                                    </p>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <?php foreach ($training->dipelajari as $dipelajari): ?>
-                                            <li><?= $dipelajari->value ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-
-                                    <p
-                                            style="cursor: pointer; text-wrap: avoid"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#training_dipelajari_modal"
-                                            onclick="document.getElementById('trainingmenu_guid_dipelajari').value = '<?= $training->guid ?>'"
-                                    >
-                                        +Add
-                                    </p>
-                                </td>
-                                <td class="text-center">
-                                    <a class="btn btn-outline-danger btn-sm"
-                                       href="<?= route_to("dashboard.trainingmenu.delete", $training->guid) ?>">
-                                        Delete
-                                    </a>
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <?= $training->isPrakerja ? "Ya" : "Tidak" ?>
+                                        <a href="<?= route_to("object.trainingmenu.setprakerja", $training->guid) ?>"
+                                           class="btn btn-sm btn-warning">
+                                            Toggle
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                        </table>
+
+                        <hr>
+
+                        <div class="d-flex align-items-center">
+                            <b>Outline</b>
+                            <button type="button"
+                                    style="height: 20px; width: 20px"
+                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#training_outline_modal"
+                                    onclick="document.getElementById('trainingmenu_guid_outline').value = '<?= $training->guid ?>'"
+                            >+
+                            </button>
+                        </div>
+                        <ul>
+                            <?php foreach ($training->outline as $outline): ?>
+                                <li><?= $outline->value ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <hr>
+
+                        <div class="d-flex align-items-center">
+                            <b>Tantangan</b>
+                            <button type="button"
+                                    style="height: 20px; width: 20px"
+                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#training_tantangan_modal"
+                                    onclick="document.getElementById('trainingmenu_guid_tantangan').value = '<?= $training->guid ?>'"
+                            >+
+                            </button>
+                        </div>
+                        <ul>
+                            <?php foreach ($training->tantangan as $tantangan): ?>
+                                <li><?= $tantangan->value ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                        <hr>
+
+                        <div class="d-flex align-items-center">
+                            <b>Target Market</b>
+                            <button type="button"
+                                    style="height: 20px; width: 20px"
+                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#training_market_modal"
+                                    onclick="document.getElementById('trainingmenu_guid_market').value = '<?= $training->guid ?>'"
+                            >+
+                            </button>
+                        </div>
+                        <ul>
+                            <?php foreach ($training->market as $market): ?>
+                                <li><?= $market->value ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <hr>
+
+                        <div class="d-flex align-items-center">
+                            <b>Hal yang Dipelajari</b>
+                            <button type="button"
+                                    style="height: 20px; width: 20px"
+                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#training_dipelajari_modal"
+                                    onclick="document.getElementById('trainingmenu_guid_dipelajari').value = '<?= $training->guid ?>'"
+                            >+
+                            </button>
+                        </div>
+                        <ul>
+                            <?php foreach ($training->dipelajari as $dipelajari): ?>
+                                <li><?= $dipelajari->value ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+
+        <?php endforeach; ?>
+    </div>
 </div>
 
 <!-- Modal -->

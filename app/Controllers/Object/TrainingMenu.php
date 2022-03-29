@@ -54,18 +54,30 @@ class TrainingMenu extends BaseController
         return redirect()->to(previous_url());
     }
 
+    public function setprakerja($guid): RedirectResponse
+    {
+        $model = model("TrainingMenu");
+        $target = $model->find($guid);
+        $model->update($guid, ["isPrakerja" => !$target->isPrakerja]);
+        return redirect()->to(previous_url());
+    }
+
     public function get($guid = false): ResponseInterface
     {
+        $dipelajari = model("TrainingMenuDipelajari");
         $trainings = model("TrainingMenu");
+
         if (!$guid) {
             $allTrainings = $trainings->findAll();
+            foreach ($allTrainings as $training) {
+                $training->dipelajari = $dipelajari->where("trainingmenu_guid", $training->guid)->findAll();
+            }
             return $this->response->setJSON($allTrainings);
         }
 
         $outline = model("TrainingMenuOutline");
         $tantangan = model("TrainingMenuTantangan");
         $market = model("TrainingMenuMarket");
-        $dipelajari = model("TrainingMenuDipelajari");
 
         $training = $trainings->find($guid);
         $training->outline = $outline->where("trainingmenu_guid", $training->guid)->findAll();

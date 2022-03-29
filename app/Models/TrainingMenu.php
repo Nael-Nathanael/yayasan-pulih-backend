@@ -17,6 +17,7 @@ class TrainingMenu extends Model
         "subkategori",
         "name",
         "durasi_hour",
+        "isPrakerja",
     ];
 
     // Dates
