@@ -59,6 +59,10 @@ $routes->group('dashboard', function ($routes) {
         $routes->get("", "Dashboard\Trainings::index", ["as" => "dashboard.trainings.index"]);
         $routes->get("delete/(:segment)", "Dashboard\Trainings::delete/$1", ["as" => "dashboard.trainings.delete"]);
     });
+    $routes->group('trainingmenu', function ($routes) {
+        $routes->get("", "Dashboard\TrainingMenu::index", ["as" => "dashboard.trainingmenu.index"]);
+        $routes->get("delete/(:segment)", "Dashboard\TrainingMenu::delete/$1", ["as" => "dashboard.trainingmenu.delete"]);
+    });
     $routes->group('services', function ($routes) {
         $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);
 
@@ -132,6 +136,16 @@ $routes->group("object", function ($routes) {
     $routes->group('trainings', function ($routes) {
         $routes->post('create', "Object\Trainings::create", ["as" => "object.trainings.create"]);
         $routes->get('get', "Object\Trainings::get", ["as" => "object.trainings.get"]);
+    });
+
+    $routes->group('trainingmenu', function ($routes) {
+        $routes->post('create', "Object\TrainingMenu::create", ["as" => "object.trainingmenu.create"]);
+        $routes->post('createoutline', "Object\TrainingMenu::createoutline", ["as" => "object.trainingmenu.createoutline"]);
+        $routes->post('createtantangan', "Object\TrainingMenu::createtantangan", ["as" => "object.trainingmenu.createtantangan"]);
+        $routes->post('createmarket', "Object\TrainingMenu::createmarket", ["as" => "object.trainingmenu.createmarket"]);
+        $routes->post('createdipelajari', "Object\TrainingMenu::createdipelajari", ["as" => "object.trainingmenu.createdipelajari"]);
+        $routes->get('get', "Object\TrainingMenu::get", ["as" => "object.trainingmenu.get"]);
+        $routes->get('get/(:any)', "Object\TrainingMenu::get/$1", ["as" => "object.trainingmenu.getsegment"]);
     });
 
     $routes->group('presenters', function ($routes) {

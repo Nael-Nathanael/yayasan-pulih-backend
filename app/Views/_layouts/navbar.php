@@ -26,7 +26,10 @@
                     <a class="nav-link" href="<?= route_to("dashboard.about.index") ?>">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.trainings.index") ?>">Trainings</a>
+                    <a class="nav-link" href="<?= route_to("dashboard.trainings.index") ?>">Training (Promo)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.trainingmenu.index") ?>">Training (Menu)</a>
                 </li>
             </ul>
             <a href="<?= route_to("auth.logout") ?>" class="btn btn-outline-danger btn-sm">
