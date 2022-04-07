@@ -3,6 +3,51 @@
 <?= $this->section("content"); ?>
     <div class="container">
         <section>
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        Webinars
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-center align-items-center">
+
+                            <?= view("_components/LinesImageClickToChangeField",
+                                [
+                                    "field_group_name" => "WEBINARS",
+                                    "field_id" => "WEBINARS_BANNER_IMAGE",
+                                ]
+                            ) ?>
+
+                        </div>
+                        <form method="post" action="<?= route_to('object.lines.update', "WEBINARS") ?>" class="col-6">
+                            <?= view("_components/LinesFieldGroup",
+                                [
+                                    "fields" => [
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Headline",
+                                            "id" => "WEBINARS_BANNER_HEADLINE",
+                                        ],
+                                        [
+                                            "type" => "LinesTextArea",
+                                            "label" => "Description",
+                                            "id" => "WEBINARS_BANNER_DESCRIPTION",
+                                        ],
+                                    ]
+                                ]
+                            ) ?>
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
             <div class="card card-body shadow">
                 <form method="post" action="<?= route_to('object.lines.update', "WEBINARS") ?>">
                     <?= view("_components/LinesFieldGroup",

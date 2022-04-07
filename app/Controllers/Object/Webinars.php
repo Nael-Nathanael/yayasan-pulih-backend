@@ -37,6 +37,8 @@ class Webinars extends BaseController
         $data['banner'] = [
             "headline" => $lines->findOrEmptyString("WEBINARS_BANNER_HEADLINE"),
             "description" => $lines->findOrEmptyString("WEBINARS_BANNER_DESCRIPTION"),
+            "imgUrl" => $lines->findOrPlaceholderImage("WEBINARS_BANNER_IMAGE"),
+            "title" => "Webinars"
         ];
         return $this->response->setJSON($data);
     }
