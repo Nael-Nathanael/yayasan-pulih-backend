@@ -145,9 +145,12 @@ $routes->group("object", function ($routes) {
         $routes->post('createmarket', "Object\TrainingMenu::createmarket", ["as" => "object.trainingmenu.createmarket"]);
         $routes->post('createdipelajari', "Object\TrainingMenu::createdipelajari", ["as" => "object.trainingmenu.createdipelajari"]);
         $routes->post('upload/(:any)', "Object\TrainingMenu::upload/$1", ["as" => "object.trainingmenu.upload"]);
+        $routes->post('uploadkategori/(:any)', "Object\TrainingMenu::uploadkategori/$1", ["as" => "object.trainingmenu.uploadkategori"]);
         $routes->get('setprakerja/(:any)', "Object\TrainingMenu::setprakerja/$1", ["as" => "object.trainingmenu.setprakerja"]);
         $routes->get('get', "Object\TrainingMenu::get", ["as" => "object.trainingmenu.get"]);
         $routes->get('get/(:any)', "Object\TrainingMenu::get/$1", ["as" => "object.trainingmenu.getsegment"]);
+        $routes->get('getkategori', "Object\TrainingMenu::getKategori", ["as" => "object.trainingmenu.getKategori"]);
+        $routes->get('getkategori/(:any)', "Object\TrainingMenu::getKategori/$1", ["as" => "object.trainingmenu.getKategorisegment"]);
     });
 
     $routes->group('presenters', function ($routes) {

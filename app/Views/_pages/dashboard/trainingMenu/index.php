@@ -1,6 +1,47 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
+<div class="container-fluid mt-2">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h5 class="mb-0">Kategori Training</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-2">
+                <?php foreach ($kategori as $index => $kate): ?>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="px-3">
+                            <div class="card card-body fw-bold text-white shadow-sm d-flex justify-content-center align-items-center"
+                                 style="
+                                         height: 50px;
+                                         background-image: url('<?= $kate->imgSrc ? str_replace("{backend_url}", base_url(), $kate->imgSrc) : "https://via.placeholder.com/200" ?>');
+                                         background-size: cover;
+                                         background-position: center;
+                                         background-repeat: no-repeat;
+                                         cursor: pointer;
+                                         "
+                                 onclick="document.getElementById('imgForTrainingKate<?= $index ?>').click()"
+                            >
+                                <?= $kate->name ?>
+                            </div>
+
+
+                            <form action="<?= route_to('object.trainingmenu.uploadkategori', $kate->name) ?>"
+                                  method="post"
+                                  id='imgForTrainingKate<?= $index ?>_form' enctype="multipart/form-data">
+                                <input class="d-none" id="imgForTrainingKate<?= $index ?>"
+                                       name="imgSrc"
+                                       onchange="document.getElementById('imgForTrainingKate<?= $index ?>_form').submit()"
+                                       type="file">
+                            </form>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
 
     <div class="w-100 text-end my-3">
@@ -157,7 +198,8 @@
                         <div class="row mb-2 w-100 g-0">
                             <div class="col-6">
                                 <div class="me-1">
-                                    <button type="button" class="btn btn-warning disabled btn-sm w-100" style="opacity: .3" disabled>
+                                    <button type="button" class="btn btn-warning disabled btn-sm w-100"
+                                            style="opacity: .3" disabled>
                                         Edit
                                     </button>
                                 </div>

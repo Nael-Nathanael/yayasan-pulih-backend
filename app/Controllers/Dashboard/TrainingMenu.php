@@ -14,6 +14,7 @@ class TrainingMenu extends BaseController
         $tantangan = model("TrainingMenuTantangan");
         $market = model("TrainingMenuMarket");
         $dipelajari = model("TrainingMenuDipelajari");
+        $kategori = model("TrainingMenuKategori");
         $data['trainings'] = $trainings->findAll();
 
         foreach ($data['trainings'] as $training) {
@@ -22,6 +23,9 @@ class TrainingMenu extends BaseController
             $training->market = $market->where("trainingmenu_guid", $training->guid)->findAll();
             $training->dipelajari = $dipelajari->where("trainingmenu_guid", $training->guid)->findAll();
         }
+
+        $data['kategori'] = $kategori->findAll();
+
         return view("_pages/dashboard/trainingMenu/index", $data);
     }
 

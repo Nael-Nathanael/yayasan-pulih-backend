@@ -32,6 +32,21 @@ class TrainingMenu extends BaseController
         return redirect()->to(previous_url());
     }
 
+    function uploadkategori($kategori_name): RedirectResponse
+    {
+        // upload #key
+        if (!empty($_FILES['imgSrc']['name'])) {
+            $path = $this->request->getFile('imgSrc');
+            $path->move(UPLOAD_FOLDER_URL);
+
+            // update training
+            $trainings = model("TrainingMenuKategori");
+            $trainings->update($kategori_name, ["imgSrc" => "{backend_url}/uploads/" . $path->getName()]);
+        }
+
+        return redirect()->to(previous_url());
+    }
+
     public function create(): RedirectResponse
     {
         $_POST['guid'] = $this->GUID();
@@ -75,6 +90,30 @@ class TrainingMenu extends BaseController
         $target = $model->find($guid);
         $model->update($guid, ["isPrakerja" => !$target->isPrakerja]);
         return redirect()->to(previous_url());
+    }
+
+    public function getKategori($name = false): ResponseInterface
+    {
+        $kategori = model("TrainingMenuKategori");
+
+        if (!$name) {
+            $allKategori = $kategori->findAll();
+            return $this->response->setJSON($allKategori);
+        }
+
+        $dipelajari = model("TrainingMenuDipelajari");
+        $trainings = model("TrainingMenu");
+        $allTrainings = $trainings->where("kategori", $name)->findAll();
+        foreach ($allTrainings as $training) {
+            $training->dipelajari = $dipelajari->where("trainingmenu_guid", $training->guid)->findAll();
+        }
+
+        return $this->response->setJSON(
+            [
+                "kategori" => $kategori->find($name),
+                "trainings" => $allTrainings
+            ]
+        );
     }
 
     public function get($guid = false): ResponseInterface
