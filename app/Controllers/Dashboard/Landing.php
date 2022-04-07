@@ -22,7 +22,7 @@ class Landing extends BaseController
         $insights = model("Insights");
 
         // latest insights
-        $recommendation = $insights->limit(2)->orderBy("created_at")->findAll();
+        $recommendation = $insights->limit(2)->orderBy("created_at")->get()->getResult();
 
         return $this->response->setJSON(
             [
