@@ -11,9 +11,9 @@
                 <?php foreach ($kategori as $index => $kate): ?>
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="px-3">
-                            <div class="card card-body fw-bold text-white shadow-sm d-flex justify-content-center align-items-center"
+                            <div class="card position-relative card-body fw-bold text-white shadow-sm d-flex justify-content-center align-items-center"
                                  style="
-                                         height: 50px;
+                                         height: 80px;
                                          background-image: url('<?= $kate->imgSrc ? str_replace("{backend_url}", base_url(), $kate->imgSrc) : "https://via.placeholder.com/200" ?>');
                                          background-size: cover;
                                          background-position: center;
@@ -22,7 +22,11 @@
                                          "
                                  onclick="document.getElementById('imgForTrainingKate<?= $index ?>').click()"
                             >
-                                <?= $kate->name ?>
+                                <div class="top-0 start-0 w-100 h-100 position-absolute rounded"
+                                     style="background: linear-gradient(90deg, rgba(9,73,121,1) 0%, rgba(7,47,146,0.5) 25%, rgba(0,212,255,0) 100%);">
+
+                                </div>
+                                <span class="position-relative"><?= $kate->name ?></span>
                             </div>
 
 

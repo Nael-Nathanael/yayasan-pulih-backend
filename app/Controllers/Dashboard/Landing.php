@@ -20,14 +20,10 @@ class Landing extends BaseController
         $carouselBanner = model("CarouselBanner");
         $lines = model("Lines");
         $insights = model("Insights");
-        $recommendation = [];
 
-        for ($i = 1; $i <= 5 && count($recommendation) <= 2; $i++) {
-            $lookupRecom = $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_$i" . "_SLUG"));
-            if ($lookupRecom) {
-                $recommendation[] = $lookupRecom;
-            }
-        }
+        // latest insights
+        $recommendation = $insights->limit(2)->orderBy("created_at")->findAll();
+
         return $this->response->setJSON(
             [
                 "fetchedBannerData" => $carouselBanner->findAll(),
