@@ -3,30 +3,50 @@
 <?= $this->section("content"); ?>
     <div class="container">
         <section>
-            <div class="card card-body shadow">
-                <form method="post" action="<?= route_to('object.lines.update', "INSIGHTS") ?>">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">
+                        Insights
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-center align-items-center">
+
+                            <?= view("_components/LinesImageClickToChangeField",
                                 [
-                                    "type" => "LinesField",
-                                    "label" => "Headline",
-                                    "id" => "INSIGHTS_BANNER_HEADLINE",
-                                ],
+                                    "field_group_name" => "INSIGHTS",
+                                    "field_id" => "INSIGHTS_BANNER_IMAGE",
+                                ]
+                            ) ?>
+
+                        </div>
+                        <form method="post" action="<?= route_to('object.lines.update', "INSIGHTS") ?>" class="col-6">
+                            <?= view("_components/LinesFieldGroup",
                                 [
-                                    "type" => "LinesTextArea",
-                                    "label" => "Description",
-                                    "id" => "INSIGHTS_BANNER_DESCRIPTION",
-                                ],
-                            ]
-                        ]
-                    ) ?>
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                                    "fields" => [
+                                        [
+                                            "type" => "LinesField",
+                                            "label" => "Headline",
+                                            "id" => "INSIGHTS_BANNER_HEADLINE",
+                                        ],
+                                        [
+                                            "type" => "LinesTextArea",
+                                            "label" => "Description",
+                                            "id" => "INSIGHTS_BANNER_DESCRIPTION",
+                                        ],
+                                    ]
+                                ]
+                            ) ?>
+                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
+
         <section>
             <div class="card shadow">
                 <div class="card-header">
