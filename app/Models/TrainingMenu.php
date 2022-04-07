@@ -18,6 +18,7 @@ class TrainingMenu extends Model
         "name",
         "durasi_hour",
         "isPrakerja",
+        "imgSrc",
     ];
 
     // Dates

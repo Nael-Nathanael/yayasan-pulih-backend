@@ -144,6 +144,7 @@ $routes->group("object", function ($routes) {
         $routes->post('createtantangan', "Object\TrainingMenu::createtantangan", ["as" => "object.trainingmenu.createtantangan"]);
         $routes->post('createmarket', "Object\TrainingMenu::createmarket", ["as" => "object.trainingmenu.createmarket"]);
         $routes->post('createdipelajari', "Object\TrainingMenu::createdipelajari", ["as" => "object.trainingmenu.createdipelajari"]);
+        $routes->post('upload/(:any)', "Object\TrainingMenu::upload/$1", ["as" => "object.trainingmenu.upload"]);
         $routes->get('setprakerja/(:any)', "Object\TrainingMenu::setprakerja/$1", ["as" => "object.trainingmenu.setprakerja"]);
         $routes->get('get', "Object\TrainingMenu::get", ["as" => "object.trainingmenu.get"]);
         $routes->get('get/(:any)', "Object\TrainingMenu::get/$1", ["as" => "object.trainingmenu.getsegment"]);

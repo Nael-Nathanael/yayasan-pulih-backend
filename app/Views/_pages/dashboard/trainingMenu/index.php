@@ -15,128 +15,167 @@
 
             <div class="col-md-4 col-sm-6 col-12 h-100">
                 <div class="card shadow-sm position-relative mb-5 h-100">
+                    <div class="card-header p-0" style="height: 200px">
+                        <img alt="" class="w-100" height="200px"
+                             src="<?= $training->imgSrc ? str_replace("{backend_url}", base_url(), $training->imgSrc) : "https://via.placeholder.com/400x200" ?>"
+                             onclick="document.getElementById('imgForTraining<?= $training->guid ?>').click()"
+                             style="object-fit: cover; cursor: pointer">
+
+                        <form action="<?= route_to('object.trainingmenu.upload', $training->guid) ?>" method="post"
+                              id='imgForTraining<?= $training->guid ?>_form' enctype="multipart/form-data">
+                            <input class="d-none" id="imgForTraining<?= $training->guid ?>"
+                                   name="imgSrc"
+                                   onchange="document.getElementById('imgForTraining<?= $training->guid ?>_form').submit()"
+                                   type="file">
+                        </form>
+                    </div>
                     <div class="position-absolute top-0 start-0 translate-middle m-0 bg-white border fw-bold d-flex justify-content-center align-items-center"
                          style="width: 30px; height: 30px">
                         <?= $index + 1 ?>
                     </div>
 
-                    <a class="btn btn-outline-danger btn-sm position-absolute top-0 end-0"
-                       style="width: 30px; height: 30px;"
-                       href="<?= route_to("dashboard.trainingmenu.delete", $training->guid) ?>">
-                        X
-                    </a>
+                    <div class="card-body p-0 justify-content-between align-items-center"
+                         style="line-height: 1.2; min-height: 200px">
+                        <div class="p-2">
+                            <table>
+                                <tr style="vertical-align: top !important">
+                                    <th>Kategori</th>
+                                    <td class="ps-3 pe-1">:</td>
+                                    <td><?= $training->kategori ?></td>
+                                </tr>
+                                <tr style="vertical-align: top !important">
+                                    <th>Subkategori</th>
+                                    <td class="ps-3 pe-1">:</td>
+                                    <td><?= $training->subkategori ?></td>
+                                </tr>
+                                <tr style="vertical-align: top !important">
+                                    <th>Training</th>
+                                    <td class="ps-3 pe-1">:</td>
+                                    <td><?= $training->name ?></td>
+                                </tr>
+                                <tr style="vertical-align: top !important">
+                                    <th>Durasi</th>
+                                    <td class="ps-3 pe-1">:</td>
+                                    <td><?= $training->durasi_hour ?> Jam</td>
+                                </tr>
+                                <tr style="vertical-align: middle !important">
+                                    <th class="text-warning fw-bold">Prakerja</th>
+                                    <td class="ps-3 pe-1">:</td>
+                                    <td>
+                                        <div class="w-100 d-flex justify-content-between align-items-center">
+                                            <?= $training->isPrakerja ? "Ya" : "Tidak" ?>
+                                            <a href="<?= route_to("object.trainingmenu.setprakerja", $training->guid) ?>"
+                                               class="btn btn-sm btn-warning">
+                                                Toggle
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
-                    <div class="card-body" style="line-height: 1.2">
-                        <table>
-                            <tr style="vertical-align: top !important">
-                                <th>Kategori</th>
-                                <td class="ps-3 pe-1">:</td>
-                                <td><?= $training->kategori ?></td>
-                            </tr>
-                            <tr style="vertical-align: top !important">
-                                <th>Subkategori</th>
-                                <td class="ps-3 pe-1">:</td>
-                                <td><?= $training->subkategori ?></td>
-                            </tr>
-                            <tr style="vertical-align: top !important">
-                                <th>Training</th>
-                                <td class="ps-3 pe-1">:</td>
-                                <td><?= $training->name ?></td>
-                            </tr>
-                            <tr style="vertical-align: top !important">
-                                <th>Durasi</th>
-                                <td class="ps-3 pe-1">:</td>
-                                <td><?= $training->durasi_hour ?> Jam</td>
-                            </tr>
-                            <tr style="vertical-align: middle !important">
-                                <th class="text-warning fw-bold">Prakerja</th>
-                                <td class="ps-3 pe-1">:</td>
-                                <td>
-                                    <div class="w-100 d-flex justify-content-between align-items-center">
-                                        <?= $training->isPrakerja ? "Ya" : "Tidak" ?>
-                                        <a href="<?= route_to("object.trainingmenu.setprakerja", $training->guid) ?>"
-                                           class="btn btn-sm btn-warning">
-                                            Toggle
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <hr>
-
-                        <div class="d-flex align-items-center">
-                            <b>Outline</b>
-                            <button type="button"
-                                    style="height: 20px; width: 20px"
-                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#training_outline_modal"
-                                    onclick="document.getElementById('trainingmenu_guid_outline').value = '<?= $training->guid ?>'"
-                            >+
-                            </button>
                         </div>
-                        <ul>
-                            <?php foreach ($training->outline as $outline): ?>
-                                <li><?= $outline->value ?></li>
-                            <?php endforeach; ?>
-                        </ul>
+                    </div>
+                    <div class="card-footer border-0 flex-column">
+                        <div id="collapseTraining<?= $index ?>" class="collapse p-2">
 
-                        <hr>
+                            <hr>
 
-                        <div class="d-flex align-items-center">
-                            <b>Tantangan</b>
-                            <button type="button"
-                                    style="height: 20px; width: 20px"
-                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#training_tantangan_modal"
-                                    onclick="document.getElementById('trainingmenu_guid_tantangan').value = '<?= $training->guid ?>'"
-                            >+
-                            </button>
+                            <div class="d-flex align-items-center">
+                                <b>Outline</b>
+                                <button type="button"
+                                        style="height: 20px; width: 20px"
+                                        class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#training_outline_modal"
+                                        onclick="document.getElementById('trainingmenu_guid_outline').value = '<?= $training->guid ?>'"
+                                >+
+                                </button>
+                            </div>
+                            <ul>
+                                <?php foreach ($training->outline as $outline): ?>
+                                    <li><?= $outline->value ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+
+                            <hr>
+
+                            <div class="d-flex align-items-center">
+                                <b>Tantangan</b>
+                                <button type="button"
+                                        style="height: 20px; width: 20px"
+                                        class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#training_tantangan_modal"
+                                        onclick="document.getElementById('trainingmenu_guid_tantangan').value = '<?= $training->guid ?>'"
+                                >+
+                                </button>
+                            </div>
+                            <ul>
+                                <?php foreach ($training->tantangan as $tantangan): ?>
+                                    <li><?= $tantangan->value ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+
+                            <hr>
+
+                            <div class="d-flex align-items-center">
+                                <b>Target Market</b>
+                                <button type="button"
+                                        style="height: 20px; width: 20px"
+                                        class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#training_market_modal"
+                                        onclick="document.getElementById('trainingmenu_guid_market').value = '<?= $training->guid ?>'"
+                                >+
+                                </button>
+                            </div>
+                            <ul>
+                                <?php foreach ($training->market as $market): ?>
+                                    <li><?= $market->value ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <hr>
+
+                            <div class="d-flex align-items-center">
+                                <b>Hal yang Dipelajari</b>
+                                <button type="button"
+                                        style="height: 20px; width: 20px"
+                                        class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#training_dipelajari_modal"
+                                        onclick="document.getElementById('trainingmenu_guid_dipelajari').value = '<?= $training->guid ?>'"
+                                >+
+                                </button>
+                            </div>
+                            <ul>
+                                <?php foreach ($training->dipelajari as $dipelajari): ?>
+                                    <li><?= $dipelajari->value ?></li>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
-                        <ul>
-                            <?php foreach ($training->tantangan as $tantangan): ?>
-                                <li><?= $tantangan->value ?></li>
-                            <?php endforeach; ?>
-                        </ul>
 
-                        <hr>
-
-                        <div class="d-flex align-items-center">
-                            <b>Target Market</b>
-                            <button type="button"
-                                    style="height: 20px; width: 20px"
-                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#training_market_modal"
-                                    onclick="document.getElementById('trainingmenu_guid_market').value = '<?= $training->guid ?>'"
-                            >+
-                            </button>
+                        <div class="row mb-2 w-100 g-0">
+                            <div class="col-6">
+                                <div class="me-1">
+                                    <button type="button" class="btn btn-warning disabled btn-sm w-100" style="opacity: .3" disabled>
+                                        Edit
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="ms-1">
+                                    <a class="btn btn-outline-danger btn-sm w-100"
+                                       onclick="return confirm('Are you sure?')"
+                                       href="<?= route_to("dashboard.trainingmenu.delete", $training->guid) ?>">
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <ul>
-                            <?php foreach ($training->market as $market): ?>
-                                <li><?= $market->value ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <hr>
-
-                        <div class="d-flex align-items-center">
-                            <b>Hal yang Dipelajari</b>
-                            <button type="button"
-                                    style="height: 20px; width: 20px"
-                                    class="ms-1 btn btn-primary btn-sm m-0 p-0 d-flex justify-content-center align-items-center"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#training_dipelajari_modal"
-                                    onclick="document.getElementById('trainingmenu_guid_dipelajari').value = '<?= $training->guid ?>'"
-                            >+
-                            </button>
-                        </div>
-                        <ul>
-                            <?php foreach ($training->dipelajari as $dipelajari): ?>
-                                <li><?= $dipelajari->value ?></li>
-                            <?php endforeach; ?>
-                        </ul>
+                        <button class="btn btn-outline-primary btn-sm w-100" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTraining<?= $index ?>">
+                            Toggle Detail
+                        </button>
                     </div>
                 </div>
             </div>

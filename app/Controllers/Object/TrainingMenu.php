@@ -17,6 +17,21 @@ class TrainingMenu extends BaseController
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 
+    function upload($guid): RedirectResponse
+    {
+        // upload #key
+        if (!empty($_FILES['imgSrc']['name'])) {
+            $path = $this->request->getFile('imgSrc');
+            $path->move(UPLOAD_FOLDER_URL);
+
+            // update training
+            $trainings = model("TrainingMenu");
+            $trainings->update($guid, ["imgSrc" => "{backend_url}/uploads/" . $path->getName()]);
+        }
+
+        return redirect()->to(previous_url());
+    }
+
     public function create(): RedirectResponse
     {
         $_POST['guid'] = $this->GUID();
