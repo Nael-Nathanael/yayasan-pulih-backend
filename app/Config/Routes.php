@@ -151,6 +151,7 @@ $routes->group("object", function ($routes) {
         $routes->post('uploadkategori/(:any)', "Object\TrainingMenu::uploadkategori/$1", ["as" => "object.trainingmenu.uploadkategori"]);
         $routes->get('setprakerja/(:any)', "Object\TrainingMenu::setprakerja/$1", ["as" => "object.trainingmenu.setprakerja"]);
         $routes->get('get', "Object\TrainingMenu::get", ["as" => "object.trainingmenu.get"]);
+        $routes->get('search/(:any)', "Object\TrainingMenu::search/$1", ["as" => "object.trainingmenu.search"]);
         $routes->get('get/(:any)', "Object\TrainingMenu::get/$1", ["as" => "object.trainingmenu.getsegment"]);
         $routes->get('getkategori', "Object\TrainingMenu::getKategori", ["as" => "object.trainingmenu.getKategori"]);
         $routes->get('getkategori/(:any)', "Object\TrainingMenu::getKategori/$1", ["as" => "object.trainingmenu.getKategorisegment"]);

@@ -164,6 +164,12 @@ class TrainingMenu extends BaseController
         return $this->response->setJSON($training);
     }
 
+    public function search($query = '')
+    {
+        $trainings = model("TrainingMenu");
+        return $this->response->setJSON($trainings->like("name", $query)->get()->getResult());
+    }
+
     public function updatekategoriname()
     {
         $old = $this->request->getPost("old");
