@@ -18,10 +18,10 @@
                         <div class="px-3">
                             <div class="card fw-bold text-white shadow-sm"
                             >
-                                <div class="card-body p-0  position-relative rounded d-flex justify-content-center align-items-center"
+                                <div class="card-body p-0  position-relative rounded d-flex justify-content-center align-items-center lazy"
+                                     data-backgroundImage="url('<?= $kate->imgSrc ? str_replace("{backend_url}", base_url(), $kate->imgSrc) : "https://via.placeholder.com/200" ?>')"
                                      style="
                                              height: 80px;
-                                             background-image: url('<?= $kate->imgSrc ? str_replace("{backend_url}", base_url(), $kate->imgSrc) : "https://via.placeholder.com/200" ?>');
                                              background-size: cover;
                                              background-position: center;
                                              background-repeat: no-repeat;
@@ -104,8 +104,8 @@
             <div class="col-md-4 col-sm-6 col-12 h-100">
                 <div class="card shadow-sm position-relative mb-5 h-100">
                     <div class="card-header p-0" style="height: 200px">
-                        <img alt="" class="w-100" height="200px"
-                             src="<?= $training->imgSrc ? str_replace("{backend_url}", base_url(), $training->imgSrc) : "https://via.placeholder.com/400x200" ?>"
+                        <img alt="" class="w-100 lazy" height="200px"
+                             data-src="<?= $training->imgSrc ? str_replace("{backend_url}", base_url(), $training->imgSrc) : "https://via.placeholder.com/400x200" ?>"
                              onclick="document.getElementById('imgForTraining<?= $training->guid ?>').click()"
                              style="object-fit: cover; cursor: pointer">
 
@@ -514,4 +514,67 @@
     </div>
 </div>
 
+<?= $this->endSection(); ?>
+
+<?= $this->section("javascript") ?>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let lazyloadImages = document.querySelectorAll("img.lazy");
+        let lazyloadThrottleTimeout;
+
+        function lazyload() {
+            if (lazyloadThrottleTimeout) {
+                clearTimeout(lazyloadThrottleTimeout);
+            }
+
+            lazyloadThrottleTimeout = setTimeout(function () {
+                var scrollTop = window.pageYOffset;
+                lazyloadImages.forEach(function (img) {
+                    if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                    }
+                });
+                if (lazyloadImages.length === 0) {
+                    document.removeEventListener("scroll", lazyload);
+                    window.removeEventListener("resize", lazyload);
+                    window.removeEventListener("orientationChange", lazyload);
+                }
+            }, 20);
+        }
+
+        document.addEventListener("scroll", lazyload);
+        window.addEventListener("resize", lazyload);
+        window.addEventListener("orientationChange", lazyload);
+
+
+        let lazyloadDivs = document.querySelectorAll("div.lazy");
+        let lazyloadDivThrottleTimeout;
+
+        function lazyloaddiv() {
+            if (lazyloadDivThrottleTimeout) {
+                clearTimeout(lazyloadDivThrottleTimeout);
+            }
+
+            lazyloadDivThrottleTimeout = setTimeout(function () {
+                const scrollTop = window.pageYOffset;
+                lazyloadDivs.forEach(function (div) {
+                    if (div.offsetTop < (window.innerHeight + scrollTop)) {
+                        div.style.backgroundImage = div.dataset.backgroundimage
+                        div.classList.remove("lazy")
+                    }
+                });
+                if (lazyloadDivs.length === 0) {
+                    document.removeEventListener("scroll", lazyloaddiv);
+                    window.removeEventListener("resize", lazyloaddiv);
+                    window.removeEventListener("orientationChange", lazyloaddiv);
+                }
+            }, 20);
+        }
+
+        document.addEventListener("scroll", lazyloaddiv);
+        window.addEventListener("resize", lazyloaddiv);
+        window.addEventListener("orientationChange", lazyloaddiv);
+    });
+</script>
 <?= $this->endSection(); ?>
