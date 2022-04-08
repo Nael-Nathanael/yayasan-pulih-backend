@@ -5,6 +5,11 @@
     <div class="card shadow-sm">
         <div class="card-header">
             <h5 class="mb-0">Kategori Training</h5>
+
+            <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#kategori_create_modal">
+                Create New
+            </button>
         </div>
         <div class="card-body">
             <div class="row g-2">
@@ -12,7 +17,6 @@
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="px-3">
                             <div class="card fw-bold text-white shadow-sm"
-                                 onclick="document.getElementById('imgForTrainingKate<?= $index ?>').click()"
                             >
                                 <div class="card-body p-0  position-relative rounded d-flex justify-content-center align-items-center"
                                      style="
@@ -23,6 +27,7 @@
                                              background-repeat: no-repeat;
                                              cursor: pointer;
                                              "
+                                     onclick="document.getElementById('imgForTrainingKate<?= $index ?>').click()"
                                 >
                                     <div class="top-0 start-0 w-100 h-100 position-absolute rounded"
                                          style="background: linear-gradient(90deg, rgba(9,73,121,1) 0%, rgba(7,47,146,0.5) 25%, rgba(0,212,255,0) 100%);">
@@ -35,8 +40,14 @@
                                     <div class="row w-100 g-0">
                                         <div class="col-6">
                                             <div class="me-1">
-                                                <button type="button" class="btn btn-warning disabled btn-sm w-100"
-                                                        style="opacity: .3" disabled>
+
+                                                <button type="button" class="btn btn-warning btn-sm w-100"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#edit_kategori_name_modal"
+                                                        onclick="
+                                                                document.getElementById('kate_name').value = '<?= $kate->name ?>';
+                                                                document.getElementById('kate_old_name').value = '<?= $kate->name ?>';
+                                                                ">
                                                     Rename
                                                 </button>
                                             </div>
@@ -402,4 +413,54 @@
         </form>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="kategori_create_modal" tabindex="-1"
+     aria-labelledby="kategori_create_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form action="<?= route_to("object.trainingmenu.createkategori") ?>" method="post"
+              class="modal-content" enctype="multipart/form-data">
+            <div class="modal-header">
+                <h5 class="modal-title" id="kategori_create_modalLabel">Create New Kategori</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label for="name">Kategori</label>
+                    <input class="form-control" type="text" name="name" id="name" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="edit_kategori_name_modal" tabindex="-1"
+     aria-labelledby="edit_kategori_name_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form action="<?= route_to("object.trainingmenu.updatekategoriname") ?>" method="post"
+              class="modal-content" enctype="multipart/form-data">
+            <input type="hidden" name="old" id="kate_old_name">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit_kategori_name_modalLabel">Update Category Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label for="kate_name">Kategori</label>
+                    <input class="form-control" type="text" name="new" id="kate_name" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <?= $this->endSection(); ?>

@@ -52,7 +52,18 @@ class TrainingMenu extends BaseController
         $_POST['guid'] = $this->GUID();
 
         $trainings = model("TrainingMenu");
+        $kategoriModel = model("TrainingMenuKategori");
+        if (!$kategoriModel->find($_POST['kategori'])) {
+            $kategoriModel->insert(["name" => $_POST['kategori']]);
+        }
         $trainings->save($_POST);
+        return redirect()->to(previous_url());
+    }
+
+    public function createkategori(): RedirectResponse
+    {
+        $model = model("TrainingMenuKategori");
+        $model->save($_POST);
         return redirect()->to(previous_url());
     }
 
@@ -139,5 +150,38 @@ class TrainingMenu extends BaseController
         $training->market = $market->where("trainingmenu_guid", $training->guid)->findAll();
         $training->dipelajari = $dipelajari->where("trainingmenu_guid", $training->guid)->findAll();
         return $this->response->setJSON($training);
+    }
+
+    public function updatekategoriname()
+    {
+        $old = $this->request->getPost("old");
+        $new = $this->request->getPost("new");
+
+        if ($old == $new) {
+            return redirect()->to(previous_url());
+        }
+
+        $trainingmenuModel = model("TrainingMenu");
+        if ($trainingmenuModel->where("kategori", $new)->countAllResults() > 0) {
+            return redirect()->to(previous_url());
+        }
+
+        $kategoriModel = model("TrainingMenuKategori");
+        if ($kategoriModel->where("name", $new)->countAllResults() > 0) {
+            return redirect()->to(previous_url());
+        }
+
+        $kategoriModel->update($old, ['name' => $new]);
+
+        if ($trainingmenuModel->where("kategori", $old)->countAllResults() == 0) {
+            return redirect()->to(previous_url());
+        }
+
+        $trainingmenuModel
+            ->set("kategori", $new)
+            ->where("kategori", $old)
+            ->update();
+
+        return redirect()->to(previous_url());
     }
 }
