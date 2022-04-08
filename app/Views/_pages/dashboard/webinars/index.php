@@ -91,39 +91,36 @@
                             <thead>
                             <tr>
                                 <th style="width: 1px">No</th>
+                                <th class="d-none">Video ID</th>
                                 <th>Title</th>
-                                <th class="text-center">Datetime</th>
-                                <th class="text-center">Description</th>
-                                <th class="text-center">Registration URL</th>
-                                <th class="text-center">Presenters</th>
-                                <th class="text-center">Delete</th>
+                                <th>Playlist</th>
+                                <th>Upload Date</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($webinars as $index => $webinar): ?>
                                 <tr>
                                     <td><?= $index + 1 ?></td>
+                                    <td class="d-none">
+                                        <?= $webinar->videoId ?>
+                                    </td>
                                     <td>
-                                        <?= $webinar->title ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $webinar->datetime ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $webinar->description ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <?= $webinar->url ?>
-                                    </td>
-                                    <td class="text-center">
-                                        <a class="btn btn-outline-info btn-sm"
-                                           href="<?= route_to("dashboard.webinars.presenters", $webinar->id) ?>">
-                                            Presenters
+                                        <a href="<?= $webinar->url ?>" target="_blank">
+                                            <?= $webinar->title ?>
                                         </a>
+                                    </td>
+                                    <td>
+                                        <a href="<?= $webinar->playlist_url ?>" target="_blank">
+                                            <?= $webinar->playlist_title ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?= date("d M Y", strtotime($webinar->upload_date)) ?>
                                     </td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-danger btn-sm"
-                                           href="<?= route_to("dashboard.webinars.delete", $webinar->id) ?>">
+                                           href="<?= route_to("dashboard.webinars.delete", $webinar->videoId) ?>">
                                             Delete
                                         </a>
                                     </td>
@@ -149,28 +146,30 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Headline"
-                               required>
+                        <input type="text" class="form-control" id="videoId" name="videoId" required>
+                        <label for="videoId">Video ID</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="url" name="url" required>
+                        <label for="url">URL</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="title" name="title" required>
                         <label for="title">Title</label>
                     </div>
-
                     <div class="form-floating mb-3">
-                        <input type="datetime-local" class="form-control" id="datetime" name="datetime"
-                               placeholder="Date and Time"
-                               required>
-                        <label for="datetime">Date and Time</label>
+                        <input type="text" class="form-control" id="playlist_url" name="playlist_url" required>
+                        <label for="playlist_url">Playlist URL</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="playlist_title" name="playlist_title" required>
+                        <label for="playlist_title">Playlist Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="upload_date" name="upload_date" required>
+                        <label for="upload_date">Upload Date</label>
                     </div>
 
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Description" id="description" name="description"
-                                  style="min-height: 100px"></textarea>
-                        <label for="description">Description</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="url" class="form-control" id="url" name="url" placeholder="Registration Link"
-                               required>
-                        <label for="url">Registration Link</label>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

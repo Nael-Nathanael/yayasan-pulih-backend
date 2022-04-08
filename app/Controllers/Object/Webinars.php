@@ -11,14 +11,7 @@ class Webinars extends BaseController
     public function create(): RedirectResponse
     {
         $webinars = model("Webinars");
-        $webinars->save(
-            [
-                "title" => $this->request->getPost("title"),
-                "datetime" => $this->request->getPost("datetime"),
-                "description" => $this->request->getPost("description"),
-                "url" => $this->request->getPost("url"),
-            ]
-        );
+        $webinars->save($_POST);
         return redirect()->to(previous_url());
     }
 
