@@ -62,6 +62,7 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('trainingmenu', function ($routes) {
         $routes->get("", "Dashboard\TrainingMenu::index", ["as" => "dashboard.trainingmenu.index"]);
         $routes->get("delete/(:segment)", "Dashboard\TrainingMenu::delete/$1", ["as" => "dashboard.trainingmenu.delete"]);
+        $routes->get("kategori/(:segment)", "Dashboard\TrainingMenu::deletekategori/$1", ["as" => "dashboard.trainingmenu.deletekategori"]);
     });
     $routes->group('services', function ($routes) {
         $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);

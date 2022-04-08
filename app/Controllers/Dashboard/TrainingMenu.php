@@ -25,6 +25,9 @@ class TrainingMenu extends BaseController
         }
 
         $data['kategori'] = $kategori->findAll();
+        foreach ($data['kategori'] as $kate) {
+            $kate->deletable = $trainings->where("kategori", $kate->name)->countAllResults() == 0;
+        }
 
         return view("_pages/dashboard/trainingMenu/index", $data);
     }
@@ -33,6 +36,13 @@ class TrainingMenu extends BaseController
     {
         $trainingModel = model("TrainingMenu");
         $trainingModel->delete($pk);
+        return redirect()->route("dashboard.trainingmenu.index");
+    }
+
+    public function deletekategori($pk): RedirectResponse
+    {
+        $kategoriModel = model("TrainingMenuKategori");
+        $kategoriModel->delete($pk);
         return redirect()->route("dashboard.trainingmenu.index");
     }
 }

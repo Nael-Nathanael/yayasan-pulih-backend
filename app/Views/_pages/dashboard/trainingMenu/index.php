@@ -11,22 +11,55 @@
                 <?php foreach ($kategori as $index => $kate): ?>
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="px-3">
-                            <div class="card position-relative card-body fw-bold text-white shadow-sm d-flex justify-content-center align-items-center"
-                                 style="
-                                         height: 80px;
-                                         background-image: url('<?= $kate->imgSrc ? str_replace("{backend_url}", base_url(), $kate->imgSrc) : "https://via.placeholder.com/200" ?>');
-                                         background-size: cover;
-                                         background-position: center;
-                                         background-repeat: no-repeat;
-                                         cursor: pointer;
-                                         "
+                            <div class="card fw-bold text-white shadow-sm"
                                  onclick="document.getElementById('imgForTrainingKate<?= $index ?>').click()"
                             >
-                                <div class="top-0 start-0 w-100 h-100 position-absolute rounded"
-                                     style="background: linear-gradient(90deg, rgba(9,73,121,1) 0%, rgba(7,47,146,0.5) 25%, rgba(0,212,255,0) 100%);">
+                                <div class="card-body p-0  position-relative rounded d-flex justify-content-center align-items-center"
+                                     style="
+                                             height: 80px;
+                                             background-image: url('<?= $kate->imgSrc ? str_replace("{backend_url}", base_url(), $kate->imgSrc) : "https://via.placeholder.com/200" ?>');
+                                             background-size: cover;
+                                             background-position: center;
+                                             background-repeat: no-repeat;
+                                             cursor: pointer;
+                                             "
+                                >
+                                    <div class="top-0 start-0 w-100 h-100 position-absolute rounded"
+                                         style="background: linear-gradient(90deg, rgba(9,73,121,1) 0%, rgba(7,47,146,0.5) 25%, rgba(0,212,255,0) 100%);">
+
+                                    </div>
+                                    <span class="position-relative rounded"><?= $kate->name ?></span>
+                                </div>
+                                <div class="card-footer">
+
+                                    <div class="row w-100 g-0">
+                                        <div class="col-6">
+                                            <div class="me-1">
+                                                <button type="button" class="btn btn-warning disabled btn-sm w-100"
+                                                        style="opacity: .3" disabled>
+                                                    Rename
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="ms-1">
+                                                <?php if ($kate->deletable): ?>
+                                                    <a class="btn btn-outline-danger btn-sm w-100"
+                                                       onclick="return confirm('Are you sure?')"
+                                                       href="<?= route_to("dashboard.trainingmenu.deletekategori", $kate->name) ?>">
+                                                        Delete
+                                                    </a>
+                                                <?php else: ?>
+                                                    <button type="button" class="btn btn-danger disabled btn-sm w-100"
+                                                            style="opacity: .3" disabled>
+                                                        Delete
+                                                    </button>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
-                                <span class="position-relative"><?= $kate->name ?></span>
                             </div>
 
 
@@ -57,7 +90,6 @@
 
     <div class="row">
         <?php foreach ($trainings as $index => $training): ?>
-
             <div class="col-md-4 col-sm-6 col-12 h-100">
                 <div class="card shadow-sm position-relative mb-5 h-100">
                     <div class="card-header p-0" style="height: 200px">
