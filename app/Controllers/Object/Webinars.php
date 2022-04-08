@@ -18,13 +18,9 @@ class Webinars extends BaseController
     public function get(): ResponseInterface
     {
         $webinars = model("Webinars");
-        $presenters = model("Presenters");
         $lines = model("Lines");
 
-        $allWebinar = $webinars->orderBy("datetime DESC")->limit(10)->findAll();
-        foreach ($allWebinar as $webinar) {
-            $webinar->presenters = $presenters->where("webinar_id", $webinar->id)->findAll();
-        }
+        $allWebinar = $webinars->orderBy("upload_date DESC")->findAll();
 
         $data['webinars'] = $allWebinar;
         $data['banner'] = [
