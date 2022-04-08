@@ -94,7 +94,7 @@
 
     <div class="w-100 text-end my-3">
         <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                data-bs-target="#webinar_create_modal">
+                data-bs-target="#training_create_modal">
             Create New
         </button>
     </div>
@@ -245,8 +245,17 @@
                         <div class="row mb-2 w-100 g-0">
                             <div class="col-6">
                                 <div class="me-1">
-                                    <button type="button" class="btn btn-warning disabled btn-sm w-100"
-                                            style="opacity: .3" disabled>
+                                    <button type="button" class="btn btn-outline-warning btn-sm w-100"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#training_edit_modal"
+                                            onclick="
+                                                    document.getElementById('trainingmenu_guid').value = '<?= $training->guid ?>';
+                                                    document.getElementById('trainingmenu_kategori').value = '<?= $training->kategori ?>';
+                                                    document.getElementById('trainingmenu_subkategori').value = '<?= $training->subkategori ?>';
+                                                    document.getElementById('trainingmenu_name').value = '<?= $training->name ?>';
+                                                    document.getElementById('trainingmenu_durasi_hour').value = '<?= $training->durasi_hour ?>';
+                                                    "
+                                    >
                                         Edit
                                     </button>
                                 </div>
@@ -275,13 +284,13 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="webinar_create_modal" tabindex="-1"
-     aria-labelledby="webinar_create_modalLabel" aria-hidden="true">
+<div class="modal fade" id="training_create_modal" tabindex="-1"
+     aria-labelledby="training_create_modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <form action="<?= route_to("object.trainingmenu.create") ?>" method="post"
               class="modal-content" enctype="multipart/form-data">
             <div class="modal-header">
-                <h5 class="modal-title" id="webinar_create_modalLabel">Create New Training</h5>
+                <h5 class="modal-title" id="training_create_modalLabel">Create New Training</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -303,6 +312,48 @@
                 <div class="form-group mb-3">
                     <label for="durasi_hour">Durasi (Jam)</label>
                     <input class="form-control" type="number" name="durasi_hour" min="1" value="1" id="durasi_hour"
+                           required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="training_edit_modal" tabindex="-1"
+     aria-labelledby="training_edit_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <form action="<?= route_to("object.trainingmenu.update") ?>" method="post"
+              class="modal-content" enctype="multipart/form-data">
+            <input type="hidden" name="guid" id="trainingmenu_guid">
+            <div class="modal-header">
+                <h5 class="modal-title" id="training_create_modalLabel">Update Training</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-3">
+                    <label for="trainingmenu_kategori">Kategori</label>
+                    <input class="form-control" type="text" name="kategori" id="trainingmenu_kategori" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="trainingmenu_subkategori">Subkategori</label>
+                    <input class="form-control" type="text" name="subkategori" id="trainingmenu_subkategori" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="trainingmenu_name">Nama</label>
+                    <input class="form-control" type="text" name="name" id="trainingmenu_name" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="trainingmenu_durasi_hour">Durasi (Jam)</label>
+                    <input class="form-control" type="number" name="durasi_hour" min="1" value="1"
+                           id="trainingmenu_durasi_hour"
                            required>
                 </div>
             </div>

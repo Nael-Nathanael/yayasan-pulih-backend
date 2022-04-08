@@ -60,6 +60,18 @@ class TrainingMenu extends BaseController
         return redirect()->to(previous_url());
     }
 
+
+    public function update(): RedirectResponse
+    {
+        $trainings = model("TrainingMenu");
+        $kategoriModel = model("TrainingMenuKategori");
+        if (!$kategoriModel->find($_POST['kategori'])) {
+            $kategoriModel->insert(["name" => $_POST['kategori']]);
+        }
+        $trainings->save($_POST);
+        return redirect()->to(previous_url());
+    }
+
     public function createkategori(): RedirectResponse
     {
         $model = model("TrainingMenuKategori");

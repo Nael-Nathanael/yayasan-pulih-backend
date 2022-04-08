@@ -141,6 +141,7 @@ $routes->group("object", function ($routes) {
 
     $routes->group('trainingmenu', function ($routes) {
         $routes->post('create', "Object\TrainingMenu::create", ["as" => "object.trainingmenu.create"]);
+        $routes->post('update', "Object\TrainingMenu::update", ["as" => "object.trainingmenu.update"]);
         $routes->post('createkategori', "Object\TrainingMenu::createkategori", ["as" => "object.trainingmenu.createkategori"]);
         $routes->post('createoutline', "Object\TrainingMenu::createoutline", ["as" => "object.trainingmenu.createoutline"]);
         $routes->post('createtantangan', "Object\TrainingMenu::createtantangan", ["as" => "object.trainingmenu.createtantangan"]);
