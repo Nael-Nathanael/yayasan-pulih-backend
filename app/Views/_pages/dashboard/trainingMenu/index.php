@@ -575,6 +575,9 @@
         document.addEventListener("scroll", lazyloaddiv);
         window.addEventListener("resize", lazyloaddiv);
         window.addEventListener("orientationChange", lazyloaddiv);
+
+        lazyload();
+        lazyloaddiv();
     });
 </script>
 <?= $this->endSection(); ?>
