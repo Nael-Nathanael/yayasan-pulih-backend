@@ -14,9 +14,11 @@ class Webinars extends BaseController
 
         // upload thumbnail_url
         $path = $this->request->getFile('thumbnail_url');
-        $path->move(UPLOAD_FOLDER_URL);
+        if ($path) {
+            $path->move(UPLOAD_FOLDER_URL);
 
-        $_POST['thumbnail_url'] = "{backend_url}/uploads/" . $path->getName();
+            $_POST['thumbnail_url'] = "{backend_url}/uploads/" . $path->getName();
+        }
         $webinars->save($_POST);
 
         return redirect()->to(previous_url());
