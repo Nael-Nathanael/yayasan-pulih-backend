@@ -168,7 +168,7 @@ class TrainingMenu extends BaseController
     {
         $trainings = model("TrainingMenu");
         $dipelajari = model("TrainingMenuDipelajari");
-        $result = $trainings->like("name", $query)->get()->getResult();
+        $result = $trainings->like("name", $query)->orLike("kategori", $query)->get()->getResult();
         foreach ($result as $training) {
             $training->dipelajari = $dipelajari->where("trainingmenu_guid", $training->guid)->findAll();
         }

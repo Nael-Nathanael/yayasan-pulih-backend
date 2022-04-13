@@ -18,6 +18,7 @@ class Webinars extends Model
         'playlist_title',
         'playlist_url',
         'upload_date',
+        'thumbnail_url'
     ];
 
     // Dates

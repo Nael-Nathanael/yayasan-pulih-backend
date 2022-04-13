@@ -11,7 +11,14 @@ class Webinars extends BaseController
     public function create(): RedirectResponse
     {
         $webinars = model("Webinars");
+
+        // upload thumbnail_url
+        $path = $this->request->getFile('thumbnail_url');
+        $path->move(UPLOAD_FOLDER_URL);
+
+        $_POST['thumbnail_url'] = "{backend_url}/uploads/" . $path->getName();
         $webinars->save($_POST);
+
         return redirect()->to(previous_url());
     }
 

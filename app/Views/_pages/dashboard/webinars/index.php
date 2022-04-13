@@ -139,7 +139,7 @@
          aria-labelledby="webinar_create_modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <form action="<?= route_to("object.webinars.create") ?>" method="post"
-                  class="modal-content">
+                  class="modal-content" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title" id="webinar_create_modalLabel">Create New Webinar</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -169,7 +169,10 @@
                         <input type="date" class="form-control" id="upload_date" name="upload_date" required>
                         <label for="upload_date">Upload Date</label>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="thumbnail_url">Custom Thumbnail</label>
+                        <input type="file" class="form-control" id="thumbnail_url" name="thumbnail_url">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
