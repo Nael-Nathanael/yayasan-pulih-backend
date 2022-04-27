@@ -47,8 +47,6 @@ class Home extends BaseController
             Phone: $phone <br />
             <hr />
             $message
-            <br />
-            (email sent by do-not-reply@automail.altha.co.id)
         ";
 
         $email = Services::email();
