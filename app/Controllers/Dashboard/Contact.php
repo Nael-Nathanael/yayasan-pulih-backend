@@ -25,8 +25,7 @@ class Contact extends BaseController
 
         $email = Services::email();
 
-//        $email->setTo('info@altha.co.id');
-        $email->setTo('nathanael@altha.co.id');
+        $email->setTo('info@altha.co.id');
 
         $email->setSubject($instance->subject);
         $email->setMessage($instance->content);
@@ -41,7 +40,7 @@ class Contact extends BaseController
     {
         $contactModel = model("Contact");
         $contactModel->delete($id);
-        
+
         return redirect()->back();
     }
 }
