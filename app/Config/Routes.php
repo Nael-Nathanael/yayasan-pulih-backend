@@ -86,8 +86,9 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('contact', function ($routes) {
         $routes->get("", "Dashboard\Contact::index", ["as" => "dashboard.contact.index"]);
+        $routes->get("approve/(:segment)", "Dashboard\Contact::approve/$1", ["as" => "dashboard.contact.approve"]);
+        $routes->get("delete/(:segment)", "Dashboard\Contact::delete/$1", ["as" => "dashboard.contact.delete"]);
     });
-
 });
 
 $routes->group("object", function ($routes) {
