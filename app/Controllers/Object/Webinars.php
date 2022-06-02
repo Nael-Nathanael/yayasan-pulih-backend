@@ -11,32 +11,32 @@ class Webinars extends BaseController
     public function create(): RedirectResponse
     {
         $webinars = model("Webinars");
-        $webinars->save(
-            [
-                "title" => $this->request->getPost("title"),
-                "datetime" => $this->request->getPost("datetime"),
-                "description" => $this->request->getPost("description"),
-                "url" => $this->request->getPost("url"),
-            ]
-        );
+
+        // upload thumbnail_url
+        $path = $this->request->getFile('thumbnail_url');
+        if ($path->getFilename()) {
+            $path->move(UPLOAD_FOLDER_URL);
+
+            $_POST['thumbnail_url'] = "{backend_url}/uploads/" . $path->getName();
+        }
+        $webinars->save($_POST);
+
         return redirect()->to(previous_url());
     }
 
     public function get(): ResponseInterface
     {
         $webinars = model("Webinars");
-        $presenters = model("Presenters");
         $lines = model("Lines");
 
-        $allWebinar = $webinars->orderBy("datetime DESC")->limit(10)->findAll();
-        foreach ($allWebinar as $webinar) {
-            $webinar->presenters = $presenters->where("webinar_id", $webinar->id)->findAll();
-        }
+        $allWebinar = $webinars->orderBy("upload_date DESC")->findAll();
 
         $data['webinars'] = $allWebinar;
         $data['banner'] = [
             "headline" => $lines->findOrEmptyString("WEBINARS_BANNER_HEADLINE"),
             "description" => $lines->findOrEmptyString("WEBINARS_BANNER_DESCRIPTION"),
+            "imgUrl" => $lines->findOrPlaceholderImage("WEBINARS_BANNER_IMAGE"),
+            "title" => "Webinars"
         ];
         return $this->response->setJSON($data);
     }

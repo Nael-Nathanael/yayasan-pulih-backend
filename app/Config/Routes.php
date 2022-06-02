@@ -63,6 +63,7 @@ $routes->group('dashboard', function ($routes) {
     $routes->group('trainingmenu', function ($routes) {
         $routes->get("", "Dashboard\TrainingMenu::index", ["as" => "dashboard.trainingmenu.index"]);
         $routes->get("delete/(:segment)", "Dashboard\TrainingMenu::delete/$1", ["as" => "dashboard.trainingmenu.delete"]);
+        $routes->get("kategori/(:segment)", "Dashboard\TrainingMenu::deletekategori/$1", ["as" => "dashboard.trainingmenu.deletekategori"]);
     });
     $routes->group('services', function ($routes) {
         $routes->get("", "Dashboard\Services::index", ["as" => "dashboard.services.index"]);
@@ -86,8 +87,9 @@ $routes->group('dashboard', function ($routes) {
     });
     $routes->group('contact', function ($routes) {
         $routes->get("", "Dashboard\Contact::index", ["as" => "dashboard.contact.index"]);
+        $routes->get("approve/(:segment)", "Dashboard\Contact::approve/$1", ["as" => "dashboard.contact.approve"]);
+        $routes->get("delete/(:segment)", "Dashboard\Contact::delete/$1", ["as" => "dashboard.contact.delete"]);
     });
-
 });
 
 $routes->group("object", function ($routes) {
@@ -141,12 +143,21 @@ $routes->group("object", function ($routes) {
 
     $routes->group('trainingmenu', function ($routes) {
         $routes->post('create', "Object\TrainingMenu::create", ["as" => "object.trainingmenu.create"]);
+        $routes->post('update', "Object\TrainingMenu::update", ["as" => "object.trainingmenu.update"]);
+        $routes->post('createkategori', "Object\TrainingMenu::createkategori", ["as" => "object.trainingmenu.createkategori"]);
         $routes->post('createoutline', "Object\TrainingMenu::createoutline", ["as" => "object.trainingmenu.createoutline"]);
         $routes->post('createtantangan', "Object\TrainingMenu::createtantangan", ["as" => "object.trainingmenu.createtantangan"]);
         $routes->post('createmarket', "Object\TrainingMenu::createmarket", ["as" => "object.trainingmenu.createmarket"]);
         $routes->post('createdipelajari', "Object\TrainingMenu::createdipelajari", ["as" => "object.trainingmenu.createdipelajari"]);
+        $routes->post('upload/(:any)', "Object\TrainingMenu::upload/$1", ["as" => "object.trainingmenu.upload"]);
+        $routes->post('uploadkategori/(:any)', "Object\TrainingMenu::uploadkategori/$1", ["as" => "object.trainingmenu.uploadkategori"]);
+        $routes->get('setprakerja/(:any)', "Object\TrainingMenu::setprakerja/$1", ["as" => "object.trainingmenu.setprakerja"]);
         $routes->get('get', "Object\TrainingMenu::get", ["as" => "object.trainingmenu.get"]);
+        $routes->get('search/(:any)', "Object\TrainingMenu::search/$1", ["as" => "object.trainingmenu.search"]);
         $routes->get('get/(:any)', "Object\TrainingMenu::get/$1", ["as" => "object.trainingmenu.getsegment"]);
+        $routes->get('getkategori', "Object\TrainingMenu::getKategori", ["as" => "object.trainingmenu.getKategori"]);
+        $routes->get('getkategori/(:any)', "Object\TrainingMenu::getKategori/$1", ["as" => "object.trainingmenu.getKategorisegment"]);
+        $routes->post('updatekategoriname', "Object\TrainingMenu::updatekategoriname", ["as" => "object.trainingmenu.updatekategoriname"]);
     });
 
     $routes->group('presenters', function ($routes) {

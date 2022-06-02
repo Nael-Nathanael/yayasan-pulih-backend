@@ -4,20 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TrainingMenu extends Model
+class TrainingMenuKategori extends Model
 {
-    protected $table = 'trainingmenu';
-    protected $primaryKey = 'guid';
+    protected $table = 'trainingmenu_kategori';
+    protected $primaryKey = 'name';
     protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
-        'guid',
-        'kategori',
-        "subkategori",
         "name",
-        "durasi_hour",
-        "isPrakerja",
+        "group",
         "imgSrc",
     ];
 

@@ -107,6 +107,8 @@ class Insights extends BaseController
                 "banner" => [
                     "headline" => $lines->findOrEmptyString("INSIGHTS_BANNER_HEADLINE"),
                     "description" => $lines->findOrEmptyString("INSIGHTS_BANNER_DESCRIPTION"),
+                    "imgUrl" => $lines->findOrPlaceholderImage("INSIGHTS_BANNER_IMAGE"),
+                    "title" => "Insights"
                 ]
             ]);
         }

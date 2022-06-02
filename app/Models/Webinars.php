@@ -7,15 +7,18 @@ use CodeIgniter\Model;
 class Webinars extends Model
 {
     protected $table = 'webinars';
-    protected $primaryKey = 'id';
-    protected $useAutoIncrement = true;
+    protected $primaryKey = 'videoId';
+    protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
-        'datetime',
-        'title',
-        'description',
+        'videoId',
         'url',
+        'title',
+        'playlist_title',
+        'playlist_url',
+        'upload_date',
+        'thumbnail_url'
     ];
 
     // Dates

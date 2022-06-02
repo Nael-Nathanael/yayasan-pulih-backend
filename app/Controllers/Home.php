@@ -47,15 +47,23 @@ class Home extends BaseController
             Phone: $phone <br />
             <hr />
             $message
-            <br />
-            (email sent by do-not-reply@automail.altha.co.id)
         ";
+
+        $subject = "[Contact Request] $firstname $lastname - $jobtitle at $company";
+
+        $contactModel = model("Contact");
+        $contactModel->insert(
+            [
+                "subject" => $subject,
+                "content" => $mailBody
+            ]
+        );
 
         $email = Services::email();
 
-        $email->setTo('info@altha.co.id');
+        $email->setTo('nathanael@altha.co.id');
 
-        $email->setSubject("[Contact Request] $firstname $lastname - $jobtitle at $company");
+        $email->setSubject($subject);
         $email->setMessage($mailBody);
         $email->send();
 
