@@ -28,7 +28,7 @@ class SendMail extends BaseController
         $dataSource = $this->request->getPost("source");
 
         $email = Services::email();
-        $email->setTo('nael.nathanael71@altha.co.id');
+        $email->setTo('contact@altha.co.id');
 
         $email->setSubject("More Altha Services Information Request");
         $email->setMessage("
