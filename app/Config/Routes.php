@@ -37,6 +37,7 @@ $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 
 $routes->post('/sendmail', 'Home::sendmail', ["as" => "sendmail"]);
 $routes->post('/sendmail_manual', "SendMail::do_send", ["as" => "sendmail_manual"]);
+$routes->post('/sendmail_servicerequest', "SendMail::do_send_servicerequest", ["as" => "sendmail_servicerequest"]);
 
 $routes->group('dashboard', function ($routes) {
     $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);

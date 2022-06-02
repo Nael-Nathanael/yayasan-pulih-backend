@@ -49,6 +49,7 @@
                                     </ul>
 
                                     <p
+                                            class="btn btn-sm btn-primary w-100"
                                             style="cursor: pointer; text-wrap: avoid"
                                             data-bs-toggle="modal"
                                             data-bs-target="#training_outline_modal"
@@ -65,6 +66,7 @@
                                     </ul>
 
                                     <p
+                                            class="btn btn-sm btn-primary w-100"
                                             style="cursor: pointer; text-wrap: avoid"
                                             data-bs-toggle="modal"
                                             data-bs-target="#training_tantangan_modal"
@@ -81,6 +83,7 @@
                                     </ul>
 
                                     <p
+                                            class="btn btn-sm btn-primary w-100"
                                             style="cursor: pointer; text-wrap: avoid"
                                             data-bs-toggle="modal"
                                             data-bs-target="#training_market_modal"
@@ -97,6 +100,7 @@
                                     </ul>
 
                                     <p
+                                            class="btn btn-sm btn-primary w-100"
                                             style="cursor: pointer; text-wrap: avoid"
                                             data-bs-toggle="modal"
                                             data-bs-target="#training_dipelajari_modal"
