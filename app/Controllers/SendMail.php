@@ -44,7 +44,18 @@ class SendMail extends BaseController
         $email->setTo($dataEmail);
 
         $email->setSubject("Thank you for Contacting us");
-        $email->setMessage("We will get back to you as soon as possible");
+        $email->setMessage("
+            Terima kasih telah menghubungi kami!
+            <br/>
+            Kami sangat menghargai anda telah menghubungi Altha Consulting. Salah satu staf kami akan menghubungi anda secepatnya. Selamat beraktifitas!
+            <br/>
+            <br/>
+            Thank you for getting in touch! 
+            <br/>
+            We appreciate you contacting Altha Consulting. One of our colleagues will get back in touch with you soon! Have a great day!
+        ");
+        $email->setReplyTo("contact@altha.co.id", "Altha Automated Email");
+
         $email->send();
 
         // do send mail
