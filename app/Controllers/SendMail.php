@@ -91,7 +91,44 @@ class SendMail extends BaseController
             We appreciate you contacting Altha Consulting. One of our colleagues will get back in touch with you soon! Have a great day!
         ");
         $email->setReplyTo("contact@altha.co.id", "Altha Automated Email");
-        $email->attach(base_url("/attachments/IT Maturity Assessment - Altha Consulting.pdf"));
+        $email->attach(base_url("/attachments/ITMaturityAssessment_AlthaConsulting.pdf"));
+
+        $email->send();
+
+        // do send mail
+        return $this->response->setJSON(["message" => "success"]);
+    }
+
+    public function sendmail_requestitmp(): ResponseInterface
+    {
+        $dataEmail = $this->request->getPost("email");
+
+        $email = Services::email();
+        $email->setTo('contact@altha.co.id');
+
+        $email->setSubject("Requested PDF About ITMP");
+        $email->setMessage("
+            email: $dataEmail
+        ");
+        $email->send();
+
+
+        $email = Services::email();
+        $email->setTo($dataEmail);
+
+        $email->setSubject("More about Altha Consulting IT Master Plan");
+        $email->setMessage("
+            Terima kasih telah menghubungi kami!
+            <br/>
+            Kami sangat menghargai anda telah menghubungi Altha Consulting. Salah satu staf kami akan menghubungi anda secepatnya. Selamat beraktifitas!
+            <br/>
+            <br/>
+            Thank you for getting in touch! 
+            <br/>
+            We appreciate you contacting Altha Consulting. One of our colleagues will get back in touch with you soon! Have a great day!
+        ");
+        $email->setReplyTo("contact@altha.co.id", "Altha Automated Email");
+        $email->attach(base_url("/attachments/ITMasterPlan_AlthaConsulting.pdf"));
 
         $email->send();
 
