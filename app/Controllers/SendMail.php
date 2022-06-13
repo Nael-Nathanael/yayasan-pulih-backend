@@ -99,7 +99,7 @@ class SendMail extends BaseController
         return $this->response->setJSON(["message" => "success"]);
     }
 
-    public function sendmail_requestitmp(): ResponseInterface
+    public function requestitmp(): ResponseInterface
     {
         $dataEmail = $this->request->getPost("email");
 
