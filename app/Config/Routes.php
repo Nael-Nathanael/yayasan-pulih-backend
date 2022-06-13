@@ -38,6 +38,8 @@ $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 $routes->post('/sendmail', 'Home::sendmail', ["as" => "sendmail"]);
 $routes->post('/sendmail_manual', "SendMail::do_send", ["as" => "sendmail_manual"]);
 $routes->post('/sendmail_servicerequest', "SendMail::do_send_servicerequest", ["as" => "sendmail_servicerequest"]);
+$routes->post('/sendmail_requestitma', "SendMail::requestitma", ["as" => "sendmail_requestitma"]);
+$routes->post('/sendmail_requestitmp', "SendMail::requestitmp", ["as" => "sendmail_requestitmp"]);
 
 $routes->group('dashboard', function ($routes) {
     $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);
