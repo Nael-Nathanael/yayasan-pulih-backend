@@ -9,12 +9,12 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail = "althaconsulting.noreply@gmail.com";
+    public $fromEmail = "contact@altha.co.id";
 
     /**
      * @var string
      */
-    public $fromName = "Altha Email Notification Service";
+    public $fromName = "Altha Email Service";
 
     /**e
      * @var string
@@ -54,14 +54,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPUser = "althaconsulting.noreply@gmail.com";
+    public $SMTPUser = "contact@altha.co.id";
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = "otmybgaiconofuhi";
+    public $SMTPPass = "Altha2023";
 
     /**
      * SMTP Port
