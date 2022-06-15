@@ -65,13 +65,15 @@ class SendMail extends BaseController
     public function requestitma(): ResponseInterface
     {
         $dataEmail = $this->request->getPost("email");
+        $dataPhone = $this->request->getPost("phone");
 
         $email = Services::email();
         $email->setTo('contact@altha.co.id');
 
         $email->setSubject("Requested PDF About ITMA");
         $email->setMessage("
-            email: $dataEmail
+            email: $dataEmail,
+            phone: $dataPhone
         ");
         $email->send();
 
@@ -102,13 +104,15 @@ class SendMail extends BaseController
     public function requestitmp(): ResponseInterface
     {
         $dataEmail = $this->request->getPost("email");
-
+        $dataPhone = $this->request->getPost("phone");
+        
         $email = Services::email();
         $email->setTo('contact@altha.co.id');
 
         $email->setSubject("Requested PDF About ITMP");
         $email->setMessage("
-            email: $dataEmail
+            email: $dataEmail,
+            phone: $dataPhone
         ");
         $email->send();
 
