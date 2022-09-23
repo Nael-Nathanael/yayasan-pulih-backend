@@ -61,7 +61,7 @@ class Home extends BaseController
 
         $email = Services::email();
 
-        $email->setTo('mailto:muhammad.aqib@altha.co.id');
+        $email->setTo('muhammad.aqib@altha.co.id');
 
         $email->setSubject($subject);
         $email->setMessage($mailBody);
