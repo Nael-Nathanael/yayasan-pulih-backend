@@ -63,6 +63,62 @@
                     <div class="w-100">
                         <div class="card shadow-sm mb-2">
                             <div class="card-header">
+                                Carousel
+                            </div>
+                            <div class="card-body">
+                                <input type="hidden" value="<?= $article->carouselUrls != "" ? 0 : 1 ?>"
+                                       name="carousel-changed" id="carousel-changed">
+                                <div id="existing-carousel">
+                                    <?php if ($article->carouselUrls != ""): ?>
+                                        <?php $carouselUrl = explode("{SEPARATOR}", $article->carouselUrls) ?>
+
+                                        <?php foreach ($carouselUrl as $imgUrl): ?>
+                                            <a class="d-block mb-2" href="<?= $imgUrl ?>" target="_blank"
+                                               rel="noreferrer">
+                                                <img src="<?= $imgUrl ?>" class="w-100 border"
+                                                     style="max-height: 40px; object-fit: cover; object-position: center"
+                                                     alt="">
+                                            </a>
+                                        <?php endforeach ?>
+
+                                        <button type="button" class="btn-outline-danger btn btn-sm w-100"
+                                                onclick="changeCarousel()">
+                                            Change Carousel
+                                        </button>
+                                    <?php endif ?>
+                                </div>
+                                <div id="new-carousel" class="<?= $article->carouselUrls ? "d-none" : "" ?>">
+                                    <?php if ($article->carouselUrls != ""): ?>
+                                        <div class="w-100 mb-4 text-end">
+                                            <button type="button" class="btn-outline-danger btn btn-sm"
+                                                    onclick="unchangeCarousel()">
+                                                Cancel change Carousel
+                                            </button>
+                                        </div>
+                                    <?php endif ?>
+
+                                    <div id="carousel-inputs">
+                                        <div class="d-flex mb-2">
+                                            <div class="input-group me-2">
+                                                <input type="file" name="carousel[]"
+                                                       class="form-control form-control-sm">
+                                            </div>
+
+                                            <button type="button" class="btn-outline-danger btn btn-sm p-0"
+                                                    onclick="this.parentNode.remove()" style="width: 35px">
+                                                -
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-primary btn-sm w-100"
+                                            onclick="addCarouselInput()">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm mb-2">
+                            <div class="card-header">
                                 Post Settings
                             </div>
                             <div class="card-body">
@@ -205,5 +261,34 @@
         })
 
     document.getElementById("content").value = `<?= str_replace("{backend_url}", base_url(), $article->content) ?>`
+
+    function changeCarousel() {
+        document.getElementById("existing-carousel").classList.add("d-none")
+        document.getElementById("new-carousel").classList.remove("d-none")
+        document.getElementById("carousel-changed").value = 1
+    }
+
+    function unchangeCarousel() {
+        document.getElementById("existing-carousel").classList.remove("d-none")
+        document.getElementById("new-carousel").classList.add("d-none")
+        document.getElementById("carousel-changed").value = 0
+    }
+
+    function addCarouselInput() {
+        const newElement = document.createElement("div")
+        newElement.innerHTML = `
+        <div class="d-flex mb-2">
+            <div class="input-group me-2">
+                <input type="file" name="carousel[]" class="form-control form-control-sm">
+            </div>
+
+            <button type="button" class="btn-outline-danger btn btn-sm p-0"
+                    onclick="this.parentNode.remove()" style="width: 35px">
+                -
+            </button>
+        </div>
+        `
+        document.getElementById("carousel-inputs").appendChild(newElement)
+    }
 </script>
 <?= $this->endSection(); ?>

@@ -22,7 +22,8 @@ class Insights extends Model
         "service",
         "keywords",
         "meta_title",
-        "meta_description"
+        "meta_description",
+        "carouselUrls"
     ];
 
     // Dates

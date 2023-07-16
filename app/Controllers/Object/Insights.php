@@ -5,6 +5,7 @@ namespace App\Controllers\Object;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
+use Exception;
 
 class Insights extends BaseController
 {
@@ -27,6 +28,22 @@ class Insights extends BaseController
             $imgUrl = base_url("/uploads/" . $path->getName());
         }
 
+        // upload carousel image
+        $carouselUrls = [];
+        if ($_FILES['carousel']['name'][0] && sizeof($_FILES['carousel']['name']) > 0) {
+            $paths = $this->request->getFileMultiple('carousel');
+            foreach ($paths as $path) {
+                try {
+                    $path->move(UPLOAD_FOLDER_URL);
+                } catch (Exception $e) {
+                    continue;
+                }
+                $carouselUrls[] = base_url("/uploads/" . $path->getName());
+            }
+        }
+
+        $carouselUrls = implode("{SEPARATOR}", $carouselUrls);
+
         $insights->insert(
             [
                 "imgUrl" => $imgUrl,
@@ -40,6 +57,7 @@ class Insights extends BaseController
                 "keywords" => $this->request->getPost("keywords"),
                 "meta_title" => $this->request->getPost("meta_title"),
                 "meta_description" => $this->request->getPost("meta_description"),
+                "carouselUrls" => $carouselUrls
             ]
         );
 
@@ -49,6 +67,22 @@ class Insights extends BaseController
     public function update($slug): RedirectResponse
     {
         $insights = model("Insights");
+
+        // upload carousel image
+        $carouselUrls = [];
+        if ($_FILES['carousel']['name'][0] !== "" && sizeof($_FILES['carousel']['name']) > 0) {
+            $paths = $this->request->getFileMultiple('carousel');
+            foreach ($paths as $path) {
+                try {
+                    $path->move(UPLOAD_FOLDER_URL);
+                } catch (Exception $e) {
+                    continue;
+                }
+                $carouselUrls[] = base_url("/uploads/" . $path->getName());
+            }
+        }
+
+        $carouselUrls = implode("{SEPARATOR}", $carouselUrls);
 
         $data = [
             "slug" => $slug,
@@ -62,6 +96,10 @@ class Insights extends BaseController
             "meta_title" => $this->request->getPost("meta_title"),
             "meta_description" => $this->request->getPost("meta_description"),
         ];
+
+        if ($this->request->getPost('carousel-changed') == '1') {
+            $data['carouselUrls'] = $carouselUrls;
+        }
 
         // upload image
         if ($_FILES["coverImage"]["name"]) {

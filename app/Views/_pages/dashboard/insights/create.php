@@ -40,7 +40,8 @@
             <div class="row" style="min-height: 600px">
                 <div class="col-lg-9 border-end">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control material-form-control" id="title" name="title" placeholder="title"
+                        <input type="text" class="form-control material-form-control" id="title" name="title"
+                               placeholder="title"
                                required>
                         <label for="title">Title</label>
                     </div>
@@ -61,6 +62,29 @@
                     </div>
                     <hr/>
                     <div class="w-100">
+                        <div class="card shadow-sm mb-2">
+                            <div class="card-header">
+                                Carousel
+                            </div>
+                            <div class="card-body">
+                                <div id="carousel-inputs">
+                                    <div class="d-flex mb-2">
+                                        <div class="input-group me-2">
+                                            <input type="file" name="carousel[]" class="form-control form-control-sm">
+                                        </div>
+
+                                        <button type="button" class="btn-outline-danger btn btn-sm p-0"
+                                                onclick="this.parentNode.remove()" style="width: 35px">
+                                            -
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm w-100"
+                                        onclick="addCarouselInput()">
+                                    +
+                                </button>
+                            </div>
+                        </div>
                         <div class="card shadow-sm mb-2">
                             <div class="card-header">
                                 Post Settings
@@ -200,5 +224,22 @@
             document.querySelector('.document-editor__toolbar').appendChild(editor.ui.view.toolbar.element);
             document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
         })
+
+    function addCarouselInput() {
+        const newElement = document.createElement("div")
+        newElement.innerHTML = `
+        <div class="d-flex mb-2">
+            <div class="input-group me-2">
+                <input type="file" name="carousel[]" class="form-control form-control-sm">
+            </div>
+
+            <button type="button" class="btn-outline-danger btn btn-sm p-0"
+                    onclick="this.parentNode.remove()" style="width: 35px">
+                -
+            </button>
+        </div>
+        `
+        document.getElementById("carousel-inputs").appendChild(newElement)
+    }
 </script>
 <?= $this->endSection(); ?>
