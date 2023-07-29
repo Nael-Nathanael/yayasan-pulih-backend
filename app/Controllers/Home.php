@@ -9,7 +9,7 @@ class Home extends BaseController
     public function index()
     {
         if (session()->get("logged_in")) {
-            return redirect()->route("dashboard.landing");
+            return redirect()->route("dashboard.articles.index");
         }
         return view('_pages/login');
     }
@@ -18,7 +18,7 @@ class Home extends BaseController
     {
         if ($this->request->getPost("password") == "admin") {
             session()->set("logged_in", true);
-            return redirect()->route("dashboard.landing.index");
+            return redirect()->route("dashboard.articles.index");
         }
         return redirect()->to(base_url());
     }
@@ -27,47 +27,5 @@ class Home extends BaseController
     {
         session()->destroy();
         return redirect()->to(base_url());
-    }
-
-    public function sendMail()
-    {
-        $firstname = $this->request->getPost("firstname");
-        $lastname = $this->request->getPost("lastname");
-        $jobtitle = $this->request->getPost("jobtitle");
-        $company = $this->request->getPost("company");
-        $email = $this->request->getPost("email");
-        $phone = $this->request->getPost("phone");
-        $message = $this->request->getPost("message");
-
-        $mailBody = "
-            Name: $firstname $lastname <br />
-            Job Title: $jobtitle <br />
-            Company: $company <br />
-            Email: $email <br />
-            Phone: $phone <br />
-            <hr />
-            $message
-        ";
-
-        $subject = "[Contact Request] $firstname $lastname - $jobtitle at $company";
-
-        $contactModel = model("Contact");
-        $contactModel->insert(
-            [
-                "subject" => $subject,
-                "content" => $mailBody
-            ]
-        );
-
-        $email = Services::email();
-
-        $email->setTo('muhammad.aqib@altha.co.id');
-
-        $email->setSubject($subject);
-        $email->setMessage($mailBody);
-        $email->send();
-
-        // do send mail
-        return redirect()->to("https://www.altha.co.id/contact-complete");
     }
 }

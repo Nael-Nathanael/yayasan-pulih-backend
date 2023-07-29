@@ -4,17 +4,23 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Presenters extends Model
+class ArticlesModel extends Model
 {
-    protected $table = 'presenters';
-    protected $primaryKey = 'id';
-    protected $useAutoIncrement = true;
+    protected $table = 'articles';
+    protected $primaryKey = 'slug';
+    protected $useAutoIncrement = false;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
-        'name',
-        'link',
-        'webinar_id',
+        'slug',
+        'title',
+        'tag',
+        'short_description',
+        'content',
+        'imgUrl',
+        "keywords",
+        "meta_title",
+        "meta_description",
     ];
 
     // Dates

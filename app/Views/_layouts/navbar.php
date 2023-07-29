@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Altha Web Control Panel</a>
+        <a class="navbar-brand" href="#">Yayasan Pulih Admin <sup><small>alpha 0.1</small></sup></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,31 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.landing.index") ?>">Landing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.insights.index") ?>">Insights</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.webinars.index") ?>">Webinars</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.services.index") ?>">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.careers.index") ?>">Careers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.about.index") ?>">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.trainings.index") ?>">Training (Promo)</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.trainingmenu.index") ?>">Training (Menu)</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= route_to("dashboard.contact.index") ?>">Contact Requests</a>
+                    <a class="nav-link" href="<?= route_to("dashboard.articles.index") ?>">Articles</a>
                 </li>
             </ul>
             <a href="<?= route_to("auth.logout") ?>" class="btn btn-outline-danger btn-sm">

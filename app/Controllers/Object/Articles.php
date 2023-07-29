@@ -7,16 +7,16 @@ use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
 
-class Insights extends BaseController
+class Articles extends BaseController
 {
     public function create(): RedirectResponse
     {
-        $insights = model("Insights");
+        $articles = model("ArticlesModel");
 
         $slug = url_title($this->request->getPost("title"));
         $finalSlug = $slug;
         $counter = 1;
-        while ($insights->find($finalSlug)) {
+        while ($articles->find($finalSlug)) {
             $finalSlug = $slug . "-" . $counter++;
         }
 
@@ -28,23 +28,7 @@ class Insights extends BaseController
             $imgUrl = base_url("/uploads/" . $path->getName());
         }
 
-        // upload carousel image
-        $carouselUrls = [];
-        if ($_FILES['carousel']['name'][0] && sizeof($_FILES['carousel']['name']) > 0) {
-            $paths = $this->request->getFileMultiple('carousel');
-            foreach ($paths as $path) {
-                try {
-                    $path->move(UPLOAD_FOLDER_URL);
-                } catch (Exception $e) {
-                    continue;
-                }
-                $carouselUrls[] = base_url("/uploads/" . $path->getName());
-            }
-        }
-
-        $carouselUrls = implode("{SEPARATOR}", $carouselUrls);
-
-        $insights->insert(
+        $articles->insert(
             [
                 "imgUrl" => $imgUrl,
                 "slug" => $finalSlug,
@@ -57,7 +41,6 @@ class Insights extends BaseController
                 "keywords" => $this->request->getPost("keywords"),
                 "meta_title" => $this->request->getPost("meta_title"),
                 "meta_description" => $this->request->getPost("meta_description"),
-                "carouselUrls" => $carouselUrls
             ]
         );
 
@@ -66,23 +49,7 @@ class Insights extends BaseController
 
     public function update($slug): RedirectResponse
     {
-        $insights = model("Insights");
-
-        // upload carousel image
-        $carouselUrls = [];
-        if ($_FILES['carousel']['name'][0] !== "" && sizeof($_FILES['carousel']['name']) > 0) {
-            $paths = $this->request->getFileMultiple('carousel');
-            foreach ($paths as $path) {
-                try {
-                    $path->move(UPLOAD_FOLDER_URL);
-                } catch (Exception $e) {
-                    continue;
-                }
-                $carouselUrls[] = base_url("/uploads/" . $path->getName());
-            }
-        }
-
-        $carouselUrls = implode("{SEPARATOR}", $carouselUrls);
+        $articles = model("ArticlesModel");
 
         $data = [
             "slug" => $slug,
@@ -97,10 +64,6 @@ class Insights extends BaseController
             "meta_description" => $this->request->getPost("meta_description"),
         ];
 
-        if ($this->request->getPost('carousel-changed') == '1') {
-            $data['carouselUrls'] = $carouselUrls;
-        }
-
         // upload image
         if ($_FILES["coverImage"]["name"]) {
             $path = $this->request->getFile("coverImage");
@@ -108,7 +71,7 @@ class Insights extends BaseController
             $data['imgUrl'] = base_url("/uploads/" . $path->getName());
         }
 
-        $insights->save($data);
+        $articles->save($data);
 
         return redirect()->to(previous_url());
     }
@@ -116,51 +79,51 @@ class Insights extends BaseController
 
     public function delete($slug): RedirectResponse
     {
-        $insights = model("Insights");
+        $articles = model("ArticlesModel");
 
-        $insights->delete($slug);
+        $articles->delete($slug);
 
         return redirect()->to(previous_url());
     }
 
     public function get($slug = false): ResponseInterface
     {
-        $insights = model("Insights");
+        $articles = model("ArticlesModel");
         if (!$slug) {
             $lines = model("Lines");
             $recommendation = [];
 
             for ($i = 1; $i <= 5; $i++) {
-                $lookupRecom = $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_$i" . "_SLUG"));
+                $lookupRecom = $articles->find($lines->findOrEmptyString("ARTICLE_RECOM_$i" . "_SLUG"));
                 if ($lookupRecom) {
                     $recommendation[] = $lookupRecom;
                 }
             }
             return $this->response->setJSON([
-                "articles" => $insights->orderBy("created_at DESC")->findAll(),
-                "headline" => $insights->find(
+                "articles" => $articles->orderBy("created_at DESC")->findAll(),
+                "headline" => $articles->find(
                     $lines->findOrEmptyString("HEADLINE_SLUG")
                 ),
                 "recommendation" => $recommendation,
                 "banner" => [
-                    "headline" => $lines->findOrEmptyString("INSIGHTS_BANNER_HEADLINE"),
-                    "description" => $lines->findOrEmptyString("INSIGHTS_BANNER_DESCRIPTION"),
-                    "imgUrl" => $lines->findOrPlaceholderImage("INSIGHTS_BANNER_IMAGE"),
-                    "title" => "Insights"
+                    "headline" => $lines->findOrEmptyString("ARTICLES_BANNER_HEADLINE"),
+                    "description" => $lines->findOrEmptyString("ARTICLES_BANNER_DESCRIPTION"),
+                    "imgUrl" => $lines->findOrPlaceholderImage("ARTICLES_BANNER_IMAGE"),
+                    "title" => "Articles"
                 ]
             ]);
         }
-        return $this->response->setJSON($insights->find($slug));
+        return $this->response->setJSON($articles->find($slug));
     }
 
     public function getFeatured(): ResponseInterface
     {
-        $insights = model("Insights");
+        $articles = model("ArticlesModel");
         $lines = model("Lines");
         $recommendation = [];
 
         for ($i = 1; $i <= 5; $i++) {
-            $lookupRecom = $insights->find($lines->findOrEmptyString("INSIGHT_RECOM_$i" . "_SLUG"));
+            $lookupRecom = $articles->find($lines->findOrEmptyString("ARTICLE_RECOM_$i" . "_SLUG"));
             if ($lookupRecom) {
                 $recommendation[] = $lookupRecom;
             }

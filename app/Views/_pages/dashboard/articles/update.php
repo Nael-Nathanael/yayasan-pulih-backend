@@ -33,7 +33,7 @@
 <?= $this->section("content"); ?>
 <div class="container-fluid">
     <section>
-        <form action="<?= route_to("object.insights.update", $article->slug) ?>" method="post" id="articleForm"
+        <form action="<?= route_to("object.articles.update", $article->slug) ?>" method="post" id="articleForm"
               enctype="multipart/form-data">
             <input type="hidden" name="content" id="content">
 
@@ -63,83 +63,11 @@
                     <div class="w-100">
                         <div class="card shadow-sm mb-2">
                             <div class="card-header">
-                                Carousel
-                            </div>
-                            <div class="card-body">
-                                <input type="hidden" value="<?= $article->carouselUrls != "" ? 0 : 1 ?>"
-                                       name="carousel-changed" id="carousel-changed">
-                                <div id="existing-carousel">
-                                    <?php if ($article->carouselUrls != ""): ?>
-                                        <?php $carouselUrl = explode("{SEPARATOR}", $article->carouselUrls) ?>
-
-                                        <?php foreach ($carouselUrl as $imgUrl): ?>
-                                            <a class="d-block mb-2" href="<?= $imgUrl ?>" target="_blank"
-                                               rel="noreferrer">
-                                                <img src="<?= $imgUrl ?>" class="w-100 border"
-                                                     style="max-height: 40px; object-fit: cover; object-position: center"
-                                                     alt="">
-                                            </a>
-                                        <?php endforeach ?>
-
-                                        <button type="button" class="btn-outline-danger btn btn-sm w-100"
-                                                onclick="changeCarousel()">
-                                            Change Carousel
-                                        </button>
-                                    <?php endif ?>
-                                </div>
-                                <div id="new-carousel" class="<?= $article->carouselUrls ? "d-none" : "" ?>">
-                                    <?php if ($article->carouselUrls != ""): ?>
-                                        <div class="w-100 mb-4 text-end">
-                                            <button type="button" class="btn-outline-danger btn btn-sm"
-                                                    onclick="unchangeCarousel()">
-                                                Cancel change Carousel
-                                            </button>
-                                        </div>
-                                    <?php endif ?>
-
-                                    <div id="carousel-inputs">
-                                        <div class="d-flex mb-2">
-                                            <div class="input-group me-2">
-                                                <input type="file" name="carousel[]"
-                                                       class="form-control form-control-sm">
-                                            </div>
-
-                                            <button type="button" class="btn-outline-danger btn btn-sm p-0"
-                                                    onclick="this.parentNode.remove()" style="width: 35px">
-                                                -
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-outline-primary btn-sm w-100"
-                                            onclick="addCarouselInput()">
-                                        +
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm mb-2">
-                            <div class="card-header">
                                 Post Settings
                             </div>
                             <div class="card-body">
-                                <div class="form-group mb-3">
-                                    <label for="topic">Topic</label>
-                                    <input type="text" name="topic" id="topic" class="form-control"
-                                           placeholder="Article Topic" value="<?= $article->topic ?>" required>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="tag">Industry</label>
-                                    <input type="text" name="tag" id="tag" class="form-control"
-                                           value="<?= $article->tag ?>" required>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="service">Service</label>
-                                    <input type="text" name="service" id="service" class="form-control"
-                                           value="<?= $article->service ?>" required>
-                                </div>
-
+                                <img src="<?= $article->imgUrl ?>" class="w-100 shadow-sm border" alt="oldCoverImage"
+                                     style="height: 100px; object-fit: cover">
                                 <div class="form-group mb-3">
                                     <label for="coverImage">Cover Image</label>
                                     <input type="file" name="coverImage" id="coverImage" class="form-control">

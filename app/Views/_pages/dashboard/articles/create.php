@@ -33,7 +33,7 @@
 <?= $this->section("content"); ?>
 <div class="container-fluid">
     <section>
-        <form action="<?= route_to("object.insights.create") ?>" method="post" id="articleForm"
+        <form action="<?= route_to("object.articles.create") ?>" method="post" id="articleForm"
               enctype="multipart/form-data">
             <input type="hidden" name="content" id="content">
 
@@ -64,48 +64,9 @@
                     <div class="w-100">
                         <div class="card shadow-sm mb-2">
                             <div class="card-header">
-                                Carousel
-                            </div>
-                            <div class="card-body">
-                                <div id="carousel-inputs">
-                                    <div class="d-flex mb-2">
-                                        <div class="input-group me-2">
-                                            <input type="file" name="carousel[]" class="form-control form-control-sm">
-                                        </div>
-
-                                        <button type="button" class="btn-outline-danger btn btn-sm p-0"
-                                                onclick="this.parentNode.remove()" style="width: 35px">
-                                            -
-                                        </button>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-outline-primary btn-sm w-100"
-                                        onclick="addCarouselInput()">
-                                    +
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm mb-2">
-                            <div class="card-header">
                                 Post Settings
                             </div>
                             <div class="card-body">
-                                <div class="form-group mb-3">
-                                    <label for="topic">Topic</label>
-                                    <input type="text" name="topic" id="topic" class="form-control"
-                                           placeholder="Article Topic" required>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="tag">Industry</label>
-                                    <input type="text" name="tag" id="tag" class="form-control" required>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="service">Service</label>
-                                    <input type="text" name="service" id="service" class="form-control" required>
-                                </div>
-
                                 <div class="form-group mb-3">
                                     <label for="coverImage">Cover Image</label>
                                     <input type="file" name="coverImage" id="coverImage" class="form-control">
@@ -225,21 +186,5 @@
             document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
         })
 
-    function addCarouselInput() {
-        const newElement = document.createElement("div")
-        newElement.innerHTML = `
-        <div class="d-flex mb-2">
-            <div class="input-group me-2">
-                <input type="file" name="carousel[]" class="form-control form-control-sm">
-            </div>
-
-            <button type="button" class="btn-outline-danger btn btn-sm p-0"
-                    onclick="this.parentNode.remove()" style="width: 35px">
-                -
-            </button>
-        </div>
-        `
-        document.getElementById("carousel-inputs").appendChild(newElement)
-    }
 </script>
 <?= $this->endSection(); ?>
