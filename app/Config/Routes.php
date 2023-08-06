@@ -37,9 +37,8 @@ $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 $routes->group('dashboard', function ($routes) {
     $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);
 
-    $routes->group('home', function ($routes) {
-        $routes->get("", "Dashboard\Home::index", ["as" => "dashboard.home.index"]);
-    });
+    $routes->get('home', "Dashboard\Home::index", ["as" => "dashboard.home.index"]);
+    $routes->get('tentang-pulih', "Dashboard\TentangPulih::index", ["as" => "dashboard.tentang-pulih.index"]);
 
     $routes->group('articles', function ($routes) {
         $routes->get("", "Dashboard\Articles::index", ["as" => "dashboard.articles.index"]);

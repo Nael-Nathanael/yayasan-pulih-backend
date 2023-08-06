@@ -16,6 +16,10 @@ section {
     border-bottom: transparent;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .imagePreview > img {
     transition: all .2s ease;
 }

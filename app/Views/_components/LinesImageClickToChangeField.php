@@ -7,10 +7,10 @@
 $lines = model("Lines");
 ?>
 
-<div class="position-relative imagePreview">
-    <img src="<?= $lines->findOrPlaceholderImage($field_id) ?>" class="w-100" alt=""
-         style="height: 300px; object-fit: cover; cursor: pointer"
-         onclick="document.getElementById('<?= $field_id ?>').click()">
+<div class="position-relative imagePreview rounded cursor-pointer text-center"
+     onclick="document.getElementById('<?= $field_id ?>').click()">
+    <img src="<?= $lines->findOrPlaceholderImage($field_id) ?>" class="w-100 rounded" alt=""
+         style="height: 250px; object-fit: cover;">
     <div class="position-absolute top-50 start-50 translate-middle h3 mb-0 text-warning d-none">
         Click to Change
     </div>

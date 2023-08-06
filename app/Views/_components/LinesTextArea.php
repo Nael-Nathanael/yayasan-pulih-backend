@@ -7,9 +7,9 @@
 
 <?php $lines = model("Lines"); ?>
 
-<div class="form-group mb-3">
-    <label for="<?= $field_id ?>"><?= $field_label ?></label>
-    <textarea rows="4" type="text" name="<?= $field_id ?>"
+<div class="form-floating mb-3">
+    <textarea style="min-height: 200px" type="text" name="<?= $field_id ?>"
               id="<?= $field_id ?>"
               class="form-control"><?= $lines->findOrEmptyString($field_id) ?></textarea>
+    <label for="<?= $field_id ?>"><?= $field_label ?></label>
 </div>
