@@ -61,4 +61,34 @@ class Lines extends BaseController
 
         return redirect()->to(previous_url());
     }
+
+    public function getByKey($key): ResponseInterface
+    {
+        $lines = model("Lines");
+        return $this->response->setJSON($lines->findOrEmptyString($key));
+    }
+
+    private function semiparse($object): object
+    {
+        $lines = model("Lines");
+
+        foreach ($object as $key => $value) {
+            if (is_string($value)) {
+                $object->$key = $lines->findOrEmptyString($value);
+            } else {
+                $object->$key = $this->semiparse($value);
+            }
+        }
+
+        return $object;
+    }
+
+    public function getFormatted(): ResponseInterface
+    {
+        $post = $this->request->getJSON();
+
+        $post = $this->semiparse($post);
+
+        return $this->response->setJSON($post);
+    }
 }

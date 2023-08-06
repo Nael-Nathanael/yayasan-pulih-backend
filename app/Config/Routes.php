@@ -20,7 +20,6 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
 $routes->setAutoRoute(false);
 
 /*
@@ -37,6 +36,10 @@ $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 
 $routes->group('dashboard', function ($routes) {
     $routes->get("", "Dashboard::index", ["as" => "dashboard.landing"]);
+
+    $routes->group('home', function ($routes) {
+        $routes->get("", "Dashboard\Home::index", ["as" => "dashboard.home.index"]);
+    });
 
     $routes->group('articles', function ($routes) {
         $routes->get("", "Dashboard\Articles::index", ["as" => "dashboard.articles.index"]);
@@ -59,8 +62,12 @@ $routes->group("object", function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
         $routes->post('dumpUpload', "Object\Lines::dumpUpload", ["as" => "object.lines.dumpUpload"]);
         $routes->post('update/(:segment)', "Object\Lines::update/$1", ["as" => "object.lines.update"]);
+        $routes->get('get/(:segment)', "Object\Lines::getByKey/$1", ["as" => "object.lines.getByKey"]);
+        $routes->post('getFormatted', "Object\Lines::getFormatted", ["as" => "object.lines.getFormatted"]);
     });
 });
+
+$routes->options('(:any)', "Object\Articles::get", ["as" => "object.articles.get"]);
 
 /*
  * --------------------------------------------------------------------

@@ -13,4 +13,17 @@ section {
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
+    border-bottom: transparent;
+}
+
+.imagePreview > img {
+    transition: all .2s ease;
+}
+
+.imagePreview:hover > img {
+    filter: brightness(80%);
+}
+
+.imagePreview:hover > div {
+    display: block !important;
 }

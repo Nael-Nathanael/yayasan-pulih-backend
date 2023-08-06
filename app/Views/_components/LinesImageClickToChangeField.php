@@ -7,9 +7,15 @@
 $lines = model("Lines");
 ?>
 
-<img src="<?= $lines->findOrPlaceholderImage($field_id) ?>" class="w-100" alt=""
-     style="max-height: 300px; object-fit: cover; cursor: pointer"
-     onclick="document.getElementById('<?= $field_id ?>').click()">
+<div class="position-relative imagePreview">
+    <img src="<?= $lines->findOrPlaceholderImage($field_id) ?>" class="w-100" alt=""
+         style="height: 300px; object-fit: cover; cursor: pointer"
+         onclick="document.getElementById('<?= $field_id ?>').click()">
+    <div class="position-absolute top-50 start-50 translate-middle h3 mb-0 text-warning d-none">
+        Click to Change
+    </div>
+</div>
+
 <form action="<?= route_to('object.lines.upload') ?>" method="post"
       id="<?= $field_id . "_form" ?>" enctype="multipart/form-data">
     <input type="hidden" name="key" value="<?= $field_id ?>">

@@ -50,10 +50,10 @@ class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
         define("UPLOAD_FOLDER_URL", ROOTPATH . 'public' . DIRECTORY_SEPARATOR . 'uploads');
         header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Headers: X-API-KEY, Origin,X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization");
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Requested-Method, Authorization");
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, PUT, DELETE");
         $method = $_SERVER['REQUEST_METHOD'];
-        if($method == "OPTIONS"){
+        if ($method == "OPTIONS") {
             die();
         }
     }

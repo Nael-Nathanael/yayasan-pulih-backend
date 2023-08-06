@@ -9,7 +9,7 @@ class Home extends BaseController
     public function index()
     {
         if (session()->get("logged_in")) {
-            return redirect()->route("dashboard.articles.index");
+            return redirect()->route("dashboard.home.index");
         }
         return view('_pages/login');
     }
@@ -18,7 +18,7 @@ class Home extends BaseController
     {
         if ($this->request->getPost("password") == "admin") {
             session()->set("logged_in", true);
-            return redirect()->route("dashboard.articles.index");
+            return redirect()->route("dashboard.home.index");
         }
         return redirect()->to(base_url());
     }
