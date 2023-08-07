@@ -45,6 +45,8 @@ $routes->group('dashboard', function ($routes) {
         $routes->get("create", "Dashboard\Articles::create", ["as" => "dashboard.articles.create"]);
         $routes->get("update/(:segment)", "Dashboard\Articles::update/$1", ["as" => "dashboard.articles.update"]);
     });
+
+    $routes->get('laporan-audit', "Dashboard\LaporanAudit::index", ["as" => "dashboard.laporan-audit.index"]);
 });
 
 $routes->group("object", function ($routes) {

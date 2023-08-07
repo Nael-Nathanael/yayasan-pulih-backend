@@ -160,7 +160,6 @@
 
 
 <?= $this->section("javascript") ?>
-
 <script>
     DecoupledDocumentEditor
         .create(document.querySelector('.editor'), {

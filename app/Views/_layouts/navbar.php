@@ -14,6 +14,9 @@
                     <a class="nav-link" href="<?= route_to("dashboard.tentang-pulih.index") ?>">Tentang Pulih</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.laporan-audit.index") ?>">Laporan Audit</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.articles.index") ?>">Articles</a>
                 </li>
             </ul>

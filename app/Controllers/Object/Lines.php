@@ -14,20 +14,18 @@ class Lines extends BaseController
         $group_name = $this->request->getPost("group_name");
 
         // upload #key
-        if (!empty($_FILES[$key]['name'])) {
-            $path = $this->request->getFile($key);
-            $path->move(UPLOAD_FOLDER_URL);
+        $path = $this->request->getFile($key);
+        $path->move(UPLOAD_FOLDER_URL);
 
-            // simpan ke lines
-            $linesModel = model("Lines");
-            $linesModel->save(
-                [
-                    "group_name" => $group_name,
-                    "key" => $key,
-                    "value" => base_url("/uploads/" . $path->getName())
-                ]
-            );
-        }
+        // simpan ke lines
+        $linesModel = model("Lines");
+        $linesModel->save(
+            [
+                "group_name" => $group_name,
+                "key" => $key,
+                "value" => base_url("/uploads/" . $path->getName())
+            ]
+        );
 
         return redirect()->to(previous_url());
     }
