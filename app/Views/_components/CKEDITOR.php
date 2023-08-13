@@ -9,7 +9,7 @@
 <div class="mb-3">
     <?= $field_label ?>
     <div class="row mb-3">
-        <div class="document-editor__toolbar border-0"></div>
+        <div class="document-editor__toolbar border-0" id="toolbar_<?= $field_id ?>"></div>
     </div>
     <div class="container bg-light py-4">
         <div class="editor<?= $field_id ?> border shadow-none bg-white" style="min-height: 200px">

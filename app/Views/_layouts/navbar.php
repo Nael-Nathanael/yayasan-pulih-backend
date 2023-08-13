@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.articles.index") ?>">Articles</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.faq.index") ?>">F.A.Q</a>
+                </li>
             </ul>
             <a href="<?= route_to("auth.logout") ?>" class="btn btn-outline-danger btn-sm">
                 Log Out
