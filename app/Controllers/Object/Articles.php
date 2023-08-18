@@ -99,18 +99,18 @@ class Articles extends BaseController
                     $recommendation[] = $lookupRecom;
                 }
             }
+
+            $articles_all = $articles
+                ->orderBy("created_at DESC")
+                ->findAll();
+
+            $excluded_field = 'content';
+            foreach ($articles_all as &$article) {
+                unset($article->$excluded_field);
+            }
             return $this->response->setJSON([
-                "articles" => $articles->orderBy("created_at DESC")->findAll(),
-                "headline" => $articles->find(
-                    $lines->findOrEmptyString("HEADLINE_SLUG")
-                ),
+                "articles" => $articles_all,
                 "recommendation" => $recommendation,
-                "banner" => [
-                    "headline" => $lines->findOrEmptyString("ARTICLES_BANNER_HEADLINE"),
-                    "description" => $lines->findOrEmptyString("ARTICLES_BANNER_DESCRIPTION"),
-                    "imgUrl" => $lines->findOrPlaceholderImage("ARTICLES_BANNER_IMAGE"),
-                    "title" => "Articles"
-                ]
             ]);
         }
         return $this->response->setJSON($articles->find($slug));

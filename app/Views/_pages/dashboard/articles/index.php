@@ -8,51 +8,6 @@
                     <div class="card-title">
                         Articles
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 d-flex justify-content-center align-items-center">
-
-                            <?= view("_components/LinesImageClickToChangeField",
-                                [
-                                    "field_group_name" => "ARTICLES",
-                                    "field_id" => "ARTICLES_BANNER_IMAGE",
-                                ]
-                            ) ?>
-
-                        </div>
-                        <form method="post" action="<?= route_to('object.lines.update', "ARTICLES") ?>" class="col-6">
-                            <?= view("_components/LinesFieldGroup",
-                                [
-                                    "fields" => [
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Headline",
-                                            "id" => "ARTICLES_BANNER_HEADLINE",
-                                        ],
-                                        [
-                                            "type" => "LinesTextArea",
-                                            "label" => "Description",
-                                            "id" => "ARTICLES_BANNER_DESCRIPTION",
-                                        ],
-                                    ]
-                                ]
-                            ) ?>
-                            <button type="submit" class="btn btn-sm btn-outline-primary">
-                                Save Changes
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="card shadow">
-                <div class="card-header">
-                    <div class="card-title">
-                        Articles
-                    </div>
                     <div class="card-toolkit">
                         <a class="btn btn-outline-success btn-sm" href="<?= route_to("dashboard.articles.create") ?>">
                             Create New
