@@ -39,6 +39,7 @@ $routes->group('dashboard', function ($routes) {
 
     $routes->get('home', "Dashboard\Home::index", ["as" => "dashboard.home.index"]);
     $routes->get('tentang-pulih', "Dashboard\TentangPulih::index", ["as" => "dashboard.tentang-pulih.index"]);
+    $routes->get('faq', "Dashboard\Faq::index", ["as" => "dashboard.faq.index"]);
 
     $routes->group('articles', function ($routes) {
         $routes->get("", "Dashboard\Articles::index", ["as" => "dashboard.articles.index"]);
@@ -57,6 +58,13 @@ $routes->group("object", function ($routes) {
         $routes->get('get', "Object\Articles::get", ["as" => "object.articles.get"]);
         $routes->get('getFeatured', "Object\Articles::getFeatured", ["as" => "object.articles.getFeatured"]);
         $routes->get('get/(:segment)', "Object\Articles::get/$1", ["as" => "object.articles.getSpecific"]);
+    });
+
+    $routes->group('faq', function ($routes) {
+        $routes->post('create', "Object\Faq::create", ["as" => "object.faq.create"]);
+        $routes->post('delete/(:segment)', "Object\Faq::delete/$1", ["as" => "object.faq.delete"]);
+        $routes->post('update/(:segment)', "Object\Faq::update/$1", ["as" => "object.faq.update"]);
+        $routes->get('', "Object\Faq::get_all", ["as" => "object.faq.index"]);
     });
 
     $routes->group('lines', function ($routes) {
