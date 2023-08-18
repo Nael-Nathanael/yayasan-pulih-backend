@@ -55,6 +55,7 @@
         <div class="card shadow-sm mb-3">
             <div class="card-header">File Laporan Audit</div>
             <div class="card-body">
+                <?= $lines->findOrEmptyString("LAPAUDIT_MAINFILE") ?>
                 <form action="<?= route_to('object.lines.upload') ?>" method="post" id="lapaudit_form"
                       enctype="multipart/form-data">
                     <input type="hidden" name="key" value="LAPAUDIT_MAINFILE">
@@ -66,12 +67,35 @@
                 </form>
             </div>
         </div>
-        <div class="card shadow-sm">
-            <div class="card-header">Preview Laporan Audit</div>
-            <object data="<?= $lines->findOrEmptyString("LAPAUDIT_MAINFILE") ?>" type="application/pdf" width="100%" height="600px">
-                <!-- Optional: Display a message if the PDF cannot be loaded -->
-                <p>It appears you don't have a PDF plugin for this browser. You can <a href="<?= $lines->findOrEmptyString("LAPAUDIT_MAINFILE") ?>">download the PDF</a> instead.</p>
-            </object>
+        <div class="card shadow-sm mb-3">
+            <div class="card-header">File Laporan Audit</div>
+            <div class="card-body">
+                <?= $lines->findOrEmptyString("LAPAUDIT_MAINFILE_2") ?>
+                <form action="<?= route_to('object.lines.upload') ?>" method="post" id="lapaudit_form_2"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="key" value="LAPAUDIT_MAINFILE_2">
+                    <input type="hidden" name="group_name" value="LAPAUDIT">
+                    <input class="form-control" id="LAPAUDIT_MAINFILE_2"
+                           name="LAPAUDIT_MAINFILE_2"
+                           onchange="document.getElementById('lapaudit_form_2').submit()"
+                           type="file">
+                </form>
+            </div>
+        </div>
+        <div class="card shadow-sm mb-3">
+            <div class="card-header">File Laporan Audit</div>
+            <div class="card-body">
+                <?= $lines->findOrEmptyString("LAPAUDIT_MAINFILE_3") ?>
+                <form action="<?= route_to('object.lines.upload') ?>" method="post" id="lapaudit_form_3"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="key" value="LAPAUDIT_MAINFILE_3">
+                    <input type="hidden" name="group_name" value="LAPAUDIT">
+                    <input class="form-control" id="LAPAUDIT_MAINFILE_3"
+                           name="LAPAUDIT_MAINFILE_3"
+                           onchange="document.getElementById('lapaudit_form_3').submit()"
+                           type="file">
+                </form>
+            </div>
         </div>
     </div>
 <?= $this->endSection(); ?>
