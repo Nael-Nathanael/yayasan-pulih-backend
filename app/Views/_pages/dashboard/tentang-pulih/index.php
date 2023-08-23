@@ -14,14 +14,13 @@
                             <?= summon_image_field("TENTANG", "TENTANG_BANNER_IMAGE") ?>
                         </div>
                         <div class="col-6">
-                            <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                                  class="w-100">
+                            <div class="w-100">
                                 <?= view("_components/LinesFieldGroup",
                                     [
                                         "fields" => [
                                             [
                                                 "type" => "LinesField",
-                                                "label" => "Tag",
+                                                "label" => "Section",
                                                 "id" => "TENTANG_BANNER_TAG",
                                             ],
                                         ]
@@ -48,10 +47,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-outline-primary">
-                                    Save Changes
-                                </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,29 +57,23 @@
         <hr class="my-5 mx-5">
 
         <section class="my-5">
-            <div class="card card-body shadow-sm mb-2">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Tag",
-                                    "id" => "TENTANG_HISTORY_TAG",
-                                ],
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Judul",
-                                    "id" => "TENTANG_HISTORY_TITLE",
-                                ],
-                            ]
+            <div class="w-100">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Section",
+                                "id" => "TENTANG_HISTORY_TAG",
+                            ],
+                            [
+                                "type" => "LinesField",
+                                "label" => "Judul",
+                                "id" => "TENTANG_HISTORY_TITLE",
+                            ],
                         ]
-                    ) ?>
-
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                    ]
+                ) ?>
             </div>
 
             <div class="my-5">
@@ -91,7 +81,7 @@
             </div>
 
             <div class="my-5">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
+                <div class="w-100">
                     <?= view("_components/LinesFieldGroup",
                         [
                             "fields" => [
@@ -103,15 +93,12 @@
                             ]
                         ]
                     ) ?>
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                </div>
             </div>
 
             <div class="row mt-3 g-2">
                 <div class="col-8">
-                    <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
+                    <div class="w-100">
                         <?= view("_components/LinesFieldGroup",
                             [
                                 "fields" => [
@@ -123,11 +110,7 @@
                                 ]
                             ]
                         ) ?>
-
-                        <button type="submit" class="btn btn-sm btn-outline-primary">
-                            Save Changes
-                        </button>
-                    </form>
+                    </div>
                 </div>
                 <div class="col-4">
                     <label for="">Gambar Kanan</label>
@@ -139,111 +122,84 @@
         <hr class="my-5 mx-5">
 
         <section class="my-5">
-
-            <div class="card card-body shadow-sm mb-3">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Tag",
-                                    "id" => "TENTANG_VSMS_TAG",
-                                ],
-                            ]
+            <div class="mb-3">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Section",
+                                "id" => "TENTANG_VSMS_TAG",
+                            ],
                         ]
-                    ) ?>
-
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                    ]
+                ) ?>
             </div>
 
-            <div class="card card-body shadow-sm mb-3">
-                <div class="row">
-                    <div class="col-7">
-                        <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>">
-                            <?= view("_components/LinesFieldGroup",
-                                [
-                                    "fields" => [
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Judul Visi",
-                                            "id" => "TENTANG_VSMS_TITLE_VS",
-                                        ],
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Konten Visi",
-                                            "id" => "TENTANG_VSMS_CONTENT_VS",
-                                        ],
-                                    ]
-                                ]
-                            ) ?>
 
-                            <button type="submit" class="btn btn-sm btn-outline-primary">
-                                Save Changes
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-1">
-                        <div class="w-100 d-flex justify-content-center align-items-center h-100">
-                            <div class="h-100 border" style="width: 1px"></div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <?= summon_image_field("TENTANG", "TENTANG_VSMS_IMG_VS") ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card card-body shadow-sm my-3 text-center">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Judul Misi",
-                                    "id" => "TENTANG_VSMS_TITLE_MS",
-                                ],
-                            ]
+            <div class="mb-3">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Judul Visi",
+                                "id" => "TENTANG_VSMS_TITLE_VS",
+                            ],
                         ]
-                    ) ?>
-
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                    ]
+                ) ?>
             </div>
 
-            <div class="row g-3 justify-content-center">
+            <div style="max-width: 300px" class="mb-3 mx-auto card border-0 shadow-sm p-3">
+                <?= summon_image_field("TENTANG", "TENTANG_VSMS_IMG_VS") ?>
+            </div>
+
+            <div class="mb-3">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Konten Visi",
+                                "id" => "TENTANG_VSMS_CONTENT_VS",
+                            ],
+                        ]
+                    ]
+                ) ?>
+            </div>
+
+            <div class="mb-3">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Judul Misi",
+                                "id" => "TENTANG_VSMS_TITLE_MS",
+                            ],
+                        ]
+                    ]
+                ) ?>
+            </div>
+
+            <div class="row g-3 justify-content-center mt-3">
                 <?php for ($i = 1; $i <= 5; $i++): ?>
                     <div class="col-4">
-                        <div class="card card-body shadow-sm">
-                            <div class="px-3">
-                                <?= summon_image_field("TENTANG", "TENTANG_VSMS_IMG_MS_$i") ?>
-                            </div>
-
-                            <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                                  class="w-100 mt-3 text-center">
-                                <?= view("_components/LinesFieldGroup",
-                                    [
-                                        "fields" => [
-                                            [
-                                                "type" => "LinesTextArea",
-                                                "label" => "Judul Misi $i",
-                                                "id" => "TENTANG_VSMS_CONTENT_MS_$i",
-                                            ],
-                                        ]
-                                    ]
-                                ) ?>
-
-                                <button type="submit" class="btn btn-sm btn-outline-primary">
-                                    Save Changes
-                                </button>
-                            </form>
+                        <div class="card p-3 shadow-sm border-0 mx-auto mb-3" style="max-width: 300px">
+                            <?= summon_image_field("TENTANG", "TENTANG_VSMS_IMG_MS_$i") ?>
                         </div>
+                        <?= view("_components/LinesFieldGroup",
+                            [
+                                "fields" => [
+                                    [
+                                        "type" => "LinesTextArea",
+                                        "label" => "Judul Misi $i",
+                                        "id" => "TENTANG_VSMS_CONTENT_MS_$i",
+                                    ],
+                                ]
+                            ]
+                        ) ?>
                     </div>
                 <?php endfor; ?>
             </div>
@@ -252,29 +208,23 @@
         <hr class="my-5 mx-5">
 
         <section class="my-5">
-            <div class="card card-body shadow-sm mb-2">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Tag",
-                                    "id" => "TENTANG_OFFICES_TAG",
-                                ],
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Judul",
-                                    "id" => "TENTANG_OFFICES_TITLE",
-                                ],
-                            ]
+            <div class="w-100 mb-2">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Section",
+                                "id" => "TENTANG_OFFICES_TAG",
+                            ],
+                            [
+                                "type" => "LinesField",
+                                "label" => "Judul",
+                                "id" => "TENTANG_OFFICES_TITLE",
+                            ],
                         ]
-                    ) ?>
-
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                    ]
+                ) ?>
             </div>
 
             <div class="row">
@@ -285,8 +235,7 @@
 
                             <hr class="my-3">
 
-                            <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                                  class="w-100">
+                            <div class="w-100">
                                 <?= view("_components/LinesFieldGroup",
                                     [
                                         "fields" => [
@@ -318,11 +267,7 @@
                                         ]
                                     ]
                                 ) ?>
-
-                                <button type="submit" class="btn btn-sm btn-outline-primary">
-                                    Save Changes
-                                </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 <?php endfor; ?>
@@ -332,29 +277,23 @@
         <hr class="my-5 mx-5">
 
         <section class="my-5">
-            <div class="card card-body shadow-sm mb-2">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>" class="w-100">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Tag",
-                                    "id" => "TENTANG_VALUE_TAG",
-                                ],
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Judul",
-                                    "id" => "TENTANG_VALUE_TITLE",
-                                ],
-                            ]
+            <div class="w-100 mb-2">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Section",
+                                "id" => "TENTANG_VALUE_TAG",
+                            ],
+                            [
+                                "type" => "LinesField",
+                                "label" => "Judul",
+                                "id" => "TENTANG_VALUE_TITLE",
+                            ],
                         ]
-                    ) ?>
-
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                    ]
+                ) ?>
             </div>
 
             <div class="row g-4">
@@ -365,8 +304,8 @@
                     <?= summon_image_field("TENTANG", "TENTANG_VALUE_IMG_RIGHT") ?>
                 </div>
                 <div class="col-6">
-                    <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                          class="w-100">
+                    <div
+                            class="w-100">
                         <?= view("_components/LinesFieldGroup",
                             [
                                 "fields" => [
@@ -378,15 +317,10 @@
                                 ]
                             ]
                         ) ?>
-
-                        <button type="submit" class="btn btn-sm btn-outline-primary">
-                            Save Changes
-                        </button>
-                    </form>
+                    </div>
                 </div>
                 <div class="col-6">
-                    <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                          class="w-100">
+                    <div class="w-100">
                         <?= view("_components/LinesFieldGroup",
                             [
                                 "fields" => [
@@ -398,18 +332,14 @@
                                 ]
                             ]
                         ) ?>
-                        <button type="submit" class="btn btn-sm btn-outline-primary">
-                            Save Changes
-                        </button>
-                    </form>
+                    </div>
                 </div>
                 <div class="col-12">
                     <?= summon_image_field("TENTANG", "TENTANG_VALUE_CARD_BG") ?>
 
                     <hr class="my-3"/>
 
-                    <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                          class="w-100">
+                    <div class="w-100">
 
                         <?= view("_components/LinesFieldGroup",
                             [
@@ -432,11 +362,7 @@
                                 ]
                             ]
                         ) ?>
-
-                        <button type="submit" class="btn btn-sm btn-outline-primary">
-                            Save Changes
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
 
@@ -456,29 +382,23 @@
         <hr class="my-5 mx-5">
 
         <section class="my-5">
-            <div class="card card-body shadow-sm mb-3">
-                <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                      class="w-100">
-                    <?= view("_components/LinesFieldGroup",
-                        [
-                            "fields" => [
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Tag",
-                                    "id" => "TENTANG_TEAM_TAG",
-                                ],
-                                [
-                                    "type" => "LinesField",
-                                    "label" => "Judul",
-                                    "id" => "TENTANG_TEAM_TITLE",
-                                ],
-                            ]
+            <div class="w-100">
+                <?= view("_components/LinesFieldGroup",
+                    [
+                        "fields" => [
+                            [
+                                "type" => "LinesField",
+                                "label" => "Section",
+                                "id" => "TENTANG_TEAM_TAG",
+                            ],
+                            [
+                                "type" => "LinesField",
+                                "label" => "Judul",
+                                "id" => "TENTANG_TEAM_TITLE",
+                            ],
                         ]
-                    ) ?>
-                    <button type="submit" class="btn btn-sm btn-outline-primary">
-                        Save Changes
-                    </button>
-                </form>
+                    ]
+                ) ?>
             </div>
 
             <div class="row gx-3 gy-2 justify-content-between">
@@ -488,8 +408,7 @@
                             <?= summon_image_field("TENTANG", "TENTANG_TEAM_IMG_$i") ?>
                             <hr class="my-3">
 
-                            <form method="post" action="<?= route_to('object.lines.update', "TENTANG") ?>"
-                                  class="w-100">
+                            <div class="w-100">
 
                                 <?= view("_components/LinesFieldGroup",
                                     [
@@ -507,17 +426,12 @@
                                         ]
                                     ]
                                 ) ?>
-
-                                <button type="submit" class="btn btn-sm btn-outline-primary">
-                                    Save Changes
-                                </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 <?php endfor; ?>
             </div>
         </section>
-
     </div>
 </div>
 <?= $this->endSection(); ?>

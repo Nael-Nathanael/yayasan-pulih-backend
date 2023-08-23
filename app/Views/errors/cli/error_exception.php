@@ -19,7 +19,8 @@ if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE) {
         CLI::write('Backtrace:', 'green');
     }
 
-    foreach ($backtraces as $i => $error) {
+    foreach ($backtraces as $i
+    => $error) {
         $padFile  = '    '; // 4 spaces
         $padClass = '       '; // 7 spaces
         $c        = str_pad($i + 1, 3, ' ', STR_PAD_LEFT);

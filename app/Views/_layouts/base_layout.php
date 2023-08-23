@@ -24,6 +24,56 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    async function triggerSave(element) {
+        const group_name = element.name.split("_")[0]
+        const apiUrl = '/object/lines/update/' + group_name;
+
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                [element.name]: element.value,
+            })
+        };
+
+        fetch(apiUrl, requestOptions)
+            .then(data => {
+                console.log(data);
+                const saved = "<span class='text-success fw-bolder'> (auto-saved)</span>"
+                const label = $(`label[for="${element.name}"]`);
+                if (label.children("span").length === 0) {
+                    label.append(saved)
+                    setTimeout(function () {
+                        label.children("span").remove()
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error(error)
+            });
+    }
+
+    async function handleInputChange(event) {
+        await triggerSave(event.target)
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const fields = document.getElementsByClassName("autosaving_field")
+
+        for (const field of fields) {
+            field.onkeyup = handleInputChange;
+            field.onchange = handleInputChange;
+        }
+    })
+</script>
+
 <script src="<?= base_url("/js/ckeditor/ckeditor.js") ?>"></script>
 <script>
     class MyUploadAdapter {

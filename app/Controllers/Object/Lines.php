@@ -43,10 +43,11 @@ class Lines extends BaseController
     }
 
 
-    public function update($group_name): RedirectResponse
+    public function update($group_name)
     {
         $lines = model("Lines");
         $post = $this->request->getPost();
+
         foreach ($post as $key => $value) {
             $lines->save(
                 [
@@ -55,6 +56,22 @@ class Lines extends BaseController
                     "value" => $value
                 ]
             );
+        }
+
+        $json = $this->request->getJSON();
+        if ($json) {
+
+            foreach ($json as $key => $value) {
+                $lines->save(
+                    [
+                        "group_name" => $group_name,
+                        "key" => $key,
+                        "value" => $value
+                    ]
+                );
+            }
+
+            return $this->response->setJSON('ok');
         }
 
         return redirect()->to(previous_url());

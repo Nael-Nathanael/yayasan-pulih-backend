@@ -17,7 +17,7 @@
                                     "fields" => [
                                         [
                                             "type" => "LinesField",
-                                            "label" => "Tag",
+                                            "label" => "Section",
                                             "id" => "FAQ_BANNER_TAG",
                                         ],
                                     ]

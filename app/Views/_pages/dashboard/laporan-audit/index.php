@@ -1,57 +1,9 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
+<?php $lines = model("Lines"); ?>
+
     <div class="container my-2">
-        <div class="card shadow-sm mb-3">
-            <div class="card-header">Laporan Audit</div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        <?= summon_image_field("LAPAUDIT", "LAPAUDIT_BANNER_IMAGE") ?>
-                    </div>
-                    <div class="col-6">
-                        <form method="post" action="<?= route_to('object.lines.update', "LAPAUDIT") ?>"
-                              class="w-100">
-                            <?= view("_components/LinesFieldGroup",
-                                [
-                                    "fields" => [
-                                        [
-                                            "type" => "LinesField",
-                                            "label" => "Tag",
-                                            "id" => "LAPAUDIT_BANNER_TAG",
-                                        ],
-                                    ]
-                                ]
-                            ) ?>
-
-                            <div class="mb-3">
-                                <label>
-                                    Headline
-                                </label>
-                                <div class="border border-1">
-                                    <?php $lines = model("Lines"); ?>
-                                    <input
-                                            type="hidden"
-                                            name="LAPAUDIT_BANNER_HEADLINE"
-                                            id="content"
-                                            value="<?= $lines->findOrEmptyString("LAPAUDIT_BANNER_HEADLINE") ?>">
-
-                                    <div class="row">
-                                        <div class="document-editor__toolbar border-0"></div>
-                                    </div>
-                                    <div class="editor border shadow-none bg-white">
-                                        <?= $lines->findOrEmptyString("LAPAUDIT_BANNER_HEADLINE") ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-outline-primary">
-                                Save Changes
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="card shadow-sm mb-3">
             <div class="card-header">File Laporan Audit</div>
             <div class="card-body">
