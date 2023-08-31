@@ -74,6 +74,13 @@ $routes->group("object", function ($routes) {
         $routes->get('', "Object\BigTeam::get_all", ["as" => "object.big-team.index"]);
     });
 
+    $routes->group('laporan-audit', function ($routes) {
+        $routes->post('create', "Object\LaporanAudit::create", ["as" => "object.laporan-audit.create"]);
+        $routes->post('delete/(:segment)', "Object\LaporanAudit::delete/$1", ["as" => "object.laporan-audit.delete"]);
+        $routes->post('update/(:segment)', "Object\LaporanAudit::update/$1", ["as" => "object.laporan-audit.update"]);
+        $routes->get('', "Object\LaporanAudit::get_all", ["as" => "object.laporan-audit.index"]);
+    });
+
     $routes->group('lines', function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
         $routes->post('dumpUpload', "Object\Lines::dumpUpload", ["as" => "object.lines.dumpUpload"]);
