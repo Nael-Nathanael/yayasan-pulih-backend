@@ -87,7 +87,7 @@
                             "fields" => [
                                 [
                                     "type" => "LinesTextArea",
-                                    "label" => "Konten",
+                                    "label" => "Deskripsi",
                                     "id" => "TENTANG_HISTORY_CONTENT",
                                 ],
                             ]
@@ -104,7 +104,7 @@
                                 "fields" => [
                                     [
                                         "type" => "LinesTextArea",
-                                        "label" => "Konten di samping ilustrasi",
+                                        "label" => "Deskripsi samping ilustrasi",
                                         "id" => "TENTANG_HISTORY_MORE_LEFT",
                                     ],
                                 ]
@@ -261,7 +261,7 @@
                                             ],
                                             [
                                                 "type" => "LinesTextArea",
-                                                "label" => "Content",
+                                                "label" => "Deskripsi",
                                                 "id" => "TENTANG_OFFICES_CONTENT_$i",
                                             ],
                                         ]
@@ -351,7 +351,7 @@
                                     ],
                                     [
                                         "type" => "LinesField",
-                                        "label" => "Content Kartu",
+                                        "label" => "Deskripsi Kartu",
                                         "id" => "TENTANG_VALUE_CARD_CONTENT",
                                     ],
                                     [
