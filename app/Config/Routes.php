@@ -67,6 +67,13 @@ $routes->group("object", function ($routes) {
         $routes->get('', "Object\Faq::get_all", ["as" => "object.faq.index"]);
     });
 
+    $routes->group('big_team', function ($routes) {
+        $routes->post('create', "Object\BigTeam::create", ["as" => "object.big-team.create"]);
+        $routes->post('delete/(:segment)', "Object\BigTeam::delete/$1", ["as" => "object.big-team.delete"]);
+        $routes->post('update/(:segment)', "Object\BigTeam::update/$1", ["as" => "object.big-team.update"]);
+        $routes->get('', "Object\BigTeam::get_all", ["as" => "object.big-team.index"]);
+    });
+
     $routes->group('lines', function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
         $routes->post('dumpUpload', "Object\Lines::dumpUpload", ["as" => "object.lines.dumpUpload"]);

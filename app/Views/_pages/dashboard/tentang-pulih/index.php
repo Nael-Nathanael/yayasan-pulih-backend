@@ -401,35 +401,151 @@
                 ) ?>
             </div>
 
-            <div class="row gx-3 gy-2 justify-content-between">
-                <?php for ($i = 1; $i <= 6; $i++): ?>
-                    <div class="col-4">
-                        <div class="card card-body shadow-sm">
-                            <?= summon_image_field("TENTANG", "TENTANG_TEAM_IMG_$i") ?>
-                            <hr class="my-3">
+            <div class="card">
+                <div class="card-header text-end">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#createBigTeam">
+                        <i class="bi bi-plus"></i> Add New
+                    </button>
 
-                            <div class="w-100">
+                    <div class="modal fade" id="createBigTeam" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Daftarkan Anggota Team</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <form action="<?= route_to("object.big-team.create") ?>" method="post"
+                                      enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="form-group mb-3 w-100 text-start">
+                                            <label for="photo">Foto</label>
+                                            <input type="file" name="photo" id="photo" class="form-control w-100">
+                                        </div>
 
-                                <?= view("_components/LinesFieldGroup",
-                                    [
-                                        "fields" => [
-                                            [
-                                                "type" => "LinesField",
-                                                "label" => "Nama Anggota",
-                                                "id" => "TENTANG_TEAM_NAME_$i",
-                                            ],
-                                            [
-                                                "type" => "LinesField",
-                                                "label" => "Posisi Anggota",
-                                                "id" => "TENTANG_TEAM_POSITION_$i",
-                                            ],
-                                        ]
-                                    ]
-                                ) ?>
+                                        <div class="form-floating mb-3 w-100">
+                                            <input type="text" name="name" id="name"
+                                                   class="form-control form-control-sm w-100">
+                                            <label for="name">Nama</label>
+                                        </div>
+                                        <div class="form-floating mb-3 w-100">
+                                            <input type="text" name="position" id="position"
+                                                   class="form-control form-control-sm w-100">
+                                            <label for="position">Posisi</label>
+                                        </div>
+                                        <div class="form-floating mb-3 w-100">
+                                            <textarea type="text" name="description" rows="3" id="description"
+                                                      class="form-control form-control-sm w-100"></textarea>
+                                            <label for="description">Deskripsi</label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                <?php endfor; ?>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th width="1">No</th>
+                                <th>Foto</th>
+                                <th>Nama</th>
+                                <th>Posisi</th>
+                                <th class="w-100">Deskripsi</th>
+                                <th>Edit</th>
+                                <th>Hapus</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $bigteam_model = model("BigTeamModel"); ?>
+                            <?php foreach ($bigteam_model->findAll() as $key => $item): ?>
+                                <tr>
+                                    <td><?= $key + 1 ?></td>
+                                    <td>
+                                        <img src="<?= $item->photo ?>" alt="<?= $item->name ?>"
+                                             style="width: 100px; height: 100px; object-fit: contain;"
+                                        >
+                                    </td>
+                                    <td><?= $item->name ?></td>
+                                    <td><?= $item->position ?></td>
+                                    <td><?= $item->description ?></td>
+                                    <td>
+
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#editBigTeam<?= $key ?>">
+                                            <i class="bi bi-pen"></i> Edit
+                                        </button>
+
+                                        <div class="modal fade" id="editBigTeam<?= $key ?>" tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5">Edit
+                                                            Anggota Team</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="<?= route_to("object.big-team.update", $item->id) ?>"
+                                                          method="post"
+                                                          enctype="multipart/form-data">
+                                                        <div class="modal-body">
+                                                            <div class="form-group mb-3 w-100 text-start">
+                                                                <label for="photo">Foto</label>
+                                                                <input type="file" name="photo" id="photo"
+                                                                       class="form-control w-100">
+                                                            </div>
+
+                                                            <div class="form-floating mb-3 w-100">
+                                                                <input type="text" name="name" id="name<?= $key ?>"
+                                                                       class="form-control form-control-sm w-100"
+                                                                       value="<?= $item->name ?>"
+                                                                >
+                                                                <label for="name<?= $key ?>">Nama</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3 w-100">
+                                                                <input type="text" name="position"
+                                                                       id="position<?= $key ?>"
+                                                                       value="<?= $item->position ?>"
+                                                                       class="form-control form-control-sm w-100">
+                                                                <label for="position<?= $key ?>">Posisi</label>
+                                                            </div>
+                                                            <div class="form-floating mb-3 w-100">
+                                            <textarea type="text" name="description" rows="5"
+                                                      id="description<?= $key ?>"
+                                                      class="form-control w-100"><?= $item->description ?></textarea>
+                                                                <label for="description<?= $key ?>">Deskripsi</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                                Simpan
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form action="<?= route_to("object.big-team.delete", $item->id) ?>"
+                                              method="post">
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -479,7 +595,6 @@
             document.querySelector('.document-editor__toolbar').appendChild(editor.ui.view.toolbar.element);
             document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
         })
-
 </script>
 <?= $this->endSection(); ?>
 
