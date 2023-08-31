@@ -14,6 +14,9 @@ $lines = model("Lines");
     <div class="position-absolute top-50 start-50 translate-middle h3 mb-0 text-warning d-none">
         Click to Change
     </div>
+    <div class="text-end small text-danger">
+        <label for="">*at least 1,280px x 720px</label>
+    </div>
 </div>
 
 <form action="<?= route_to('object.lines.upload') ?>" method="post"
