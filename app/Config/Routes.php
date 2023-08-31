@@ -48,6 +48,7 @@ $routes->group('dashboard', function ($routes) {
     });
 
     $routes->get('laporan-audit', "Dashboard\LaporanAudit::index", ["as" => "dashboard.laporan-audit.index"]);
+    $routes->get('mitra', "Dashboard\Mitra::index", ["as" => "dashboard.mitra.index"]);
 });
 
 $routes->group("object", function ($routes) {
@@ -72,6 +73,13 @@ $routes->group("object", function ($routes) {
         $routes->post('delete/(:segment)', "Object\BigTeam::delete/$1", ["as" => "object.big-team.delete"]);
         $routes->post('update/(:segment)', "Object\BigTeam::update/$1", ["as" => "object.big-team.update"]);
         $routes->get('', "Object\BigTeam::get_all", ["as" => "object.big-team.index"]);
+    });
+
+    $routes->group('mitra', function ($routes) {
+        $routes->post('create', "Object\Mitra::create", ["as" => "object.mitra.create"]);
+        $routes->post('delete/(:segment)', "Object\Mitra::delete/$1", ["as" => "object.mitra.delete"]);
+        $routes->post('update/(:segment)', "Object\Mitra::update/$1", ["as" => "object.mitra.update"]);
+        $routes->get('', "Object\Mitra::get_all", ["as" => "object.mitra.index"]);
     });
 
     $routes->group('laporan-audit', function ($routes) {

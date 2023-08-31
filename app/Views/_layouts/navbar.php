@@ -17,6 +17,9 @@
                     <a class="nav-link" href="<?= route_to("dashboard.laporan-audit.index") ?>">Laporan Audit</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.mitra.index") ?>">Mitra</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.articles.index") ?>">Articles</a>
                 </li>
                 <li class="nav-item">
