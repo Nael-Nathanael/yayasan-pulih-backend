@@ -58,7 +58,7 @@
                                 <td><?= $key + 1 ?></td>
                                 <td><?= $item->group_name ?></td>
                                 <td>
-                                    <img src="<?= $item->photo ?>" height="200" alt="<?= $item->group_name ?>"/>
+                                    <img src="<?= $item->photo ?>" height="200" width="200" style="object-fit: contain" alt="<?= $item->group_name ?>"/>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"

@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" href="/css/backend.css">
     <title>Hello, world!</title>
+
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/datatables.min.css" rel="stylesheet">
+
     <?= $this->renderSection("head") ?>
 </head>
 <body>
@@ -27,6 +30,7 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
         crossorigin="anonymous"></script>
 
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/datatables.min.js"></script>
 <script>
 
     async function triggerSave(element) {
