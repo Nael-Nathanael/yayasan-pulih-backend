@@ -83,21 +83,24 @@
             <div class="my-5">
                 <div class="w-100">
                     <div class="row">
-                        <div class="col-9">
-                            <?= view("_components/LinesFieldGroup",
-                                [
-                                    "fields" => [
-                                        [
-                                            "type" => "LinesTextArea",
-                                            "label" => "Deskripsi",
-                                            "id" => "TENTANG_HISTORY_CONTENT",
-                                        ],
-                                    ]
-                                ]
-                            ) ?>
-                        </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <?= summon_image_field("TENTANG", "TENTANG_HISTORY_MORE_RIGHT") ?>
+                        </div>
+                        <div class="col-8">
+
+                            <?php $lines = model("Lines"); ?>
+                            <input
+                                    type="hidden"
+                                    name="TENTANG_HISTORY_CONTENT"
+                                    id="content_2"
+                                    value="<?= $lines->findOrEmptyString("TENTANG_HISTORY_CONTENT") ?>">
+
+                            <div class="row">
+                                <div class="document-editor__toolbar_2 border-0"></div>
+                            </div>
+                            <div class="editor_2 border shadow-none bg-white" style="min-height: 500px">
+                                <?= $lines->findOrEmptyString("TENTANG_HISTORY_CONTENT") ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -576,11 +579,53 @@
 
             editor.model.document.on('change', () => {
                 document.getElementById("content").value = editor.getData();
+                triggerSave(document.getElementById("content"))
             });
 
             // Set a custom container for the toolbar.
             document.querySelector('.document-editor__toolbar').appendChild(editor.ui.view.toolbar.element);
             document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
+        })
+
+    DecoupledDocumentEditor
+        .create(document.querySelector('.editor_2'), {
+            toolbar: {
+                items: [
+                    'bold',
+                    'italic',
+                    'underline',
+                ]
+            },
+            language: 'en',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells',
+                    'tableCellProperties',
+                    'tableProperties'
+                ]
+            },
+            licenseKey: '',
+        })
+        .then(editor => {
+            window.editor = editor;
+
+            editor.model.document.on('change', () => {
+                document.getElementById("content_2").value = editor.getData();
+                triggerSave(document.getElementById("content_2"))
+            });
+
+            // Set a custom container for the toolbar.
+            document.querySelector('.document-editor__toolbar_2').appendChild(editor.ui.view.toolbar.element);
         })
 </script>
 <?= $this->endSection(); ?>
