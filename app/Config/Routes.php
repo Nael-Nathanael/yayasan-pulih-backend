@@ -39,12 +39,17 @@ $routes->group('dashboard', function ($routes) {
 
     $routes->get('home', "Dashboard\Home::index", ["as" => "dashboard.home.index"]);
     $routes->get('tentang-pulih', "Dashboard\TentangPulih::index", ["as" => "dashboard.tentang-pulih.index"]);
-    $routes->get('faq', "Dashboard\Faq::index", ["as" => "dashboard.faq.index"]);
 
     $routes->group('articles', function ($routes) {
         $routes->get("", "Dashboard\Articles::index", ["as" => "dashboard.articles.index"]);
         $routes->get("create", "Dashboard\Articles::create", ["as" => "dashboard.articles.create"]);
         $routes->get("update/(:segment)", "Dashboard\Articles::update/$1", ["as" => "dashboard.articles.update"]);
+    });
+
+    $routes->group('faq', function ($routes) {
+        $routes->get("", "Dashboard\Faq::index", ["as" => "dashboard.faq.index"]);
+        $routes->get("create", "Dashboard\Faq::create", ["as" => "dashboard.faq.create"]);
+        $routes->get("update/(:segment)", "Dashboard\Faq::update/$1", ["as" => "dashboard.faq.update"]);
     });
 
     $routes->get('laporan-audit', "Dashboard\LaporanAudit::index", ["as" => "dashboard.laporan-audit.index"]);

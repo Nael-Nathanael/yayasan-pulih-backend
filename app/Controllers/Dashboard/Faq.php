@@ -10,4 +10,16 @@ class Faq extends BaseController
     {
         return view("_pages/dashboard/faq/index");
     }
+
+    public function create(): string
+    {
+        return view("_pages/dashboard/faq/create");
+    }
+
+    public function update($slug): string
+    {
+        $faq = model("FaqModel");
+        $data['faq'] = $faq->find($slug);
+        return view("_pages/dashboard/faq/update", $data);
+    }
 }

@@ -11,7 +11,7 @@ class FaqModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['q', 'a'];
+    protected $allowedFields = ['q', 'a', 'number'];
 
     // Dates
     protected $useTimestamps = true;

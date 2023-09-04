@@ -11,12 +11,13 @@ class Faq extends BaseController
 {
     public function create(): RedirectResponse
     {
-        $faq_model = model("Faq");
+        $faq_model = model("FaqModel");
 
         $faq_model->insert(
             [
                 "q" => $this->request->getPost("q"),
                 "a" => $this->request->getPost("a"),
+                "number" => $this->request->getPost("number"),
             ]
         );
 
@@ -26,13 +27,14 @@ class Faq extends BaseController
     public function update($id): RedirectResponse
     {
 
-        $faq_model = model("Faq");
+        $faq_model = model("FaqModel");
 
         $faq_model->save(
             [
                 "id" => $id,
                 "q" => $this->request->getPost("q"),
                 "a" => $this->request->getPost("a"),
+                "number" => $this->request->getPost("number"),
             ]
         );
 
