@@ -452,7 +452,7 @@
                                 </thead>
                                 <tbody>
                                 <?php $bigteam_model = model("BigTeamModel"); ?>
-                                <?php foreach ($bigteam_model->findAll() as $key => $item): ?>
+                                <?php foreach ($bigteam_model->orderBy("order", "ASC")->findAll() as $key => $item): ?>
                                     <tr>
                                         <td><?= $key + 1 ?></td>
                                         <td>

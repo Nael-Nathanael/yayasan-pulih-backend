@@ -65,6 +65,6 @@ class BigTeam extends BaseController
     {
         $model = model("BigTeamModel");
 
-        return $this->response->setJSON($model->findAll());
+        return $this->response->setJSON($model->orderBy("order", "ASC")->findAll());
     }
 }
