@@ -54,6 +54,13 @@ $routes->group('dashboard', function ($routes) {
 
     $routes->get('laporan-audit', "Dashboard\LaporanAudit::index", ["as" => "dashboard.laporan-audit.index"]);
     $routes->get('mitra', "Dashboard\Mitra::index", ["as" => "dashboard.mitra.index"]);
+
+    $routes->group('lowongan', function ($routes) {
+        $routes->get("", "Dashboard\Lowongan::index", ["as" => "dashboard.lowongan.index"]);
+        $routes->get("pekerjaan", "Dashboard\Lowongan::pekerjaan", ["as" => "dashboard.lowongan.pekerjaan"]);
+        $routes->get("magang", "Dashboard\Lowongan::magang", ["as" => "dashboard.lowongan.magang"]);
+    });
+
 });
 
 $routes->group("object", function ($routes) {
