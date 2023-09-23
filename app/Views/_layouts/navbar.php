@@ -16,6 +16,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.laporan-audit.index") ?>">Laporan Audit</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Kerja Pulih
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?= route_to("dashboard.kerja-pulih.lkp") ?>">Layanan Konseling Psikologi</a></li>
+                        <li><a class="dropdown-item" href="<?= route_to("dashboard.kerja-pulih.pdn") ?>">Pelatihan dan Narasumber</a></li>
+                        <li><a class="dropdown-item" href="<?= route_to("dashboard.kerja-pulih.p4") ?>">Program Penguatan dan Pemulihan Psikologis</a></li>
+                        <li><a class="dropdown-item" href="<?= route_to("dashboard.kerja-pulih.ke") ?>">Konsultasi Email</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.mitra.index") ?>">Mitra</a>
                 </li>
