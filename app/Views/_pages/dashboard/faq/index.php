@@ -15,7 +15,7 @@
             </div>
             <?php $faq_model = model("FaqModel") ?>
             <?php $faqs = $faq_model
-                ->orderBy("number DESC, created_at DESC")
+                ->orderBy("number ASC, created_at DESC")
                 ->findAll() ?>
             <div class="card-body">
                 <table class="table table-bordered">
