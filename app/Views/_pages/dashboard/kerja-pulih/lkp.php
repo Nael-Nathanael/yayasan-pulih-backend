@@ -129,12 +129,12 @@
                                 "fields" => [
                                     [
                                         "type" => "LinesField",
-                                        "label" => "Section",
+                                        "label" => "Judul",
                                         "id" => "KERJA_PULIH_LKP_ALUR_{$i}_TITLE",
                                     ],
                                     [
-                                        "type" => "LinesField",
-                                        "label" => "Judul",
+                                        "type" => "LinesTextArea",
+                                        "label" => "Deskripsi",
                                         "id" => "KERJA_PULIH_LKP_ALUR_{$i}_DESCRIPTION",
                                     ],
                                 ]
@@ -153,12 +153,12 @@
                             "fields" => [
                                 [
                                     "type" => "LinesField",
-                                    "label" => "Section",
+                                    "label" => "Judul",
                                     "id" => "KERJA_PULIH_LKP_PRIVATE_TITLE",
                                 ],
                                 [
-                                    "type" => "LinesField",
-                                    "label" => "Judul",
+                                    "type" => "LinesTextArea",
+                                    "label" => "Deskripsi",
                                     "id" => "KERJA_PULIH_LKP_PRIVATE_DESCRIPTION",
                                 ],
                             ]
@@ -173,12 +173,12 @@
                             "fields" => [
                                 [
                                     "type" => "LinesField",
-                                    "label" => "Section",
+                                    "label" => "Judul",
                                     "id" => "KERJA_PULIH_LKP_GROUP_TITLE",
                                 ],
                                 [
-                                    "type" => "LinesField",
-                                    "label" => "Judul",
+                                    "type" => "LinesTextArea",
+                                    "label" => "Deskripsi",
                                     "id" => "KERJA_PULIH_LKP_GROUP_DESCRIPTION",
                                 ],
                             ]
