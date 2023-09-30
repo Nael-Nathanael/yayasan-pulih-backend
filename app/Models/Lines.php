@@ -50,7 +50,7 @@ class Lines extends Model
 
         // If string starts with EN_ and is not found, return the value without EN_
         if (substr($key, 0, 3) === "EN_") {
-            $subkey = substr($key, 0, 3);
+            $subkey = substr($key, 3);
             $target = $this->find($subkey);
             if ($target) {
                 // Create
