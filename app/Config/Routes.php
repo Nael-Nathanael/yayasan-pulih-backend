@@ -32,6 +32,7 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index', ["as" => "auth.page"]);
 $routes->post('/', 'Home::do_auth', ["as" => "auth.do_auth"]);
+$routes->post('/session.lang', 'Home::do_change_lag', ["as" => "session.lang"]);
 $routes->get('/logout', 'Home::do_logout', ["as" => "auth.logout"]);
 
 $routes->group('dashboard', function ($routes) {
@@ -112,6 +113,7 @@ $routes->group("object", function ($routes) {
         $routes->post('upload', "Object\Lines::upload", ["as" => "object.lines.upload"]);
         $routes->post('dumpUpload', "Object\Lines::dumpUpload", ["as" => "object.lines.dumpUpload"]);
         $routes->post('update/(:segment)', "Object\Lines::update/$1", ["as" => "object.lines.update"]);
+        $routes->post('update/EN_/(:segment)', "Object\Lines::updateEn/$1", ["as" => "object.lines.update.en"]);
         $routes->get('get/(:segment)', "Object\Lines::getByKey/$1", ["as" => "object.lines.getByKey"]);
         $routes->post('getFormatted', "Object\Lines::getFormatted", ["as" => "object.lines.getFormatted"]);
     });

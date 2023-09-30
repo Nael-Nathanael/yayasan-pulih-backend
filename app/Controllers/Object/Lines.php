@@ -76,11 +76,44 @@ class Lines extends BaseController
 
         return redirect()->to(previous_url());
     }
+    public function updateEn($group_name)
+    {
+        $lines = model("Lines");
+        $post = $this->request->getPost();
+
+        foreach ($post as $key => $value) {
+            $lines->save(
+                [
+                    "group_name" => $group_name,
+                    "key" => "EN_$key",
+                    "value" => $value
+                ]
+            );
+        }
+
+        $json = $this->request->getJSON();
+        if ($json) {
+
+            foreach ($json as $key => $value) {
+                $lines->save(
+                    [
+                        "group_name" => $group_name,
+                        "key" => "EN_$key",
+                        "value" => $value
+                    ]
+                );
+            }
+
+            return $this->response->setJSON('ok');
+        }
+
+        return redirect()->to(previous_url());
+    }
 
     public function getByKey($key): ResponseInterface
     {
         $lines = model("Lines");
-        return $this->response->setJSON($lines->findOrEmptyString($key));
+        return $this->response->setJSON($lines->findOrEmptyString("$key"));
     }
 
     private function semiparse($object): object

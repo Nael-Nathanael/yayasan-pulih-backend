@@ -23,6 +23,12 @@ class Home extends BaseController
         return redirect()->to(base_url());
     }
 
+    public function do_change_lag()
+    {
+        session()->set("LANG", $this->request->getPost("lang"));
+        return redirect()->back();
+    }
+
     public function do_logout()
     {
         session()->destroy();

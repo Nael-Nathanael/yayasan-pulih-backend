@@ -21,11 +21,49 @@ class Lines extends Model
 
     function findOrEmptyString($key): string
     {
-        $target = $this->find($key);
-        if (!$target) {
-            return '';
+        $lang = session()->get('LANG');
+
+        if ($lang) {
+            $langkey = "$lang$key";
+            $target = $this->find($langkey);
+            if ($target) {
+                return $target->value;
+            }
+
+            $target = $this->find($key);
+            if ($target) {
+                // Create
+                $this->save([
+                    "group_name" => $target->group_name,
+                    "key" => $langkey,
+                    "value" => $target->value,
+                ]);
+                return $this->findOrEmptyString($key);
+            }
+            return "";
         }
-        return $target->value;
+
+        $target = $this->find($key);
+        if ($target) {
+            return $target->value;
+        }
+
+        // If string starts with EN_ and is not found, return the value without EN_
+        if (substr($key, 0, 3) === "EN_") {
+            $subkey = substr($key, 0, 3);
+            $target = $this->find($subkey);
+            if ($target) {
+                // Create
+                $this->save([
+                    "group_name" => $target->group_name,
+                    "key" => $key,
+                    "value" => $target->value,
+                ]);
+                return $this->findOrEmptyString($key);
+            };
+        }
+
+        return '';
     }
 
     function findOrPlaceholderImage($key): string

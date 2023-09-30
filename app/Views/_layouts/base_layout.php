@@ -35,7 +35,7 @@
 
     async function triggerSave(element) {
         const group_name = element.name.split("_")[0]
-        const apiUrl = '/object/lines/update/' + group_name;
+        const apiUrl = '/object/lines/update/<?= session()->get("LANG") ?>/' + group_name;
 
         const requestOptions = {
             method: 'POST',
