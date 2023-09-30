@@ -27,6 +27,14 @@ class Lines extends BaseController
             ]
         );
 
+        $linesModel->save(
+            [
+                "group_name" => $group_name,
+                "key" => "EN_$key",
+                "value" => base_url("/uploads/" . $path->getName())
+            ]
+        );
+
         return redirect()->to(previous_url());
     }
 
