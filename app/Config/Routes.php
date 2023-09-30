@@ -116,6 +116,7 @@ $routes->group("object", function ($routes) {
         $routes->post('update/EN_/(:segment)', "Object\Lines::updateEn/$1", ["as" => "object.lines.update.en"]);
         $routes->get('get/(:segment)', "Object\Lines::getByKey/$1", ["as" => "object.lines.getByKey"]);
         $routes->post('getFormatted', "Object\Lines::getFormatted", ["as" => "object.lines.getFormatted"]);
+        $routes->post('getFormatted/EN_', "Object\Lines::getFormattedEn", ["as" => "object.lines.getFormattedEn"]);
     });
 });
 

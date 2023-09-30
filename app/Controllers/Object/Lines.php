@@ -116,15 +116,15 @@ class Lines extends BaseController
         return $this->response->setJSON($lines->findOrEmptyString("$key"));
     }
 
-    private function semiparse($object): object
+    private function semiparse($object, $prefix = ""): object
     {
         $lines = model("Lines");
 
         foreach ($object as $key => $value) {
             if (is_string($value)) {
-                $object->$key = $lines->findOrEmptyString($value);
+                $object->$key = $lines->findOrEmptyString("$prefix$value");
             } else {
-                $object->$key = $this->semiparse($value);
+                $object->$key = $this->semiparse($value, $prefix);
             }
         }
 
@@ -136,6 +136,15 @@ class Lines extends BaseController
         $post = $this->request->getJSON();
 
         $post = $this->semiparse($post);
+
+        return $this->response->setJSON($post);
+    }
+
+    public function getFormattedEn(): ResponseInterface
+    {
+        $post = $this->request->getJSON();
+
+        $post = $this->semiparse($post, "EN_");
 
         return $this->response->setJSON($post);
     }
