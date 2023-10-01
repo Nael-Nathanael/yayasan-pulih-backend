@@ -4,6 +4,7 @@ foreach ($fields as $field): ?>
         [
             "field_label" => $field['label'] ?? "",
             "field_id" => $field['id'] ?? "",
+            "field_group_name" => $field['group_name'] ?? "",
         ]
     ) ?>
 <?php endforeach; ?>
