@@ -2,7 +2,6 @@
 
 <?= $this->section("content"); ?>
 <?php $lines = model("Lines"); ?>
-
     <div class="container my-2">
         <div class="card">
             <div class="card-header text-end">

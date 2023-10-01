@@ -9,43 +9,36 @@
                     Header
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <?= summon_image_field("KERJA_PULIH_LKP", "KERJA_PULIH_LKP_BANNER_IMAGE") ?>
-                        </div>
-                        <div class="col-6">
-                            <div class="w-100">
-                                <?= view("_components/LinesFieldGroup",
+                    <div class="w-100">
+                        <?= view("_components/LinesFieldGroup",
+                            [
+                                "fields" => [
                                     [
-                                        "fields" => [
-                                            [
-                                                "type" => "LinesField",
-                                                "label" => "Section",
-                                                "id" => "KERJA_PULIH_LKP_BANNER_TAG",
-                                            ],
-                                        ]
-                                    ]
-                                ) ?>
+                                        "type" => "LinesField",
+                                        "label" => "Section",
+                                        "id" => "KERJA_PULIH_LKP_BANNER_TAG",
+                                    ],
+                                ]
+                            ]
+                        ) ?>
 
-                                <div class="mb-3">
-                                    <label>
-                                        Headline
-                                    </label>
-                                    <div class="border border-1">
-                                        <?php $lines = model("Lines"); ?>
-                                        <input
-                                                type="hidden"
-                                                name="KERJA_PULIH_LKP_BANNER_HEADLINE"
-                                                id="content"
-                                                value="<?= $lines->findOrEmptyString("KERJA_PULIH_LKP_BANNER_HEADLINE") ?>">
+                        <div class="mb-3">
+                            <label>
+                                Headline
+                            </label>
+                            <div class="border border-1">
+                                <?php $lines = model("Lines"); ?>
+                                <input
+                                        type="hidden"
+                                        name="KERJA_PULIH_LKP_BANNER_HEADLINE"
+                                        id="content"
+                                        value="<?= $lines->findOrEmptyString("KERJA_PULIH_LKP_BANNER_HEADLINE") ?>">
 
-                                        <div class="row">
-                                            <div class="document-editor__toolbar border-0"></div>
-                                        </div>
-                                        <div class="editor border shadow-none bg-white">
-                                            <?= $lines->findOrEmptyString("KERJA_PULIH_LKP_BANNER_HEADLINE") ?>
-                                        </div>
-                                    </div>
+                                <div class="row">
+                                    <div class="document-editor__toolbar border-0"></div>
+                                </div>
+                                <div class="editor border shadow-none bg-white">
+                                    <?= $lines->findOrEmptyString("KERJA_PULIH_LKP_BANNER_HEADLINE") ?>
                                 </div>
                             </div>
                         </div>
