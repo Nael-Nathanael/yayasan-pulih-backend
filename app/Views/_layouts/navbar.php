@@ -44,6 +44,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.lowongan.index") ?>">Lowongan</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.donate.index") ?>">Donasi</a>
+                </li>
             </ul>
             <div class="d-flex align-items-center gap-2 flex-nowrap">
                 <form action="<?= route_to("session.lang") ?>" method="post" id="langsel">

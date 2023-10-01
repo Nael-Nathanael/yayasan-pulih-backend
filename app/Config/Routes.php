@@ -40,6 +40,7 @@ $routes->group('dashboard', function ($routes) {
 
     $routes->get('home', "Dashboard\Home::index", ["as" => "dashboard.home.index"]);
     $routes->get('tentang-pulih', "Dashboard\TentangPulih::index", ["as" => "dashboard.tentang-pulih.index"]);
+    $routes->get('donate', "Dashboard\Donate::index", ["as" => "dashboard.donate.index"]);
 
     $routes->group('articles', function ($routes) {
         $routes->get("", "Dashboard\Articles::index", ["as" => "dashboard.articles.index"]);

@@ -53,7 +53,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <span>Care for Caregiver</span>
-                        <a href="<?= route_to("dashboard.kerja-pulih.sot") ?>" class="btn btn-primary btn-sm">Edit
+                        <a href="<?= route_to("dashboard.kerja-pulih.c4c") ?>" class="btn btn-primary btn-sm">Edit
                             Halaman</a>
                     </div>
                     <div class="card-body">
