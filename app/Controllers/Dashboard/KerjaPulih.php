@@ -21,6 +21,21 @@ class KerjaPulih extends BaseController
         return view("_pages/dashboard/kerja-pulih/p4");
     }
 
+    public function c4c(): string
+    {
+        return view("_pages/dashboard/kerja-pulih/c4c");
+    }
+
+    public function sot(): string
+    {
+        return view("_pages/dashboard/kerja-pulih/sot");
+    }
+
+    public function jt(): string
+    {
+        return view("_pages/dashboard/kerja-pulih/jt");
+    }
+
     public function ke(): string
     {
         return view("_pages/dashboard/kerja-pulih/ke");

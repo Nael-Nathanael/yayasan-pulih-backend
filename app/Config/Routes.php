@@ -66,6 +66,11 @@ $routes->group('dashboard', function ($routes) {
         $routes->get("layanan-konseling-psikologi", "Dashboard\KerjaPulih::lkp", ["as" => "dashboard.kerja-pulih.lkp"]);
         $routes->get("pelatihan-dan-narasumber", "Dashboard\KerjaPulih::pdn", ["as" => "dashboard.kerja-pulih.pdn"]);
         $routes->get("p4", "Dashboard\KerjaPulih::p4", ["as" => "dashboard.kerja-pulih.p4"]);
+
+        $routes->get("c4c", "Dashboard\KerjaPulih::c4c", ["as" => "dashboard.kerja-pulih.c4c"]);
+        $routes->get("sot", "Dashboard\KerjaPulih::sot", ["as" => "dashboard.kerja-pulih.sot"]);
+        $routes->get("jt", "Dashboard\KerjaPulih::jt", ["as" => "dashboard.kerja-pulih.jt"]);
+
         $routes->get("konsultasi-email", "Dashboard\KerjaPulih::ke", ["as" => "dashboard.kerja-pulih.ke"]);
     });
 
