@@ -33,7 +33,7 @@
 <?= $this->section("content"); ?>
 <div class="container-fluid">
     <section>
-        <form action="<?= route_to("object.articles.update", $event->slug) ?>" method="post" id="articleForm"
+        <form action="<?= route_to("object.events.update", $event->slug) ?>" method="post" id="articleForm"
               enctype="multipart/form-data">
             <input type="hidden" name="content" id="content">
 

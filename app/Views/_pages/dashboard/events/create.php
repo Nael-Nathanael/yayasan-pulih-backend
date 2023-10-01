@@ -33,7 +33,7 @@
 <?= $this->section("content"); ?>
 <div class="container-fluid">
     <section>
-        <form action="<?= route_to("object.articles.update", $event->slug) ?>" method="post" id="articleForm"
+        <form action="<?= route_to("object.events.create") ?>" method="post" id="eventForm"
               enctype="multipart/form-data">
             <input type="hidden" name="content" id="content">
 
@@ -41,7 +41,8 @@
                 <div class="col-lg-9 border-end">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control material-form-control" id="title" name="title"
-                               placeholder="title" value="<?= $event->title ?>" required>
+                               placeholder="title"
+                               required>
                         <label for="title">Title</label>
                     </div>
                     <div class="row mb-3">
@@ -49,7 +50,7 @@
                     </div>
                     <div class="container bg-light py-4">
                         <div class="editor border shadow-none bg-white" style="min-height: 700px">
-                            <?= str_replace("{backend_url}", base_url(), $event->content) ?>
+
                         </div>
                     </div>
                 </div>
@@ -66,8 +67,6 @@
                                 Post Settings
                             </div>
                             <div class="card-body">
-                                <img src="<?= $event->imgUrl ?>" class="w-100 shadow-sm border" alt="oldCoverImage"
-                                     style="height: 100px; object-fit: cover">
                                 <div class="form-group mb-3">
                                     <label for="coverImage">Cover Image</label>
                                     <input type="file" name="coverImage" id="coverImage" class="form-control">
@@ -76,8 +75,7 @@
                                 <div class="form-group mb-3">
                                     <label for="short_description">Short Description</label>
                                     <textarea required id="short_description" name="short_description"
-                                              class="form-control"
-                                              rows="5"><?= $event->short_description ?></textarea>
+                                              class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -90,20 +88,20 @@
                                 <div class="form-group mb-3">
                                     <label for="keywords">Keywords</label>
                                     <input type="text" name="keywords" id="keywords" class="form-control"
-                                           placeholder="Keywords" value="<?= $event->keywords ?>" required>
+                                           placeholder="Keywords" required>
                                 </div>
 
 
                                 <div class="form-group mb-3">
                                     <label for="meta_title">Meta Title</label>
                                     <input type="text" name="meta_title" id="meta_title" class="form-control"
-                                           placeholder="Meta Title" value="<?= $event->meta_title ?>" required>
+                                           placeholder="Meta Title" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="meta_description">Meta Description</label>
                                     <textarea required id="meta_description" name="meta_description"
-                                              class="form-control" rows="5"><?= $event->meta_description ?></textarea>
+                                              class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -188,35 +186,5 @@
             document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
         })
 
-    document.getElementById("content").value = `<?= str_replace("{backend_url}", base_url(), $event->content) ?>`
-
-    function changeCarousel() {
-        document.getElementById("existing-carousel").classList.add("d-none")
-        document.getElementById("new-carousel").classList.remove("d-none")
-        document.getElementById("carousel-changed").value = 1
-    }
-
-    function unchangeCarousel() {
-        document.getElementById("existing-carousel").classList.remove("d-none")
-        document.getElementById("new-carousel").classList.add("d-none")
-        document.getElementById("carousel-changed").value = 0
-    }
-
-    function addCarouselInput() {
-        const newElement = document.createElement("div")
-        newElement.innerHTML = `
-        <div class="d-flex mb-2">
-            <div class="input-group me-2">
-                <input type="file" name="carousel[]" class="form-control form-control-sm">
-            </div>
-
-            <button type="button" class="btn-outline-danger btn btn-sm p-0"
-                    onclick="this.parentNode.remove()" style="width: 35px">
-                -
-            </button>
-        </div>
-        `
-        document.getElementById("carousel-inputs").appendChild(newElement)
-    }
 </script>
 <?= $this->endSection(); ?>

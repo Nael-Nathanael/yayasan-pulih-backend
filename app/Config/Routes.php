@@ -48,6 +48,12 @@ $routes->group('dashboard', function ($routes) {
         $routes->get("update/(:segment)", "Dashboard\Articles::update/$1", ["as" => "dashboard.articles.update"]);
     });
 
+    $routes->group('events', function ($routes) {
+        $routes->get("", "Dashboard\Events::index", ["as" => "dashboard.events.index"]);
+        $routes->get("create", "Dashboard\Events::create", ["as" => "dashboard.events.create"]);
+        $routes->get("update/(:segment)", "Dashboard\Events::update/$1", ["as" => "dashboard.events.update"]);
+    });
+
     $routes->group('faq', function ($routes) {
         $routes->get("", "Dashboard\Faq::index", ["as" => "dashboard.faq.index"]);
         $routes->get("create", "Dashboard\Faq::create", ["as" => "dashboard.faq.create"]);
@@ -85,6 +91,15 @@ $routes->group("object", function ($routes) {
         $routes->get('get', "Object\Articles::get", ["as" => "object.articles.get"]);
         $routes->get('getFeatured', "Object\Articles::getFeatured", ["as" => "object.articles.getFeatured"]);
         $routes->get('get/(:segment)', "Object\Articles::get/$1", ["as" => "object.articles.getSpecific"]);
+    });
+
+    $routes->group('events', function ($routes) {
+        $routes->post('create', "Object\Events::create", ["as" => "object.events.create"]);
+        $routes->post('delete/(:segment)', "Object\Events::delete/$1", ["as" => "object.events.delete"]);
+        $routes->post('update/(:segment)', "Object\Events::update/$1", ["as" => "object.events.update"]);
+        $routes->get('get', "Object\Events::get", ["as" => "object.events.get"]);
+        $routes->get('getFeatured', "Object\Events::getFeatured", ["as" => "object.events.getFeatured"]);
+        $routes->get('get/(:segment)', "Object\Events::get/$1", ["as" => "object.events.getSpecific"]);
     });
 
     $routes->group('faq', function ($routes) {
