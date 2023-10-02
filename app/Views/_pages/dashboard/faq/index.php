@@ -54,56 +54,24 @@
                 </table>
             </div>
         </div>
+
+        <hr>
+
+        <?= view("_components/LinesFieldGroup",
+            [
+                "fields" => [
+                    [
+                        "type" => "LinesField",
+                        "label" => "Judul For More Information",
+                        "id" => "FMI_TITLE",
+                    ],
+                    [
+                        "type" => "CKEDITOR",
+                        "label" => "Konten For More Information",
+                        "id" => "FMI_CONTENT",
+                    ],
+                ]
+            ]
+        ) ?>
     </div>
-<?= $this->endSection(); ?>
-
-
-<?= $this->section("javascript") ?>
-    <script>
-        function initEditor(editor_id, content_id, toolbar_id) {
-            DecoupledDocumentEditor
-                .create(document.querySelector('#' + editor_id), {
-                    toolbar: {
-                        items: [
-                            'bold',
-                            'italic',
-                            'underline',
-                        ]
-                    },
-                    language: 'en',
-                    image: {
-                        toolbar: [
-                            'imageTextAlternative',
-                            'imageStyle:inline',
-                            'imageStyle:block',
-                            'imageStyle:side'
-                        ]
-                    },
-                    table: {
-                        contentToolbar: [
-                            'tableColumn',
-                            'tableRow',
-                            'mergeTableCells',
-                            'tableCellProperties',
-                            'tableProperties'
-                        ]
-                    },
-                    licenseKey: '',
-                })
-                .then(editor => {
-                    window.editor = editor;
-
-                    editor.model.document.on('change', () => {
-                        document.getElementById(content_id).value = editor.getData();
-                    });
-
-                    // Set a custom container for the toolbar.
-                    document.getElementById("#toolbar_" + toolbar_id).appendChild(editor.ui.view.toolbar.element);
-                })
-        }
-
-        $(document).ready(function () {
-            document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
-        })
-    </script>
 <?= $this->endSection(); ?>
