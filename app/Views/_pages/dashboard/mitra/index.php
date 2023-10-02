@@ -2,6 +2,37 @@
 
 <?= $this->section("content"); ?>
     <div class="container my-2">
+
+        <section>
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    Header
+                </div>
+                <div class="card-body">
+                    <div class="w-100">
+                        <?= view("_components/LinesFieldGroup",
+                            [
+                                "fields" => [
+                                    [
+                                        "type" => "LinesField",
+                                        "label" => "Section",
+                                        "id" => "MITRA_BANNER_TAG",
+                                    ],
+                                    [
+                                        "type" => "LinesTextArea",
+                                        "label" => "Judul",
+                                        "id" => "MITRA_BANNER_TITLE",
+                                    ],
+                                ]
+                            ]
+                        ) ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
         <div class="card">
             <div class="card-header text-end">
                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
