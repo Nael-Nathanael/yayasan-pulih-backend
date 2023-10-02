@@ -12,30 +12,17 @@
                                 "fields" => [
                                     [
                                         "type" => "LinesField",
-                                        "label" => "Section",
+                                        "label" => "Kategori",
                                         "id" => "HOME_BANNER_TAG",
+                                    ],
+                                    [
+                                        "type" => "CKEDITOR",
+                                        "label" => "Headline",
+                                        "id" => "HOME_BANNER_HEADLINE",
                                     ],
                                 ]
                             ]
                         ) ?>
-
-                        <div class="mb-3">
-                            <div class="border border-1">
-                                <?php $lines = model("Lines"); ?>
-                                <input
-                                        type="hidden"
-                                        name="HOME_BANNER_HEADLINE"
-                                        id="content"
-                                        value="<?= $lines->findOrEmptyString("HOME_BANNER_HEADLINE") ?>">
-
-                                <div class="row">
-                                    <div class="document-editor__toolbar border-0"></div>
-                                </div>
-                                <div class="editor border shadow-none bg-white">
-                                    <?= $lines->findOrEmptyString("HOME_BANNER_HEADLINE") ?>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="d-flex justify-content-between">
                             <?= view("_components/LinesFieldGroup",
@@ -120,54 +107,75 @@
             ) ?>
         </div>
     </div>
+
+    <hr class="my-5">
+
+    <?= view("_components/LinesFieldGroup",
+        [
+            "fields" => [
+                [
+                    "type" => "LinesField",
+                    "label" => "Hubungi Kami Judul",
+                    "id" => "CONTACT_TITLE",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link Youtube",
+                    "id" => "CONTACT_YOUTUBE_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link Facebook",
+                    "id" => "CONTACT_FACEBOOK_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link Twitter",
+                    "id" => "CONTACT_TWITTER_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link Instagram",
+                    "id" => "CONTACT_INSTAGRAM_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link LinkedIn",
+                    "id" => "CONTACT_LINKEDIN_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link Tiktok",
+                    "id" => "CONTACT_TIKTOK_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Call 1",
+                    "id" => "CONTACT_PHONE_1_TEXT",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Call 2",
+                    "id" => "CONTACT_PHONE_2_TEXT",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Nomor WhatsApp",
+                    "id" => "CONTACT_WA_TEXT",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Link WhatsApp",
+                    "id" => "CONTACT_WA_LINK",
+                ],
+                [
+                    "type" => "LinesField",
+                    "label" => "Email",
+                    "id" => "CONTACT_EMAIL",
+                ],
+            ]
+        ]
+    ) ?>
 </div>
-<?= $this->endSection(); ?>
-
-
-<?= $this->section("javascript") ?>
-<script>
-    DecoupledDocumentEditor
-        .create(document.querySelector('.editor'), {
-            toolbar: {
-                items: [
-                    'bold',
-                    'italic',
-                    'underline',
-                ]
-            },
-            language: 'en',
-            image: {
-                toolbar: [
-                    'imageTextAlternative',
-                    'imageStyle:inline',
-                    'imageStyle:block',
-                    'imageStyle:side'
-                ]
-            },
-            table: {
-                contentToolbar: [
-                    'tableColumn',
-                    'tableRow',
-                    'mergeTableCells',
-                    'tableCellProperties',
-                    'tableProperties'
-                ]
-            },
-            licenseKey: '',
-        })
-        .then(editor => {
-            window.editor = editor;
-
-            editor.model.document.on('change', () => {
-                document.getElementById("content").value = editor.getData();
-                triggerSave(document.getElementById("content"))
-            });
-
-            // Set a custom container for the toolbar.
-            document.querySelector('.document-editor__toolbar').appendChild(editor.ui.view.toolbar.element);
-            document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
-        })
-
-</script>
 <?= $this->endSection(); ?>
 

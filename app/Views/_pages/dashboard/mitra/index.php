@@ -15,7 +15,7 @@
                                 "fields" => [
                                     [
                                         "type" => "LinesField",
-                                        "label" => "Section",
+                                        "label" => "Kategori",
                                         "id" => "MITRA_BANNER_TAG",
                                     ],
                                     [
