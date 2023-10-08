@@ -41,6 +41,7 @@ class Events extends BaseController
                 "keywords" => $this->request->getPost("keywords"),
                 "meta_title" => $this->request->getPost("meta_title"),
                 "meta_description" => $this->request->getPost("meta_description"),
+                "event_date" => $this->request->getPost("event_date"),
             ]
         );
 
@@ -62,6 +63,7 @@ class Events extends BaseController
             "keywords" => $this->request->getPost("keywords"),
             "meta_title" => $this->request->getPost("meta_title"),
             "meta_description" => $this->request->getPost("meta_description"),
+            "event_date" => $this->request->getPost("event_date"),
         ];
 
         // upload image
@@ -101,7 +103,7 @@ class Events extends BaseController
             }
 
             $events_all = $events
-                ->orderBy("created_at DESC")
+                ->orderBy("event_date DESC, created_at DESC")
                 ->findAll();
 
             $excluded_field = 'content';

@@ -20,6 +20,7 @@ class EventsModel extends Model
         'imgUrl',
         "keywords",
         "meta_title",
+        "event_date",
         "meta_description",
     ];
 

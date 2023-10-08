@@ -79,6 +79,12 @@
                                               class="form-control"
                                               rows="5"><?= $event->short_description ?></textarea>
                                 </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label for="event_date">Event Date</label>
+                                    <input required value="<?= $event->event_date ?>" id="event_date" name="event_date" class="form-control" type="date" />
+                                </div>
                             </div>
                         </div>
 

@@ -77,6 +77,11 @@
                                     <textarea required id="short_description" name="short_description"
                                               class="form-control"></textarea>
                                 </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="event_date">Event Date</label>
+                                    <input required id="event_date" name="event_date" class="form-control" type="date" />
+                                </div>
                             </div>
                         </div>
 

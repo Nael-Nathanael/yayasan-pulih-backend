@@ -21,6 +21,7 @@
                         <tr>
                             <th style="width: 1px">No</th>
                             <th class="w-100">Title</th>
+                            <th class="text-nowrap">Event Date</th>
                             <th class="text-nowrap">Publish Date</th>
                             <th class="text-nowrap">Updated Date</th>
                             <th class="text-center">Edit</th>
@@ -33,6 +34,9 @@
                                 <td style="vertical-align: center"><?= $index + 1 ?></td>
                                 <td style="vertical-align: center">
                                     <?= $event->title ?>
+                                </td>
+                                <td style="vertical-align: center">
+                                    <?= $event->event_date ?>
                                 </td>
                                 <td style="vertical-align: center">
                                     <?= $event->created_at ?>
