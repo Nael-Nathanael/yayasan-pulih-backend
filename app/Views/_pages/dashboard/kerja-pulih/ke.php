@@ -1,36 +1,5 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
-<?= $this->section("head"); ?>
-<style>
-    .material-form-control {
-        border-right: 0;
-        border-radius: 0;
-        border-left: 0;
-        border-top: 0;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        padding-bottom: 0 !important;
-    }
-
-    .form-floating > label {
-        padding-left: 0;
-    }
-
-    .material-form-control:focus {
-        outline: none;
-        border-color: black;
-        box-shadow: none;
-    }
-
-    .ck-toolbar {
-        border: none !important;
-        background-color: transparent !important;
-        padding: 0 !important;
-    }
-</style>
-<?= $this->endSection(); ?>
-
-
 <?php $lines = model("Lines"); ?>
 
 <?= $this->section("content"); ?>
@@ -40,11 +9,16 @@
             <div class="container h-100">
                 <input type="hidden" name="KERJA_PULIH_KE_CONTENT" id="content">
 
-                <div class="d-flex align-items-center gap-3">
+                <div class="">
 
                     <?= view("_components/LinesFieldGroup",
                         [
                             "fields" => [
+                                [
+                                    "type" => "LinesField",
+                                    "label" => "Section",
+                                    "id" => "KERJA_PULIH_KE_BANNER_TAG",
+                                ],
                                 [
                                     "type" => "LinesField",
                                     "label" => "Judul",
