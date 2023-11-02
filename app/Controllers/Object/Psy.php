@@ -131,14 +131,11 @@ class Psy extends BaseController
                 ->orderBy("created_at DESC")
                 ->findAll();
 
-            foreach ($instances as &$instance) {
-                $instance->educations = $modelEdu->where("psy_slug", $instance->slug)->findAll();
-            }
             return $this->response->setJSON($instances);
         }
         $instance = $model->find($slug);
         $instance->educations = $modelEdu->where("psy_slug", $instance->slug)->findAll();
-        
+
         return $this->response->setJSON($instance);
     }
 }
