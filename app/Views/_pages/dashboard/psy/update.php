@@ -1,11 +1,13 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
+<?php $model = model("PsyModel") ?>
+<?php $entry = $model->find($slug) ?>
     <div class="container my-2">
-
-        <form method="post" enctype="multipart/form-data" action="<?= route_to("object.psy.create") ?>" class="card">
+        <form method="post" enctype="multipart/form-data" action="<?= route_to("object.psy.update", $entry->slug) ?>"
+              class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5>Register Psikolog</h5>
+                <h5>Update Psikolog</h5>
             </div>
             <div class="card-body">
                 <div class="row g-3">
@@ -18,6 +20,7 @@
                                     type="text"
                                     class="form-control"
                                     name="name"
+                                    value="<?= $entry->name ?>"
                                     required
                             >
                         </div>
@@ -26,8 +29,8 @@
                         <div class="form-group">
                             <label for="isAvailable">Tersedia?<span class='text-danger'>*</span></label>
                             <select name="isAvailable" class="form-select" required id="isAvailable">
-                                <option value="1" selected>Ya</option>
-                                <option value="0">Tidak</option>
+                                <option value="1" <?= $entry->isAvailable ? 'required' : '' ?>>Ya</option>
+                                <option value="0" <?= $entry->isAvailable ? '' : 'required' ?>>Tidak</option>
                             </select>
                         </div>
                     </div>
@@ -40,6 +43,7 @@
                                     type="text"
                                     class="form-control"
                                     name="SIPP"
+                                    value="<?= $entry->SIPP ?>"
                             >
                         </div>
                     </div>
@@ -52,6 +56,7 @@
                                     type="text"
                                     class="form-control"
                                     name="STR"
+                                    value="<?= $entry->STR ?>"
                             >
                         </div>
                     </div>
@@ -62,7 +67,7 @@
                                     id="sesi"
                                     placeholder="Total Sesi"
                                     type="number"
-                                    value="0"
+                                    value="<?= $entry->sesi ?? 0 ?>"
                                     class="form-control"
                                     name="sesi"
                                     required
@@ -77,7 +82,7 @@
                                     placeholder="Min 0, Max 100"
                                     type="number"
                                     min="0"
-                                    value="100"
+                                    value="<?= $entry->rating ?? 100 ?>"
                                     max="100"
                                     class="form-control"
                                     name="rating"
@@ -93,7 +98,7 @@
                                     placeholder="Total Reviews"
                                     type="number"
                                     min="0"
-                                    value="0"
+                                    value="<?= $entry->reviews ?? 0 ?>"
                                     max="100"
                                     class="form-control"
                                     name="reviews"
@@ -108,7 +113,7 @@
                                     id="pengalaman_praktik"
                                     placeholder="4 - 10 Tahun"
                                     type="text"
-                                    value="4 - 10 Tahun"
+                                    value="<?= $entry->pengalaman_praktik ?? "4 - 10 Tahun" ?>"
                                     class="form-control"
                                     name="pengalaman_praktik"
                                     required
@@ -122,7 +127,7 @@
                                     id="tag"
                                     placeholder="Psikolog Klinis Umum"
                                     type="text"
-                                    value="Psikolog Klinis Umum"
+                                    value="<?= $entry->tag ?? "Psikolog Klinis Umum" ?>"
                                     class="form-control"
                                     name="tag"
                                     required
@@ -134,6 +139,7 @@
                             <label for="mastery">Keahlian<span class='text-danger'>*</span></label>
                             <input
                                     id="mastery"
+                                    value="<?= $entry->mastery ?>"
                                     placeholder="Adiksi, Anak & Remaja, Anak Berkebutuhan Khusus"
                                     type="text"
                                     class="form-control"
@@ -144,8 +150,8 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="photo">Foto<span class='text-danger'>*</span></label>
-                            <input type="file" id="photo" required name="photo" class="form-control">
+                            <label for="photo">Foto</label>
+                            <input type="file" id="photo" name="photo" class="form-control">
                         </div>
                     </div>
                     <div class="col-12">
@@ -157,12 +163,14 @@
                                     class="form-control"
                                     name="description"
                                     rows="3"
-                            ></textarea>
+                            ><?= $entry->description ?></textarea>
                         </div>
                     </div>
                     <div class="col-12">
                         <h6>Education</h6>
 
+                        <?php $modelEdu = model("PsyEduModel") ?>
+                        <?php $educations = $modelEdu->where("psy_slug", $entry->slug)->findAll() ?>
                         <div id="educationRowContainer" class="w-100">
                             <div class="d-flex justify-content-between w-100 gap-3">
                                 <div class="form-group flex-grow-1">
@@ -172,6 +180,7 @@
                                             type="text"
                                             class="form-control"
                                             name="institute[]"
+                                            value="<?= $educations[0]->institute ?>"
                                             required
                                     >
                                 </div>
@@ -182,6 +191,7 @@
                                             type="text"
                                             class="form-control"
                                             name="major[]"
+                                            value="<?= $educations[0]->major ?>"
                                             required
                                     >
                                 </div>
@@ -192,6 +202,7 @@
                                             type="text"
                                             class="form-control"
                                             name="year[]"
+                                            value="<?= $educations[0]->year ?>"
                                             required
                                     >
                                 </div>
@@ -200,6 +211,51 @@
                                     Delete
                                 </button>
                             </div>
+                            <?php for ($i = 1; $i < count($educations); $i++): ?>
+                                <div class="d-flex justify-content-between w-100 gap-3">
+                                    <div class="form-group flex-grow-1">
+                                        <label>Institute</label>
+                                        <input
+                                                placeholder="Institute"
+                                                type="text"
+                                                class="form-control"
+                                                name="institute[]"
+                                                value="<?= $educations[$i]->institute ?>"
+                                                required
+                                        >
+                                    </div>
+                                    <div class="form-group flex-grow-1">
+                                        <label>Major</label>
+                                        <input
+                                                placeholder="Major"
+                                                type="text"
+                                                class="form-control"
+                                                name="major[]"
+                                                value="<?= $educations[$i]->major ?>"
+                                                required
+                                        >
+                                    </div>
+                                    <div class="form-group flex-grow-1">
+                                        <label>Year</label>
+                                        <input
+                                                placeholder="Tahun Kelulusan"
+                                                type="text"
+                                                class="form-control"
+                                                name="year[]"
+                                                value="<?= $educations[$i]->year ?>"
+                                                required
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="" class="invisible">.</label>
+                                        <button class="d-block btn btn-danger btn-sm" type="button"
+                                                onclick="deleteThisRow(this)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endfor ?>
                         </div>
                         <button class="w-100 btn btn-primary btn-sm mt-2" type="button" onclick="addEdu()">
                             Add More Education

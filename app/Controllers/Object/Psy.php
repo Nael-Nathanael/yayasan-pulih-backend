@@ -12,6 +12,7 @@ class Psy extends BaseController
     public function create(): RedirectResponse
     {
         $model = model("PsyModel");
+        $modelEdu = model("PsyEduModel");
 
         $slug = url_title($this->request->getPost("name"));
         $finalSlug = $slug;
@@ -19,6 +20,8 @@ class Psy extends BaseController
         while ($model->find($finalSlug)) {
             $finalSlug = $slug . "-" . $counter++;
         }
+
+        $slug = $finalSlug;
 
         // upload image
         $imgUrl = '/img/BannerBG_LandingPage.jpg';
@@ -46,90 +49,96 @@ class Psy extends BaseController
             ]
         );
 
-        return redirect()->to(previous_url());
+        for ($i = 0; $i < count($this->request->getPost("institute")); $i++) {
+            $modelEdu->insert(
+                [
+                    "psy_slug" => $slug,
+                    "institute" => $this->request->getPost("institute")[$i],
+                    "year" => $this->request->getPost("year")[$i],
+                    "major" => $this->request->getPost("major")[$i],
+                ]
+            );
+        }
+
+        return redirect()->to(route_to("dashboard.psy.index"));
     }
 
     public function update($slug): RedirectResponse
     {
-        $articles = model("ArticlesModel");
+        $model = model("PsyModel");
+        $modelEdu = model("PsyEduModel");
 
         $data = [
             "slug" => $slug,
-            "title" => $this->request->getPost("title"),
-            "topic" => $this->request->getPost("topic"),
-            "tag" => $this->request->getPost("tag"),
-            "short_description" => $this->request->getPost("short_description"),
-            "content" => str_replace(base_url(), "{backend_url}", $this->request->getPost("content")),
-            "service" => $this->request->getPost("service"),
-            "keywords" => $this->request->getPost("keywords"),
-            "meta_title" => $this->request->getPost("meta_title"),
-            "meta_description" => $this->request->getPost("meta_description"),
+            "name" => $this->request->getPost('name'),
+            "isAvailable" => $this->request->getPost('isAvailable'),
+            "SIPP" => $this->request->getPost('SIPP'),
+            "STR" => $this->request->getPost('STR'),
+            "sesi" => $this->request->getPost('sesi'),
+            "rating" => $this->request->getPost('rating'),
+            "reviews" => $this->request->getPost('reviews'),
+            "pengalaman_praktik" => $this->request->getPost('pengalaman_praktik'),
+            "tag" => $this->request->getPost('tag'),
+            "mastery" => $this->request->getPost('mastery'),
+            "description" => $this->request->getPost('description'),
         ];
 
         // upload image
-        if ($_FILES["coverImage"]["name"]) {
-            $path = $this->request->getFile("coverImage");
+        if ($_FILES["photo"]["name"]) {
+            $path = $this->request->getFile("photo");
             $path->move(UPLOAD_FOLDER_URL);
-            $data['imgUrl'] = base_url("/uploads/" . $path->getName());
+            $data['photo'] = base_url("/uploads/" . $path->getName());
         }
 
-        $articles->save($data);
+        $model->save($data);
 
-        return redirect()->to(previous_url());
+        // delete all modelEdu
+        $modelEdu->where("psy_slug", $slug)->delete();
+
+        for ($i = 0; $i < count($this->request->getPost("institute")); $i++) {
+            $modelEdu->insert(
+                [
+                    "psy_slug" => $slug,
+                    "institute" => $this->request->getPost("institute")[$i],
+                    "year" => $this->request->getPost("year")[$i],
+                    "major" => $this->request->getPost("major")[$i],
+                ]
+            );
+        }
+
+        return redirect()->to(route_to("dashboard.psy.index"));
     }
 
 
     public function delete($slug): RedirectResponse
     {
-        $articles = model("ArticlesModel");
+        $model = model("PsyModel");
+        $modelEdu = model("PsyEduModel");
 
-        $articles->delete($slug);
+        $model->where("slug", $slug)->delete();
+        $modelEdu->where("psy_slug", $slug)->delete();
 
-        return redirect()->to(previous_url());
+        return redirect()->to(route_to("dashboard.psy.index"));
     }
 
     public function get($slug = false): ResponseInterface
     {
-        $articles = model("ArticlesModel");
+        $model = model("PsyModel");
+        $modelEdu = model("PsyEduModel");
+
         if (!$slug) {
-            $lines = model("Lines");
-            $recommendation = [];
-
-            for ($i = 1; $i <= 5; $i++) {
-                $lookupRecom = $articles->find($lines->findOrEmptyString("ARTICLE_RECOM_$i" . "_SLUG"));
-                if ($lookupRecom) {
-                    $recommendation[] = $lookupRecom;
-                }
-            }
-
-            $articles_all = $articles
+            $instances = $model
                 ->orderBy("created_at DESC")
                 ->findAll();
 
-            $excluded_field = 'content';
-            foreach ($articles_all as &$article) {
-                unset($article->$excluded_field);
+            foreach ($instances as &$instance) {
+                $instance->educations = $modelEdu->where("psy_slug", $instance->slug)->findAll();
             }
-            return $this->response->setJSON([
-                "articles" => $articles_all,
-                "recommendation" => $recommendation,
-            ]);
+            return $this->response->setJSON($instances);
         }
-        return $this->response->setJSON($articles->find($slug));
-    }
-
-    public function getFeatured(): ResponseInterface
-    {
-        $articles = model("ArticlesModel");
-        $lines = model("Lines");
-        $recommendation = [];
-
-        for ($i = 1; $i <= 5; $i++) {
-            $lookupRecom = $articles->find($lines->findOrEmptyString("ARTICLE_RECOM_$i" . "_SLUG"));
-            if ($lookupRecom) {
-                $recommendation[] = $lookupRecom;
-            }
-        }
-        return $this->response->setJSON($recommendation);
+        $instance = $model->find($slug);
+        $instance->educations = $modelEdu->where("psy_slug", $instance->slug)->findAll();
+        
+        return $this->response->setJSON($instance);
     }
 }

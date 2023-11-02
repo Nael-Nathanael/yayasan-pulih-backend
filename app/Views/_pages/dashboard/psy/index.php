@@ -1,8 +1,7 @@
 <?= $this->extend("_layouts/base_layout"); ?>
 
 <?= $this->section("content"); ?>
-    <div class="container my-2">
-
+    <div class="container-fluid my-2">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5>Psikolog</h5>
@@ -13,74 +12,56 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped table-bordered">
                         <thead>
-                        <tr>
-                            <th width="1">No</th>
-                            <th>Grup</th>
-                            <th>Foto</th>
-                            <th>Edit</th>
-                            <th>Hapus</th>
+                        <tr class="text-center">
+                            <th nowrap width="1">No</th>
+                            <th style="min-width: 100px" nowrap>Photo</th>
+                            <th style="min-width: 300px" nowrap>Name</th>
+                            <th style="min-width: 100px" nowrap>Is Available</th>
+                            <th style="min-width: 100px" nowrap>SIPP</th>
+                            <th style="min-width: 100px" nowrap>STR</th>
+                            <th style="min-width: 100px" nowrap>Rating</th>
+                            <th style="min-width: 100px" nowrap>Reviews</th>
+                            <th style="min-width: 100px" nowrap>Pengalaman Praktik</th>
+                            <th style="min-width: 100px" nowrap>Kategori</th>
+                            <th style="min-width: 300px" nowrap>Mastery</th>
+                            <th style="min-width: 300px" nowrap>Description</th>
+                            <th style="min-width: 100px" nowrap>Sesi</th>
+                            <th style="min-width: 100px" nowrap>Edit</th>
+                            <th style="min-width: 100px" nowrap>Hapus</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $model = model("MitraModel"); ?>
+                        <?php $model = model("PsyModel"); ?>
                         <?php foreach ($model->findAll() as $key => $item): ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $item->group_name ?></td>
                                 <td>
-                                    <img src="<?= $item->photo ?>" height="200" width="200" style="object-fit: contain"
-                                         alt="<?= $item->group_name ?>"/>
+                                    <img src="<?= $item->photo ?>" height="100" width="100"
+                                         style="object-fit: cover; border-radius: 100%; object-position: center"
+                                         alt="<?= $item->name ?>"/>
                                 </td>
+                                <td><?= $item->name ?></td>
+                                <td><?= $item->isAvailable ? "Ya" : "Tidak" ?></td>
+                                <td nowrap><?= $item->SIPP ?></td>
+                                <td nowrap><?= $item->STR ?></td>
+                                <td><?= $item->rating ?></td>
+                                <td><?= $item->reviews ?></td>
+                                <td><?= $item->pengalaman_praktik ?></td>
+                                <td><?= $item->tag ?></td>
+                                <td><?= substr($item->mastery, 0, 100) ?>...</td>
+                                <td><?= substr($item->description, 0, 100) ?>...</td>
+                                <td><?= $item->sesi ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#editMitra<?= $key ?>">
+                                    <a href="<?= route_to("dashboard.psy.update", $item->slug)?>" class="btn btn-warning btn-sm w-100">
                                         <i class="bi bi-pen"></i> Edit
-                                    </button>
-
-                                    <div class="modal fade" id="editMitra<?= $key ?>" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5">Edit Mitra</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                </div>
-                                                <form action="<?= route_to("object.mitra.update", $item->id) ?>"
-                                                      method="post"
-                                                      enctype="multipart/form-data">
-                                                    <div class="modal-body">
-                                                        <div class="form-group mb-3 w-100 text-start">
-                                                            <label for="photo<?= $key ?>">File</label>
-                                                            <input type="file" name="photo" id="photo<?= $key ?>"
-                                                                   class="form-control w-100">
-                                                        </div>
-
-                                                        <div class="form-floating mb-3 w-100">
-                                                            <input type="text" name="group_name"
-                                                                   id="group_name_<?= $key ?>"
-                                                                   class="form-control form-control-sm w-100"
-                                                                   value="<?= $item->group_name ?>"
-                                                            >
-                                                            <label for="group_name_<?= $key ?>">Nama Kategori
-                                                                Mitra</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary btn-sm">
-                                                            Simpan
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </td>
                                 <td>
-                                    <form action="<?= route_to("object.mitra.delete", $item->id) ?>"
+                                    <form action="<?= route_to("object.psy.delete", $item->slug) ?>"
                                           method="post">
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm w-100">
                                             Delete
                                         </button>
                                     </form>

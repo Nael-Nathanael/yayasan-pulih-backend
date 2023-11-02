@@ -16,8 +16,8 @@ class Psy extends BaseController
         return view("_pages/dashboard/psy/create");
     }
 
-    public function update(): string
+    public function update($slug): string
     {
-        return view("_pages/dashboard/psy/update");
+        return view("_pages/dashboard/psy/update", ["slug" => $slug]);
     }
 }

@@ -24,6 +24,7 @@ class PsyModel extends Model
         "tag",
         "mastery",
         "description",
+        "photo",
     ];
 
     // Dates
