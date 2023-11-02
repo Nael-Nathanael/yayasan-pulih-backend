@@ -48,6 +48,12 @@ $routes->group('dashboard', function ($routes) {
         $routes->get("update/(:segment)", "Dashboard\Articles::update/$1", ["as" => "dashboard.articles.update"]);
     });
 
+    $routes->group('psy', function ($routes) {
+        $routes->get('', "Dashboard\Psy::index", ["as" => "dashboard.psy.index"]);
+        $routes->get("create", "Dashboard\Psy::create", ["as" => "dashboard.psy.create"]);
+        $routes->get("update/(:segment)", "Dashboard\Psy::update/$1", ["as" => "dashboard.psy.update"]);
+    });
+
     $routes->group('events', function ($routes) {
         $routes->get("", "Dashboard\Events::index", ["as" => "dashboard.events.index"]);
         $routes->get("create", "Dashboard\Events::create", ["as" => "dashboard.events.create"]);
@@ -91,6 +97,14 @@ $routes->group("object", function ($routes) {
         $routes->get('get', "Object\Articles::get", ["as" => "object.articles.get"]);
         $routes->get('getFeatured', "Object\Articles::getFeatured", ["as" => "object.articles.getFeatured"]);
         $routes->get('get/(:segment)', "Object\Articles::get/$1", ["as" => "object.articles.getSpecific"]);
+    });
+
+    $routes->group('psy', function ($routes) {
+        $routes->post('create', "Object\Psy::create", ["as" => "object.psy.create"]);
+        $routes->post('delete/(:segment)', "Object\Psy::delete/$1", ["as" => "object.psy.delete"]);
+        $routes->post('update/(:segment)', "Object\Psy::update/$1", ["as" => "object.psy.update"]);
+        $routes->get('get', "Object\Psy::get", ["as" => "object.psy.get"]);
+        $routes->get('get/(:segment)', "Object\Psy::get/$1", ["as" => "object.psy.getSpecific"]);
     });
 
     $routes->group('events', function ($routes) {

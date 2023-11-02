@@ -33,6 +33,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= route_to("dashboard.psy.index") ?>">Psikolog</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= route_to("dashboard.mitra.index") ?>">Mitra</a>
                 </li>
                 <li class="nav-item">
