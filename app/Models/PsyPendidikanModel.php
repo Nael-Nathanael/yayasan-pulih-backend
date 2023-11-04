@@ -4,18 +4,20 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PsyEduModel extends Model
+class PsyPendidikanModel extends Model
 {
-    protected $table = 'psy_edu';
+    protected $table = 'psy__pendidikan';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
     protected $allowedFields = [
         'psy_slug',
-        'institute',
-        'year',
-        'major',
+        'pendidikan',
+        'universitas',
+        'bidang_peminatan',
+        'tahun_lulus',
+        'ipk',
     ];
 
     // Dates

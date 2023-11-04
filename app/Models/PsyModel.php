@@ -13,18 +13,32 @@ class PsyModel extends Model
     protected $useSoftDeletes = false;
     protected $allowedFields = [
         'slug',
+        'photo',
         'name',
-        'isAvailable',
+        'spesialisasi',
+        'domisili',
+        'jenis_kelamin',
+        'email',
+        'phone',
+
+        'CV_file',
+        'ijazah_transcript_file',
+        'motivational_letter_file',
+
         'SIPP',
+        'SIPP_year',
+        'SIPP_year_end',
+        'SIPP_status',
+        'SIPP_file',
+
         'STR',
-        'sesi',
-        "rating",
-        "reviews",
-        "pengalaman_praktik",
-        "tag",
-        "mastery",
-        "description",
-        "photo",
+        'STR_year',
+        'STR_year_end',
+        'STR_status',
+        'STR_file',
+
+        'lang_fluency_english',
+        'lang_fluency_indonesia',
     ];
 
     // Dates

@@ -169,7 +169,7 @@
                     <div class="col-12">
                         <h6>Education</h6>
 
-                        <?php $modelEdu = model("PsyEduModel") ?>
+                        <?php $modelEdu = model("PsyPendidikanModel") ?>
                         <?php $educations = $modelEdu->where("psy_slug", $entry->slug)->findAll() ?>
                         <div id="educationRowContainer" class="w-100">
                             <div class="d-flex justify-content-between w-100 gap-3">
