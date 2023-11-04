@@ -18,16 +18,11 @@
                             <th nowrap width="1">No</th>
                             <th style="min-width: 100px" nowrap>Photo</th>
                             <th style="min-width: 300px" nowrap>Name</th>
-                            <th style="min-width: 100px" nowrap>Is Available</th>
+                            <th style="min-width: 100px" nowrap>Spesialisasi</th>
+                            <th style="min-width: 100px" nowrap>Email</th>
+                            <th style="min-width: 100px" nowrap>Phone</th>
                             <th style="min-width: 100px" nowrap>SIPP</th>
                             <th style="min-width: 100px" nowrap>STR</th>
-                            <th style="min-width: 100px" nowrap>Rating</th>
-                            <th style="min-width: 100px" nowrap>Reviews</th>
-                            <th style="min-width: 100px" nowrap>Pengalaman Praktik</th>
-                            <th style="min-width: 100px" nowrap>Kategori</th>
-                            <th style="min-width: 300px" nowrap>Mastery</th>
-                            <th style="min-width: 300px" nowrap>Description</th>
-                            <th style="min-width: 100px" nowrap>Sesi</th>
                             <th style="min-width: 100px" nowrap>Edit</th>
                             <th style="min-width: 100px" nowrap>Hapus</th>
                         </tr>
@@ -43,16 +38,11 @@
                                          alt="<?= $item->name ?>"/>
                                 </td>
                                 <td><?= $item->name ?></td>
-                                <td><?= $item->isAvailable ? "Ya" : "Tidak" ?></td>
+                                <td><?= $item->spesialisasi ?></td>
+                                <td nowrap><?= $item->email ?></td>
+                                <td nowrap><?= $item->phone ?></td>
                                 <td nowrap><?= $item->SIPP ?></td>
                                 <td nowrap><?= $item->STR ?></td>
-                                <td><?= $item->rating ?></td>
-                                <td><?= $item->reviews ?></td>
-                                <td><?= $item->pengalaman_praktik ?></td>
-                                <td><?= $item->tag ?></td>
-                                <td><?= substr($item->mastery, 0, 100) ?>...</td>
-                                <td><?= substr($item->description, 0, 100) ?>...</td>
-                                <td><?= $item->sesi ?></td>
                                 <td>
                                     <a href="<?= route_to("dashboard.psy.update", $item->slug)?>" class="btn btn-warning btn-sm w-100">
                                         <i class="bi bi-pen"></i> Edit
