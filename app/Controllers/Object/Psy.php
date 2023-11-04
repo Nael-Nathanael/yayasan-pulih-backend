@@ -208,7 +208,6 @@ class Psy extends BaseController
     public function get($slug = false): ResponseInterface
     {
         $model = model("PsyModel");
-        $modelEdu = model("PsyPendidikanModel");
 
         if (!$slug) {
             $instances = $model
@@ -218,7 +217,18 @@ class Psy extends BaseController
             return $this->response->setJSON($instances);
         }
         $instance = $model->find($slug);
-        $instance->educations = $modelEdu->where("psy_slug", $instance->slug)->findAll();
+
+        $models = [
+            "PsyCertificationModel" => 'certifications',
+            "PsyOtherExperienceModel" => 'other_experiences',
+            "PsyPendidikanModel" => 'educations',
+            "PsyPublikasiModel" => 'publications',
+            "PsyWorkingExperienceModel" => 'working_experiences',
+        ];
+        foreach ($models as $model_name => $attrName) {
+            $model = model($model_name);
+            $instance->$attrName = $model->where("psy_slug", $instance->slug)->findAll();
+        }
 
         return $this->response->setJSON($instance);
     }
