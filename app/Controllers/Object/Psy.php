@@ -49,6 +49,7 @@ class Psy extends BaseController
         while ($model->find($finalSlug)) {
             $finalSlug = $slug . "-" . $counter++;
         }
+        $slug = $finalSlug;
         $psyModelData["slug"] = $finalSlug;
 
         // upload documents

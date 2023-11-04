@@ -495,20 +495,20 @@
                                     >
                                 </div>
                                 <div class="form-group">
-                                    <label>Tahun mulai<span class='text-danger'>*</span></label>
+                                    <label>Mulai<span class='text-danger'>*</span></label>
                                     <input
                                             placeholder="Tahun"
-                                            type="text"
+                                            type="date"
                                             class="form-control"
                                             name="work_tahun_bekerja_start[]"
                                             required
                                     >
                                 </div>
                                 <div class="form-group">
-                                    <label>Tahun mulai<span class='text-danger'>*</span></label>
+                                    <label>Selesai<span class='text-danger'>*</span></label>
                                     <input
                                             placeholder="Tahun"
-                                            type="text"
+                                            type="date"
                                             class="form-control"
                                             name="work_tahun_bekerja_end[]"
                                             required
