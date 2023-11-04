@@ -95,7 +95,7 @@ class Psy extends BaseController
             );
         }
 
-        $model = model("PsyOtherExperience");
+        $model = model("PsyOtherExperienceModel");
         for ($i = 0; $i < count($this->request->getPost("oth_bidang")); $i++) {
             $model->insert(
                 [
@@ -187,10 +187,20 @@ class Psy extends BaseController
     public function delete($slug): RedirectResponse
     {
         $model = model("PsyModel");
-        $modelEdu = model("PsyPendidikanModel");
-
         $model->where("slug", $slug)->delete();
-        $modelEdu->where("psy_slug", $slug)->delete();
+
+        $models = [
+            "PsyCertificationModel",
+            "PsyOtherExperienceModel",
+            "PsyPendidikanModel",
+            "PsyPublikasiModel",
+            "PsyWorkingExperienceModel",
+        ];
+
+        foreach ($models as $model_name) {
+            $model = model($model_name);
+            $model->where("psy_slug", $slug)->delete();
+        }
 
         return redirect()->to(route_to("dashboard.psy.index"));
     }

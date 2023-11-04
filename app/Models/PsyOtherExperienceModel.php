@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PsyOtherExperience extends Model
+class PsyOtherExperienceModel extends Model
 {
     protected $table = 'psy__other_experience';
     protected $primaryKey = 'id';
