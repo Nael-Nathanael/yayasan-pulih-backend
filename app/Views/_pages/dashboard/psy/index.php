@@ -29,6 +29,11 @@
                         </thead>
                         <tbody>
                         <?php $model = model("PsyModel"); ?>
+                        <?php if ($model->countAll() == 0): ?>
+                            <tr>
+                                <td colspan="12" class="text-center">No Data</td>
+                            </tr>
+                        <?php endif; ?>
                         <?php foreach ($model->findAll() as $key => $item): ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
@@ -44,14 +49,21 @@
                                 <td nowrap><?= $item->SIPP ?></td>
                                 <td nowrap><?= $item->STR ?></td>
                                 <td>
-                                    <a href="<?= route_to("dashboard.psy.update", $item->slug)?>" class="btn btn-warning btn-sm w-100">
+                                    <a href="<?= route_to("dashboard.psy.update", $item->slug) ?>"
+                                       class="btn btn-warning btn-sm w-100">
                                         <i class="bi bi-pen"></i> Edit
                                     </a>
                                 </td>
                                 <td>
                                     <form action="<?= route_to("object.psy.delete", $item->slug) ?>"
-                                          method="post">
-                                        <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                          method="post" id="formdelete_<?= $item->slug ?>">
+                                        <button
+                                                onclick="
+                                                        if (confirm('Delete this Psikolog?')) {
+                                                        document.getElementById('formdelete_<?= $item->slug ?>').submit()
+                                                        }
+                                                        "
+                                                type="button" class="btn btn-outline-danger btn-sm w-100">
                                             Delete
                                         </button>
                                     </form>
