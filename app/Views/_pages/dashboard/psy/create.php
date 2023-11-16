@@ -181,7 +181,6 @@
                                     type="text"
                                     class="form-control"
                                     name="SIPP"
-                                    required
                             >
                         </div>
                     </div>
@@ -193,7 +192,6 @@
                                     type="date"
                                     class="form-control"
                                     name="SIPP_year"
-                                    required
                             >
                         </div>
                     </div>
@@ -205,7 +203,6 @@
                                     type="date"
                                     class="form-control"
                                     name="SIPP_year_end"
-                                    required
                             >
                         </div>
                     </div>
@@ -217,14 +214,13 @@
                                     type="file"
                                     class="form-control"
                                     name="SIPP_file"
-                                    required
                             >
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="SIPP_status">Status<span class='text-danger'>*</span></label>
-                            <select name="SIPP_status" class="form-select" required id="SIPP_status">
+                            <select name="SIPP_status" class="form-select" id="SIPP_status">
                                 <option value="" disabled selected>--PILIH STATUS SIPP--</option>
                                 <option value="Aktif">Aktif</option>
                                 <option value="Non Aktif">Non Aktif</option>
@@ -245,7 +241,6 @@
                                     type="text"
                                     class="form-control"
                                     name="STR"
-                                    required
                             >
                         </div>
                     </div>
@@ -257,7 +252,6 @@
                                     type="date"
                                     class="form-control"
                                     name="STR_year"
-                                    required
                             >
                         </div>
                     </div>
@@ -269,7 +263,6 @@
                                     type="date"
                                     class="form-control"
                                     name="STR_year_end"
-                                    required
                             >
                         </div>
                     </div>
@@ -281,14 +274,13 @@
                                     type="file"
                                     class="form-control"
                                     name="STR_file"
-                                    required
                             >
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="STR_status">Status<span class='text-danger'>*</span></label>
-                            <select name="STR_status" class="form-select" required id="STR_status">
+                            <select name="STR_status" class="form-select" id="STR_status">
                                 <option value="" disabled selected>--PILIH STATUS STR--</option>
                                 <option value="Aktif">Aktif</option>
                                 <option value="Non Aktif">Non Aktif</option>
