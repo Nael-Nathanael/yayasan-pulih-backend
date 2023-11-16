@@ -19,8 +19,6 @@
                             <th style="min-width: 100px" nowrap>Photo</th>
                             <th style="min-width: 300px" nowrap>Name</th>
                             <th style="min-width: 100px" nowrap>Spesialisasi</th>
-                            <th style="min-width: 100px" nowrap>Email</th>
-                            <th style="min-width: 100px" nowrap>Phone</th>
                             <th style="min-width: 100px" nowrap>SIPP</th>
                             <th style="min-width: 100px" nowrap>STR</th>
                             <th style="min-width: 100px" nowrap>Edit</th>
@@ -44,8 +42,6 @@
                                 </td>
                                 <td><?= $item->name ?></td>
                                 <td><?= $item->spesialisasi ?></td>
-                                <td nowrap><?= $item->email ?></td>
-                                <td nowrap><?= $item->phone ?></td>
                                 <td nowrap><?= $item->SIPP ?></td>
                                 <td nowrap><?= $item->STR ?></td>
                                 <td>
