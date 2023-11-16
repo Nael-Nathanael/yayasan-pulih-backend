@@ -34,7 +34,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="photo">Foto<span class='text-danger'>*</span></label>
-                            <input type="file" id="photo" required name="photo" class="form-control">
+                            <input type="file" id="photo" name="photo" class="form-control">
                         </div>
                     </div>
                     <div class="col-3">
@@ -141,7 +141,6 @@
                                     type="file"
                                     class="form-control"
                                     name="CV_file"
-                                    required
                             >
                         </div>
                     </div>
@@ -154,7 +153,6 @@
                                     type="file"
                                     class="form-control"
                                     name="ijazah_transcript_file"
-                                    required
                             >
                         </div>
                     </div>
@@ -166,7 +164,6 @@
                                     type="file"
                                     class="form-control"
                                     name="motivational_letter_file"
-                                    required
                             >
                         </div>
                     </div>
