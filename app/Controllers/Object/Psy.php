@@ -71,67 +71,79 @@ class Psy extends BaseController
         $model->insert($psyModelData);
 
         $model = model("PsyPendidikanModel");
-        for ($i = 0; $i < count($this->request->getPost("edu_pendidikan")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "pendidikan" => $this->request->getPost("edu_pendidikan")[$i],
-                    "universitas" => $this->request->getPost("edu_universitas")[$i],
-                    "bidang_peminatan" => $this->request->getPost("edu_bidang_peminatan")[$i],
-                    "tahun_lulus" => $this->request->getPost("edu_tahun_lulus")[$i],
-                    "ipk" => $this->request->getPost("edu_ipk")[$i],
-                ]
-            );
+        if ($this->request->getPost("edu_pendidikan")) {
+
+            for ($i = 0; $i < count($this->request->getPost("edu_pendidikan")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "pendidikan" => $this->request->getPost("edu_pendidikan")[$i],
+                        "universitas" => $this->request->getPost("edu_universitas")[$i],
+                        "bidang_peminatan" => $this->request->getPost("edu_bidang_peminatan")[$i],
+                        "tahun_lulus" => $this->request->getPost("edu_tahun_lulus")[$i],
+                        "ipk" => $this->request->getPost("edu_ipk")[$i],
+                    ]
+                );
+            }
         }
 
-        $model = model("PsyCertificationModel");
-        for ($i = 0; $i < count($this->request->getPost("cert_nama_sertifikasi")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "nama_sertifikasi" => $this->request->getPost("cert_nama_sertifikasi")[$i],
-                    "issuer" => $this->request->getPost("cert_issuer")[$i],
-                    "tahun" => $this->request->getPost("cert_tahun")[$i],
-                ]
-            );
+        if ($this->request->getPost("cert_nama_sertifikasi")) {
+
+            $model = model("PsyCertificationModel");
+            for ($i = 0; $i < count($this->request->getPost("cert_nama_sertifikasi")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "nama_sertifikasi" => $this->request->getPost("cert_nama_sertifikasi")[$i],
+                        "issuer" => $this->request->getPost("cert_issuer")[$i],
+                        "tahun" => $this->request->getPost("cert_tahun")[$i],
+                    ]
+                );
+            }
         }
 
-        $model = model("PsyOtherExperienceModel");
-        for ($i = 0; $i < count($this->request->getPost("oth_bidang")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "bidang" => $this->request->getPost("oth_bidang")[$i],
-                    "organisasi" => $this->request->getPost("oth_organisasi")[$i],
-                    "tahun" => $this->request->getPost("oth_tahun")[$i],
-                ]
-            );
-        }
+        if ($this->request->getPost("oth_bidang")) {
 
-        $model = model("PsyWorkingExperienceModel");
-        for ($i = 0; $i < count($this->request->getPost("work_current_position")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "current_position" => $this->request->getPost("work_current_position")[$i],
-                    "bidang" => $this->request->getPost("work_bidang")[$i],
-                    "perusahaan" => $this->request->getPost("work_perusahaan")[$i],
-                    "tahun_bekerja_start" => $this->request->getPost("work_tahun_bekerja_start")[$i],
-                    "tahun_bekerja_end" => $this->request->getPost("work_tahun_bekerja_end")[$i],
-                ]
-            );
+            $model = model("PsyOtherExperienceModel");
+            for ($i = 0; $i < count($this->request->getPost("oth_bidang")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "bidang" => $this->request->getPost("oth_bidang")[$i],
+                        "organisasi" => $this->request->getPost("oth_organisasi")[$i],
+                        "tahun" => $this->request->getPost("oth_tahun")[$i],
+                    ]
+                );
+            }
         }
+        if ($this->request->getPost("work_current_position")) {
 
-        $model = model("PsyPublikasiModel");
-        for ($i = 0; $i < count($this->request->getPost("pub_nama")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "nama" => $this->request->getPost("pub_nama")[$i],
-                    "issuer" => $this->request->getPost("pub_issuer")[$i],
-                    "tahun" => $this->request->getPost("pub_tahun")[$i],
-                ]
-            );
+            $model = model("PsyWorkingExperienceModel");
+            for ($i = 0; $i < count($this->request->getPost("work_current_position")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "current_position" => $this->request->getPost("work_current_position")[$i],
+                        "bidang" => $this->request->getPost("work_bidang")[$i],
+                        "perusahaan" => $this->request->getPost("work_perusahaan")[$i],
+                        "tahun_bekerja_start" => $this->request->getPost("work_tahun_bekerja_start")[$i],
+                        "tahun_bekerja_end" => $this->request->getPost("work_tahun_bekerja_end")[$i],
+                    ]
+                );
+            }
+        }
+        if ($this->request->getPost("pub_nama")) {
+            $model = model("PsyPublikasiModel");
+            for ($i = 0; $i < count($this->request->getPost("pub_nama")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "nama" => $this->request->getPost("pub_nama")[$i],
+                        "issuer" => $this->request->getPost("pub_issuer")[$i],
+                        "tahun" => $this->request->getPost("pub_tahun")[$i],
+                    ]
+                );
+            }
         }
 
 
@@ -186,71 +198,84 @@ class Psy extends BaseController
 
         $model = model("PsyPendidikanModel");
         $model->where("psy_slug", $slug)->delete();
-        for ($i = 0; $i < count($this->request->getPost("edu_pendidikan")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "pendidikan" => $this->request->getPost("edu_pendidikan")[$i],
-                    "universitas" => $this->request->getPost("edu_universitas")[$i],
-                    "bidang_peminatan" => $this->request->getPost("edu_bidang_peminatan")[$i],
-                    "tahun_lulus" => $this->request->getPost("edu_tahun_lulus")[$i],
-                    "ipk" => $this->request->getPost("edu_ipk")[$i],
-                ]
-            );
+        if ($this->request->getPost("edu_pendidikan")) {
+            for ($i = 0; $i < count($this->request->getPost("edu_pendidikan")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "pendidikan" => $this->request->getPost("edu_pendidikan")[$i],
+                        "universitas" => $this->request->getPost("edu_universitas")[$i],
+                        "bidang_peminatan" => $this->request->getPost("edu_bidang_peminatan")[$i],
+                        "tahun_lulus" => $this->request->getPost("edu_tahun_lulus")[$i],
+                        "ipk" => $this->request->getPost("edu_ipk")[$i],
+                    ]
+                );
+            }
         }
 
         $model = model("PsyCertificationModel");
         $model->where("psy_slug", $slug)->delete();
-        for ($i = 0; $i < count($this->request->getPost("cert_nama_sertifikasi")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "nama_sertifikasi" => $this->request->getPost("cert_nama_sertifikasi")[$i],
-                    "issuer" => $this->request->getPost("cert_issuer")[$i],
-                    "tahun" => $this->request->getPost("cert_tahun")[$i],
-                ]
-            );
+        if ($this->request->getPost("cert_nama_sertifikasi")) {
+
+            for ($i = 0; $i < count($this->request->getPost("cert_nama_sertifikasi")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "nama_sertifikasi" => $this->request->getPost("cert_nama_sertifikasi")[$i],
+                        "issuer" => $this->request->getPost("cert_issuer")[$i],
+                        "tahun" => $this->request->getPost("cert_tahun")[$i],
+                    ]
+                );
+            }
         }
 
         $model = model("PsyOtherExperienceModel");
         $model->where("psy_slug", $slug)->delete();
-        for ($i = 0; $i < count($this->request->getPost("oth_bidang")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "bidang" => $this->request->getPost("oth_bidang")[$i],
-                    "organisasi" => $this->request->getPost("oth_organisasi")[$i],
-                    "tahun" => $this->request->getPost("oth_tahun")[$i],
-                ]
-            );
+        if ($this->request->getPost("oth_bidang")) {
+
+            for ($i = 0; $i < count($this->request->getPost("oth_bidang")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "bidang" => $this->request->getPost("oth_bidang")[$i],
+                        "organisasi" => $this->request->getPost("oth_organisasi")[$i],
+                        "tahun" => $this->request->getPost("oth_tahun")[$i],
+                    ]
+                );
+            }
         }
 
         $model = model("PsyWorkingExperienceModel");
         $model->where("psy_slug", $slug)->delete();
-        for ($i = 0; $i < count($this->request->getPost("work_current_position")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "current_position" => $this->request->getPost("work_current_position")[$i],
-                    "bidang" => $this->request->getPost("work_bidang")[$i],
-                    "perusahaan" => $this->request->getPost("work_perusahaan")[$i],
-                    "tahun_bekerja_start" => $this->request->getPost("work_tahun_bekerja_start")[$i],
-                    "tahun_bekerja_end" => $this->request->getPost("work_tahun_bekerja_end")[$i],
-                ]
-            );
+        if ($this->request->getPost("work_current_position")) {
+
+            for ($i = 0; $i < count($this->request->getPost("work_current_position")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "current_position" => $this->request->getPost("work_current_position")[$i],
+                        "bidang" => $this->request->getPost("work_bidang")[$i],
+                        "perusahaan" => $this->request->getPost("work_perusahaan")[$i],
+                        "tahun_bekerja_start" => $this->request->getPost("work_tahun_bekerja_start")[$i],
+                        "tahun_bekerja_end" => $this->request->getPost("work_tahun_bekerja_end")[$i],
+                    ]
+                );
+            }
         }
 
         $model = model("PsyPublikasiModel");
         $model->where("psy_slug", $slug)->delete();
-        for ($i = 0; $i < count($this->request->getPost("pub_nama")); $i++) {
-            $model->insert(
-                [
-                    "psy_slug" => $slug,
-                    "nama" => $this->request->getPost("pub_nama")[$i],
-                    "issuer" => $this->request->getPost("pub_issuer")[$i],
-                    "tahun" => $this->request->getPost("pub_tahun")[$i],
-                ]
-            );
+        if ($this->request->getPost("pub_nama")) {
+            for ($i = 0; $i < count($this->request->getPost("pub_nama")); $i++) {
+                $model->insert(
+                    [
+                        "psy_slug" => $slug,
+                        "nama" => $this->request->getPost("pub_nama")[$i],
+                        "issuer" => $this->request->getPost("pub_issuer")[$i],
+                        "tahun" => $this->request->getPost("pub_tahun")[$i],
+                    ]
+                );
+            }
         }
 
         return redirect()->to(route_to("dashboard.psy.index"));
