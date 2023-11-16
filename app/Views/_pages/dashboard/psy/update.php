@@ -90,7 +90,6 @@
                                     type="email"
                                     class="form-control"
                                     name="email"
-                                    required
                                     value="<?= $instance->email ?>"
                             >
                         </div>
@@ -104,7 +103,6 @@
                                     type="tel"
                                     class="form-control"
                                     name="phone"
-                                    required
                                     value="<?= $instance->phone ?>"
                             >
                         </div>

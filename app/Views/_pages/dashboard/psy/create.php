@@ -67,7 +67,6 @@
                                     type="email"
                                     class="form-control"
                                     name="email"
-                                    required
                             >
                         </div>
                     </div>
@@ -80,7 +79,6 @@
                                     type="tel"
                                     class="form-control"
                                     name="phone"
-                                    required
                             >
                         </div>
                     </div>
