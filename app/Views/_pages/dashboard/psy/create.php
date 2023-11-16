@@ -84,6 +84,19 @@
                             >
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <textarea
+                                    id="description"
+                                    placeholder="..."
+                                    class="form-control"
+                                    name="description"
+                            ></textarea>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <hr class="mx-3">
@@ -92,8 +105,10 @@
                 <div class="row g-3">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="lang_fluency_indonesia">Bahasa Indonesia<span class='text-danger'>*</span></label>
-                            <select name="lang_fluency_indonesia" class="form-select" required id="lang_fluency_indonesia">
+                            <label for="lang_fluency_indonesia">Bahasa Indonesia<span
+                                        class='text-danger'>*</span></label>
+                            <select name="lang_fluency_indonesia" class="form-select" required
+                                    id="lang_fluency_indonesia">
                                 <option value="" disabled selected>--PILIH PENGUASAAN BAHASA--</option>
                                 <option value="Basic">Basic</option>
                                 <option value="Conversational">Conversational</option>

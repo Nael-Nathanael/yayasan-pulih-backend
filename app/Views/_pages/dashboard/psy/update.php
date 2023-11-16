@@ -109,6 +109,18 @@
                             >
                         </div>
                     </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <textarea
+                                    id="description"
+                                    placeholder="..."
+                                    class="form-control"
+                                    name="description"
+                            ><?= $instance->description ?></textarea>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <hr class="mx-3">
