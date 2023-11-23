@@ -239,7 +239,7 @@
                             <label for="SIPP_year">Tahun mulai<span class='text-danger'>*</span></label>
                             <input
                                     id="SIPP_year"
-                                    type="date"
+                                    type="text"
                                     class="form-control"
                                     name="SIPP_year"
                                     required
@@ -314,7 +314,7 @@
                             <label for="STR_year">Tahun mulai<span class='text-danger'>*</span></label>
                             <input
                                     id="STR_year"
-                                    type="date"
+                                    type="text"
                                     class="form-control"
                                     name="STR_year"
                                     required
