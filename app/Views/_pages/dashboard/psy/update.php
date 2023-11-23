@@ -331,7 +331,7 @@
                             <label for="STR_year_end">Tahun selesai<span class='text-danger'>*</span></label>
                             <input
                                     id="STR_year_end"
-                                    type="date"
+                                    type="text"
                                     class="form-control"
                                     name="STR_year_end"
                                     value="<?= $instance->STR_year_end ?>"
