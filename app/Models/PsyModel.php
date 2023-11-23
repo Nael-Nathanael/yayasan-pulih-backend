@@ -20,6 +20,7 @@ class PsyModel extends Model
         'jenis_kelamin',
         'email',
         'phone',
+        'description',
 
         'CV_file',
         'ijazah_transcript_file',

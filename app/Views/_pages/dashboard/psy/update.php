@@ -19,7 +19,6 @@
                                     type="text"
                                     class="form-control"
                                     name="name"
-                                    required
                                     value="<?= $instance->name ?>"
                             >
                         </div>
@@ -27,7 +26,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="spesialisasi">Spesialisasi<span class='text-danger'>*</span></label>
-                            <select name="spesialisasi" class="form-select" required id="spesialisasi">
+                            <select name="spesialisasi" class="form-select" id="spesialisasi">
                                 <option value="" disabled <?= $instance->spesialisasi ? '' : 'selected' ?>>--PILIH
                                     SPESIALISASI--
                                 </option>
@@ -53,7 +52,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="domisili">Domisili<span class='text-danger'>*</span></label>
-                            <select name="domisili" class="form-select" required id="domisili">
+                            <select name="domisili" class="form-select" id="domisili">
                                 <option <?= $instance->spesialisasi == "" ? 'selected' : '' ?> value="" disabled>--PILIH
                                     DOMISILI--
                                 </option>
@@ -72,7 +71,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin<span class='text-danger'>*</span></label>
-                            <select name="jenis_kelamin" class="form-select" required id="jenis_kelamin">
+                            <select name="jenis_kelamin" class="form-select" id="jenis_kelamin">
                                 <option <?= $instance->spesialisasi == "" ? 'selected' : '' ?> value="" disabled>--PILIH
                                     JENIS KELAMIN--
                                 </option>
@@ -90,7 +89,6 @@
                                     type="email"
                                     class="form-control"
                                     name="email"
-                                    required
                                     value="<?= $instance->email ?>"
                             >
                         </div>
@@ -104,11 +102,22 @@
                                     type="tel"
                                     class="form-control"
                                     name="phone"
-                                    required
                                     value="<?= $instance->phone ?>"
                             >
                         </div>
                     </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <textarea
+                                    id="description"
+                                    placeholder="..."
+                                    class="form-control"
+                                    name="description"
+                            ><?= $instance->description ?></textarea>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <hr class="mx-3">
@@ -119,7 +128,7 @@
                         <div class="form-group">
                             <label for="lang_fluency_indonesia">Bahasa Indonesia<span
                                         class='text-danger'>*</span></label>
-                            <select name="lang_fluency_indonesia" class="form-select" required
+                            <select name="lang_fluency_indonesia" class="form-select"
                                     id="lang_fluency_indonesia">
                                 <option <?= $instance->lang_fluency_indonesia == "" ? 'selected' : '' ?> value=""
                                                                                                          disabled>
@@ -143,7 +152,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="lang_fluency_english">Bahasa Inggris<span class='text-danger'>*</span></label>
-                            <select name="lang_fluency_english" class="form-select" required id="lang_fluency_english">
+                            <select name="lang_fluency_english" class="form-select" id="lang_fluency_english">
                                 <option <?= $instance->lang_fluency_english == "" ? 'selected' : '' ?> value=""
                                                                                                        disabled>--PILIH
                                     PENGUASAAN BAHASA--
@@ -229,7 +238,6 @@
                                     type="text"
                                     class="form-control"
                                     name="SIPP"
-                                    required
                                     value="<?= $instance->SIPP ?>"
                             >
                         </div>
@@ -242,7 +250,6 @@
                                     type="text"
                                     class="form-control"
                                     name="SIPP_year"
-                                    required
                                     value="<?= $instance->SIPP_year ?>"
                             >
                         </div>
@@ -255,7 +262,6 @@
                                     type="date"
                                     class="form-control"
                                     name="SIPP_year_end"
-                                    required
                                     value="<?= $instance->SIPP_year_end ?>"
                             >
                         </div>
@@ -278,7 +284,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="SIPP_status">Status<span class='text-danger'>*</span></label>
-                            <select name="SIPP_status" class="form-select" required id="SIPP_status">
+                            <select name="SIPP_status" class="form-select" id="SIPP_status">
                                 <option <?= $instance->SIPP_status == "" ? 'selected' : '' ?> value="" disabled>--PILIH
                                     STATUS SIPP--
                                 </option>
@@ -304,7 +310,6 @@
                                     type="text"
                                     class="form-control"
                                     name="STR"
-                                    required
                                     value="<?= $instance->STR ?>"
                             >
                         </div>
@@ -317,7 +322,6 @@
                                     type="text"
                                     class="form-control"
                                     name="STR_year"
-                                    required
                                     value="<?= $instance->STR_year ?>"
                             >
                         </div>
@@ -330,7 +334,6 @@
                                     type="date"
                                     class="form-control"
                                     name="STR_year_end"
-                                    required
                                     value="<?= $instance->STR_year_end ?>"
                             >
                         </div>
@@ -353,7 +356,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="STR_status">Status<span class='text-danger'>*</span></label>
-                            <select name="STR_status" class="form-select" required id="STR_status">
+                            <select name="STR_status" class="form-select" id="STR_status">
                                 <option <?= $instance->STR_status == "" ? 'selected' : '' ?> value="" disabled selected>
                                     --PILIH STATUS STR--
                                 </option>
@@ -378,7 +381,7 @@
 
                             <div class="form-group">
                                 <label>Pendidikan<span class='text-danger'>*</span></label>
-                                <select name="edu_pendidikan[]" class="form-select" required>
+                                <select name="edu_pendidikan[]" class="form-select">
                                     <option value="" disabled>--PILIH PENDIDIKAN--</option>
                                     <option <?= $edu_instance->pendidikan == 'S1' ? 'selected' : '' ?> value="S1">S1
                                     </option>
@@ -395,13 +398,12 @@
                                         type="text"
                                         class="form-control"
                                         name="edu_universitas[]"
-                                        required
                                         value="<?= $edu_instance->universitas ?>"
                                 >
                             </div>
                             <div class="form-group">
                                 <label>Bidang Peminatan<span class='text-danger'>*</span></label>
-                                <select name="edu_bidang_peminatan[]" class="form-select" required>
+                                <select name="edu_bidang_peminatan[]" class="form-select">
                                     <option <?= $edu_instance->bidang_peminatan == '' ? 'selected' : '' ?> value=""
                                                                                                            disabled>
                                         --PILIH BIDANG PEMINATAN--
@@ -421,7 +423,6 @@
                                         type="text"
                                         class="form-control"
                                         name="edu_tahun_lulus[]"
-                                        required
                                         value="<?= $edu_instance->tahun_lulus ?>"
                                 >
                             </div>
@@ -432,7 +433,6 @@
                                         type="text"
                                         class="form-control"
                                         name="edu_ipk[]"
-                                        required
                                         value="<?= $edu_instance->ipk ?>"
                                 >
                             </div>
@@ -470,7 +470,6 @@
                                         type="text"
                                         class="form-control"
                                         name="cert_nama_sertifikasi[]"
-                                        required
                                         value="<?= $cert_instance->nama_sertifikasi ?>"
                                 >
                             </div>
@@ -481,7 +480,6 @@
                                         type="text"
                                         class="form-control"
                                         name="cert_issuer[]"
-                                        required
                                         value="<?= $cert_instance->issuer ?>"
                                 >
                             </div>
@@ -492,7 +490,6 @@
                                         type="text"
                                         class="form-control"
                                         name="cert_tahun[]"
-                                        required
                                         value="<?= $cert_instance->tahun ?>"
                                 >
                             </div>
@@ -527,7 +524,6 @@
                                         type="text"
                                         class="form-control"
                                         name="work_current_position[]"
-                                        required
                                         value="<?= $work_instance->current_position ?>"
                                 >
                             </div>
@@ -538,7 +534,6 @@
                                         type="text"
                                         class="form-control"
                                         name="work_bidang[]"
-                                        required
                                         value="<?= $work_instance->bidang ?>"
                                 >
                             </div>
@@ -549,7 +544,6 @@
                                         type="text"
                                         class="form-control"
                                         name="work_perusahaan[]"
-                                        required
                                         value="<?= $work_instance->perusahaan ?>"
                                 >
                             </div>
@@ -560,7 +554,6 @@
                                         type="date"
                                         class="form-control"
                                         name="work_tahun_bekerja_start[]"
-                                        required
                                         value="<?= $work_instance->tahun_bekerja_start ?>"
                                 >
                             </div>
@@ -571,7 +564,6 @@
                                         type="date"
                                         class="form-control"
                                         name="work_tahun_bekerja_end[]"
-                                        required
                                         value="<?= $work_instance->tahun_bekerja_end ?>"
                                 >
                             </div>
@@ -606,7 +598,6 @@
                                         type="text"
                                         class="form-control"
                                         name="oth_bidang[]"
-                                        required
                                         value="<?= $oth_instance->bidang ?>"
                                 >
                             </div>
@@ -617,7 +608,6 @@
                                         type="text"
                                         class="form-control"
                                         name="oth_organisasi[]"
-                                        required
                                         value="<?= $oth_instance->organisasi ?>"
                                 >
                             </div>
@@ -628,7 +618,6 @@
                                         type="text"
                                         class="form-control"
                                         name="oth_tahun[]"
-                                        required
                                         value="<?= $oth_instance->tahun ?>"
                                 >
                             </div>
@@ -662,7 +651,6 @@
                                         type="text"
                                         class="form-control"
                                         name="pub_nama[]"
-                                        required
                                         value="<?= $pub_instance->nama ?>"
                                 >
                             </div>
@@ -673,7 +661,6 @@
                                         type="text"
                                         class="form-control"
                                         name="pub_issuer[]"
-                                        required
                                         value="<?= $pub_instance->issuer ?>"
                                 >
                             </div>
@@ -684,7 +671,6 @@
                                         type="text"
                                         class="form-control"
                                         name="pub_tahun[]"
-                                        required
                                         value="<?= $pub_instance->tahun ?>"
                                 >
                             </div>

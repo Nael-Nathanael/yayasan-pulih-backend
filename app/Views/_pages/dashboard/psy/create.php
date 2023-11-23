@@ -34,7 +34,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="photo">Foto<span class='text-danger'>*</span></label>
-                            <input type="file" id="photo" required name="photo" class="form-control">
+                            <input type="file" id="photo" name="photo" class="form-control">
                         </div>
                     </div>
                     <div class="col-3">
@@ -67,7 +67,6 @@
                                     type="email"
                                     class="form-control"
                                     name="email"
-                                    required
                             >
                         </div>
                     </div>
@@ -80,10 +79,22 @@
                                     type="tel"
                                     class="form-control"
                                     name="phone"
-                                    required
                             >
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="description">Deskripsi Singkat</label>
+                            <textarea
+                                    id="description"
+                                    placeholder="..."
+                                    class="form-control"
+                                    name="description"
+                            ></textarea>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <hr class="mx-3">
@@ -92,8 +103,10 @@
                 <div class="row g-3">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="lang_fluency_indonesia">Bahasa Indonesia<span class='text-danger'>*</span></label>
-                            <select name="lang_fluency_indonesia" class="form-select" required id="lang_fluency_indonesia">
+                            <label for="lang_fluency_indonesia">Bahasa Indonesia<span
+                                        class='text-danger'>*</span></label>
+                            <select name="lang_fluency_indonesia" class="form-select" required
+                                    id="lang_fluency_indonesia">
                                 <option value="" disabled selected>--PILIH PENGUASAAN BAHASA--</option>
                                 <option value="Basic">Basic</option>
                                 <option value="Conversational">Conversational</option>
@@ -128,7 +141,6 @@
                                     type="file"
                                     class="form-control"
                                     name="CV_file"
-                                    required
                             >
                         </div>
                     </div>
@@ -141,7 +153,6 @@
                                     type="file"
                                     class="form-control"
                                     name="ijazah_transcript_file"
-                                    required
                             >
                         </div>
                     </div>
@@ -153,7 +164,6 @@
                                     type="file"
                                     class="form-control"
                                     name="motivational_letter_file"
-                                    required
                             >
                         </div>
                     </div>
@@ -171,7 +181,6 @@
                                     type="text"
                                     class="form-control"
                                     name="SIPP"
-                                    required
                             >
                         </div>
                     </div>
@@ -183,7 +192,6 @@
                                     type="text"
                                     class="form-control"
                                     name="SIPP_year"
-                                    required
                             >
                         </div>
                     </div>
@@ -195,7 +203,6 @@
                                     type="date"
                                     class="form-control"
                                     name="SIPP_year_end"
-                                    required
                             >
                         </div>
                     </div>
@@ -207,14 +214,13 @@
                                     type="file"
                                     class="form-control"
                                     name="SIPP_file"
-                                    required
                             >
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="SIPP_status">Status<span class='text-danger'>*</span></label>
-                            <select name="SIPP_status" class="form-select" required id="SIPP_status">
+                            <select name="SIPP_status" class="form-select" id="SIPP_status">
                                 <option value="" disabled selected>--PILIH STATUS SIPP--</option>
                                 <option value="Aktif">Aktif</option>
                                 <option value="Non Aktif">Non Aktif</option>
@@ -235,7 +241,6 @@
                                     type="text"
                                     class="form-control"
                                     name="STR"
-                                    required
                             >
                         </div>
                     </div>
@@ -247,7 +252,6 @@
                                     type="text"
                                     class="form-control"
                                     name="STR_year"
-                                    required
                             >
                         </div>
                     </div>
@@ -259,7 +263,6 @@
                                     type="date"
                                     class="form-control"
                                     name="STR_year_end"
-                                    required
                             >
                         </div>
                     </div>
@@ -271,14 +274,13 @@
                                     type="file"
                                     class="form-control"
                                     name="STR_file"
-                                    required
                             >
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="STR_status">Status<span class='text-danger'>*</span></label>
-                            <select name="STR_status" class="form-select" required id="STR_status">
+                            <select name="STR_status" class="form-select" id="STR_status">
                                 <option value="" disabled selected>--PILIH STATUS STR--</option>
                                 <option value="Aktif">Aktif</option>
                                 <option value="Non Aktif">Non Aktif</option>
