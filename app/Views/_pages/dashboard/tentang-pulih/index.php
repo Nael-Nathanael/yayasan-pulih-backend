@@ -475,7 +475,8 @@
                                         </td>
                                         <td><?= $item->name ?></td>
                                         <td><?= $item->position ?></td>
-                                        <td><?= $item->description ?></td>
+                                        <td><?= $item->position_en ?></td>
+                                        <td><?= $item->description_en ?></td>
                                         <td>
 
                                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
