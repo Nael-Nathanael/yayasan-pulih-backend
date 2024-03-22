@@ -422,10 +422,21 @@
                                                 <label for="position">Posisi</label>
                                             </div>
                                             <div class="form-floating mb-3 w-100">
+                                                <input type="text" name="position_en" id="position_en"
+                                                       class="form-control form-control-sm w-100">
+                                                <label for="position_en">Posisi (EN)</label>
+                                            </div>
+                                            <div class="form-floating mb-3 w-100">
                                             <textarea type="text" name="description" rows="5" style="height: 175px"
                                                       id="description"
                                                       class="form-control form-control-sm w-100"></textarea>
                                                 <label for="description">Deskripsi</label>
+                                            </div>
+                                            <div class="form-floating mb-3 w-100">
+                                            <textarea type="text" name="description_en" rows="5" style="height: 175px"
+                                                      id="description_en"
+                                                      class="form-control form-control-sm w-100"></textarea>
+                                                <label for="description_en">Deskripsi (EN)</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -445,7 +456,9 @@
                                     <th>Foto</th>
                                     <th>Nama</th>
                                     <th>Posisi</th>
+                                    <th>Posisi (EN)</th>
                                     <th class="w-100">Deskripsi</th>
+                                    <th class="w-100">Deskripsi (EN)</th>
                                     <th>Edit</th>
                                     <th>Hapus</th>
                                 </tr>
@@ -506,10 +519,23 @@
                                                                     <label for="position<?= $key ?>">Posisi</label>
                                                                 </div>
                                                                 <div class="form-floating mb-3 w-100">
+                                                                    <input type="text" name="position_en"
+                                                                           id="position_en<?= $key ?>"
+                                                                           value="<?= $item->position ?>"
+                                                                           class="form-control form-control-sm w-100">
+                                                                    <label for="position_en<?= $key ?>">Posisi (EN)</label>
+                                                                </div>
+                                                                <div class="form-floating mb-3 w-100">
                                             <textarea type="text" name="description" rows="5" style="height: 175px"
                                                       id="description<?= $key ?>"
                                                       class="form-control w-100"><?= $item->description ?></textarea>
                                                                     <label for="description<?= $key ?>">Deskripsi</label>
+                                                                </div>
+                                                                <div class="form-floating mb-3 w-100">
+                                            <textarea type="text" name="description_en" rows="5" style="height: 175px"
+                                                      id="description_en<?= $key ?>"
+                                                      class="form-control w-100"><?= $item->description ?></textarea>
+                                                                    <label for="description_en<?= $key ?>">Deskripsi (EN)</label>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

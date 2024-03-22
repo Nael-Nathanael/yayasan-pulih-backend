@@ -11,7 +11,7 @@ class BigTeamModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType = 'object';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['photo', 'name', 'position', 'description'];
+    protected $allowedFields = ['photo', 'name', 'position', 'description', 'position_en', 'description_en'];
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
 }

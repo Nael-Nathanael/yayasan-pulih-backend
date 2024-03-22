@@ -22,6 +22,8 @@ class BigTeam extends BaseController
                 "name" => $this->request->getPost("name"),
                 "position" => $this->request->getPost("position"),
                 "description" => $this->request->getPost("description"),
+                "position_en" => $this->request->getPost("position_en"),
+                "description_en" => $this->request->getPost("description_en"),
             ]
         );
 
@@ -37,6 +39,8 @@ class BigTeam extends BaseController
             "name" => $this->request->getPost("name"),
             "position" => $this->request->getPost("position"),
             "description" => $this->request->getPost("description"),
+            "position_en" => $this->request->getPost("position_en"),
+            "description_en" => $this->request->getPost("description_en"),
         ];
 
         // upload image
