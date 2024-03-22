@@ -476,6 +476,7 @@
                                         <td><?= $item->name ?></td>
                                         <td><?= $item->position ?></td>
                                         <td><?= $item->position_en ?></td>
+                                        <td><?= $item->description ?></td>
                                         <td><?= $item->description_en ?></td>
                                         <td>
 
