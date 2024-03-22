@@ -523,7 +523,7 @@
                                                                 <div class="form-floating mb-3 w-100">
                                                                     <input type="text" name="position_en"
                                                                            id="position_en<?= $key ?>"
-                                                                           value="<?= $item->position ?>"
+                                                                           value="<?= $item->position_en ?>"
                                                                            class="form-control form-control-sm w-100">
                                                                     <label for="position_en<?= $key ?>">Posisi (EN)</label>
                                                                 </div>
@@ -536,7 +536,7 @@
                                                                 <div class="form-floating mb-3 w-100">
                                             <textarea type="text" name="description_en" rows="5" style="height: 175px"
                                                       id="description_en<?= $key ?>"
-                                                      class="form-control w-100"><?= $item->description ?></textarea>
+                                                      class="form-control w-100"><?= $item->description_en ?></textarea>
                                                                     <label for="description_en<?= $key ?>">Deskripsi (EN)</label>
                                                                 </div>
                                                             </div>
